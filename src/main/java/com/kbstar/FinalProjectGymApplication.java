@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @SpringBootApplication
-public class FinalProjectGymApplication {
+public class  FinalProjectGymApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FinalProjectGymApplication.class, args);
