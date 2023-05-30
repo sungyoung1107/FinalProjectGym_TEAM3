@@ -13,6 +13,7 @@ public class CenterController {
     @RequestMapping("/add")
     public String add(Model model){
         model.addAttribute("page", "Center Register");
+        model.addAttribute("center", dir+"add");
         return "index";
     }
 

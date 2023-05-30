@@ -7,9 +7,9 @@
       <div class="row">
         <div class="col-lg-6 my-auto">
           <h1 class="display-1 text-bolder text-gradient text-danger">로그인 실패</h1>
-          <h2>고객님 죄송합니다. 잠시 후에 다시 시도해주세요.</h2>
+          <h2>잠시 후에 다시 시도해주세요.</h2>
           <p class="lead">헬쓱 고객 센터 1234-5678 </p>
-          <button type="button" class="btn bg-gradient-dark mt-4">Go to Homepage</button>
+          <a href="/" class="btn bg-gradient-dark mt-4">Go to Homepage</a>
         </div>
         <div class="col-lg-6 my-auto position-relative">
           <img class="w-100 position-relative" src="/assets/img/illustrations/error-404.png" alt="404-error">

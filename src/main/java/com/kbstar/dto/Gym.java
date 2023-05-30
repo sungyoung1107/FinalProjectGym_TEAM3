@@ -35,6 +35,10 @@ public class Gym {
 
     private MultipartFile gymRegimg;
 
+    /* detail 정보 등록 */
+
+
+
     // insert
     public Gym(String gymEmail, String gymPwd, String gymName, String gymPhone, String gymZipcode, String gymAddress1, String gymAddress2, String gymAddress3, String gymRegiimgname, String gymReginumber) {
         this.gymEmail = gymEmail;

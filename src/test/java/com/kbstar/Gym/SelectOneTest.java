@@ -14,7 +14,7 @@ class SelectOneTest {
     @Test
     void contextLoads() {
         try {
-            service.get("esy1107");
+            service.get("esy1107@naver.com");
         } catch (Exception e) {
             log.info("오류");
         }

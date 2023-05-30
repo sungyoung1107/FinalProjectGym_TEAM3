@@ -917,6 +917,114 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="/assets/js/soft-ui-dashboard.min.js?v=1.1.1"></script>
+<!-- add form 추가 -->
+<script src="/assets/js/plugins/choices.min.js"></script>
+<script src="/assets/js/plugins/quill.min.js"></script>
+<script src="/assets/js/plugins/multistep-form.js"></script>
+<script src="/assets/js/plugins/dropzone.min.js"></script>
+<script>
+    if (document.getElementById('edit-deschiption')) {
+        var quill = new Quill('#edit-deschiption', {
+            theme: 'snow' // Specify theme in configuration
+        });
+        // 성영 개별 추가
+        var gymContents = "${logingym.gymContents}"; // 샘플 gymContents 값
+        $('#edit-deschiption-edit').html(gymContents);
+    };
+
+    if (document.getElementById('choices-category')) {
+        var element = document.getElementById('choices-category');
+        const example = new Choices(element, {
+            searchEnabled: false
+        });
+    };
+
+    if (document.getElementById('choices-sizes')) {
+        var element = document.getElementById('choices-sizes');
+        const example = new Choices(element, {
+            searchEnabled: false
+        });
+    };
+
+    if (document.getElementById('choices-currency')) {
+        var element = document.getElementById('choices-currency');
+        const example = new Choices(element, {
+            searchEnabled: false
+        });
+    };
+
+    if (document.getElementById('choices-tags')) {
+        var tags = document.getElementById('choices-tags');
+        const examples = new Choices(tags, {
+            removeItemButton: true
+        });
+
+        examples.setChoices(
+            [{
+                value: 'One',
+                label: 'Expired',
+                disabled: true
+            },
+                {
+                    value: 'Two',
+                    label: 'Out of Stock',
+                    selected: true
+                }
+            ],
+            'value',
+            'label',
+            false,
+        );
+    }
+</script>
+<script>
+    if (document.getElementById('edit-deschiption-edit')) {
+        var quill = new Quill('#edit-deschiption-edit', {
+            theme: 'snow' // Specify theme in configuration
+        });
+    };
+
+    if (document.getElementById('choices-category-edit')) {
+        var element = document.getElementById('choices-category-edit');
+        const example = new Choices(element, {
+            searchEnabled: false
+        });
+    };
+
+    if (document.getElementById('choices-color-edit')) {
+        var element = document.getElementById('choices-color-edit');
+        const example = new Choices(element, {
+            searchEnabled: false
+        });
+    };
+
+    if (document.getElementById('choices-currency-edit')) {
+        var element = document.getElementById('choices-currency-edit');
+        const example = new Choices(element, {
+            searchEnabled: false
+        });
+    };
+
+    if (document.getElementById('choices-tags-edit')) {
+        var tags = document.getElementById('choices-tags-edit');
+        const examples = new Choices(tags, {
+            removeItemButton: true
+        });
+
+        examples.setChoices(
+            [{
+                value: 'One',
+                label: '종목 선택',
+                disabled: true,
+                selected: true
+            }],
+            'value',
+            'label',
+            false,
+        );
+    }
+</script>
+
 </body>
 
 </html>
