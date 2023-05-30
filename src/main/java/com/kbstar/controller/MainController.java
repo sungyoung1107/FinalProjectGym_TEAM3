@@ -15,10 +15,4 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/calendar")
-    public String calendar(Model model){
-        model.addAttribute("page", "Calendar");
-        model.addAttribute("center", "calendar");
-        return "index";
-    }
 }
