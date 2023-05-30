@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbstar.mapper.GymMapper">
+    <!-- 이메일로 조회 -->
+    <select id="select" parameterType="String" resultType="gym">
+        SELECT * FROM gym WHERE gymEmail=#{gymEmail}
+    </select>
+    <!-- 대표계정으로 모든 센터 추출 -->
+    <select id="selectall" resultType="gym">
+        SELECT * FROM gym WHERE gymMasterCk ='1'
+    </select>
+    <!-- gymTitle, gymContents, approvedAdmID 추후 등록 -->
+    <insert id="insert" parameterType="gym">
+        INSERT INTO gym (gymNo, gymMasterCk, gymEmail, gymPwd, gymName, gymPhone, gymZipcode, gymAddress1, gymAddress2, gymAddress3,
+                         gymRegiimgname, gymReginumber, gymMarketing, Status)
+        VALUES (gym_seq.NEXTVAL, '1', #{gymEmail}, #{gymPwd}, #{gymName}, #{gymPhone},
+        #{gymZipcode}, #{gymAddress1}, #{gymAddress2}, #{gymAddress3}, #{gymRegiimgname}, #{gymReginumber}, '0', '1')
+    </insert>
+    <!-- gymName, gymPhone, gymZipcode, gymAddress1, gymAddress2, gymAddress3, gymRegiimgname, gymReginumber 업데이트 -->
+    <update id="update" parameterType="gym">
+        UPDATE gym SET gymName=#{gymName}, gymPhone=#{gymPhone}, gymZipcode=#{gymZipcode},
+                       gymAddress1=#{gymAddress1}, gymAddress2=#{gymAddress2}, gymAddress3=#{gymAddress3},
+                       gymRegiimgname=#{gymRegiimgname}, gymReginumber=#{gymReginumber}
+                       WHERE gymNo=#{gymNo}
+    </update>
+    <!-- 이메일로 삭제 -->
+    <delete id="delete" parameterType="gym">
+        DELETE FROM gym WHERE gymEmail=#{gymEmail}
+    </delete>
+</mapper>
