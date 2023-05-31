@@ -81,6 +81,9 @@ public class GymController {
         return "index";
     }
 
+
+
+
     @RequestMapping("/logoutimpl")
     public String logoutimpl(HttpSession session){
         if(session != null){

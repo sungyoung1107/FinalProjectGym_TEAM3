@@ -25,15 +25,18 @@ public class TicketController {
     @Value("${uploadimgdir}")
     String imgdir;
 
-
     @RequestMapping("/add")
     public String add(Model model){
+        model.addAttribute("page", "Ticket");
         model.addAttribute("center", dir+"add");
         return "index";
     }
 
     @RequestMapping("/addimpl")
     public String addimpl(Model model, Ticket ticket) throws Exception {
+
+        log.info("aaaaaaaaa :"+ticket.getImg());
+
         MultipartFile mf = ticket.getImg();
         String imgname = mf.getOriginalFilename();
         log.info("----------------------------------------");
@@ -42,7 +45,10 @@ public class TicketController {
         ticket.setTicketImgname(imgname);
         ticketService.register(ticket);
         FileUploadUtil.saveFile(mf,imgdir);
-        return "redirect:/ticket/add";
+
+
+
+        return "redirect:/";
     }
 
 }

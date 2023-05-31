@@ -6,7 +6,7 @@
 <mapper namespace="com.kbstar.mapper.TicketMapper">
 
     <insert id="insert" parameterType="ticket">
-        INSERT INTO ticket VALUES (ticket_seq.NextVAL, #{gymNo}, #{gymMasterCk}, #{ticketType},
+        INSERT INTO ticket VALUES (ticket_seq.NextVAL, TO_NUMBER(#{gymNo}), #{gymMasterCk}, #{ticketType},
                                    #{ticketMonth}, #{ticketNumber}, #{ticketJoin}, #{ticketTotal},
                                    #{ticketSales}, #{ticketCost}, #{ticketDiscount},
                                    #{ticketPrice}, #{ticketImgname}, #{sportsType}, #{sportsClasstype})
