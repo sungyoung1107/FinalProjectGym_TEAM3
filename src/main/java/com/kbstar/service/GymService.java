@@ -70,4 +70,8 @@ public class GymService implements KBService<Integer, Gym> {
     public Gym getMyemail(String gymEmail) {
         return mapper.getmyemail(gymEmail);
     }
+
+    public void insertImg(Gym gym) {
+        mapper.insertimg(gym);
+    }
 }

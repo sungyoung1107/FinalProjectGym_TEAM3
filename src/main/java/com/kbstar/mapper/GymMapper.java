@@ -12,4 +12,5 @@ import java.util.List;
 public interface GymMapper extends KBMapper<Integer, Gym> {
 
     public Gym getmyemail(String gymEmail);
+    public void insertimg(Gym gym); // gym로 조회
 }

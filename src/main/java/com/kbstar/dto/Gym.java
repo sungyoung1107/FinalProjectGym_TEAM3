@@ -35,14 +35,17 @@ public class Gym {
 
     private MultipartFile gymRegimg;
 
-    /* center 관련 추가 정보 등록 */
-    private int gymImgNo;
-    private String gymImgname;
-    private int typeNo;
-    private String sportsType;
+    /* center 관련 이미지 등록(GymImg) */
+    private int gymImgNo; // 센터이미지번호(시퀀스)
+    private String gymImgname; // 센터이미지명
+    private String gymImgdetailCk; // 디테일 이미지 여부 // 0: 디테일 X, 1: 디테일 ㅇ
 
-    private MultipartFile gymimg;
+    /* center 관련 운동종목 등록(Gymtype) */
+    private int typeNo; // 종목일련번호(시퀀스)
+    private String sportsType; // 운동종목구분
 
+    private MultipartFile[] gymimg_notdetail; // 디테일 이미지 X
+    private MultipartFile gymimg_isdetail; // 디테일 이미지 O
 
     // insert
     public Gym(String gymEmail, String gymPwd, String gymName, String gymPhone, String gymZipcode, String gymAddress1, String gymAddress2, String gymAddress3, String gymRegiimgname, String gymReginumber) {
@@ -69,5 +72,13 @@ public class Gym {
         this.gymAddress3 = gymAddress3;
         this.gymRegiimgname = gymRegiimgname;
         this.gymReginumber = gymReginumber;
+    }
+
+    // 이미지 등록
+    public Gym(Integer gymNo, String gymMasterCk, String gymImgname, String gymImgdetailCk) {
+        this.gymNo = gymNo;
+        this.gymMasterCk = gymMasterCk;
+        this.gymImgname = gymImgname;
+        this.gymImgdetailCk = gymImgdetailCk;
     }
 }

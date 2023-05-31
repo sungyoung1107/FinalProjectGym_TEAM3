@@ -33,4 +33,9 @@
     <delete id="delete" parameterType="Integer">
         DELETE FROM gym WHERE gymNo=#{gymNo}
     </delete>
+    <!--회원번호 이미지 insert -->
+    <insert id="insertimg" parameterType="gym">
+        INSERT INTO gymimg (gymImgNo, gymNo, gymMasterCk, gymImgname, gymImgdetailCk)
+        VALUES (GymImg_seq.NEXTVAL, #{gymNo}, #{gymMasterCk}, #{gymImgname}, #{gymImgdetailCk})
+    </insert>
 </mapper>

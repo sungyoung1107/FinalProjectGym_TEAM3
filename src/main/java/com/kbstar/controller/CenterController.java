@@ -49,45 +49,34 @@ public class CenterController {
     @RequestMapping("/updateimpl")
     public String updateimpl(Model model, Gym gym, HttpSession session) throws Exception {
         log.info("센터 업데이트 화면 진입");
-        String new_imgname="";
-        MultipartFile mf = gym.getGymimg();
-        log.info("======이미지 이름 추출mf================"+mf);
-        new_imgname = mf.getOriginalFilename();
-        log.info("======이미지 이름 추출 " + mf.getOriginalFilename() + "=====================");
 
-        if (new_imgname.equals("") || new_imgname == null) {
-            // 세션 비밀번호를 set start
-            log.info("==== 셋할 이름 " + gym.getGymName());
-            log.info("==== 셋할 비밀번호 " + gym.getGymPwd());
-            // 세션 비밀번호를 set end
-            gymService.modify(gym);
-        } else {  // 이미지가 들어온 경우
-            gym.setGymImgname(new_imgname); // 이미지 이름 셋
-            // 세션 비밀번호를 set start
-            log.info("==== 셋할 이름 " + gym.getGymName());
-            log.info("==== 셋할 비밀번호 " + gym.getGymPwd());
-            // 세션 비밀번호를 set end
-            gymService.modify(gym);
-            FileUploadUtil.saveFile(mf, imgdir);
+        gymService.modify(gym);
+
+        // 센터 이미지 첨부
+        MultipartFile[] mf_arr = gym.getGymimg_notdetail();
+        if(mf_arr != null) {
+            for (MultipartFile mf_ele : mf_arr) {
+                log.info("센터 이미지들 등록 화면 진입");
+                String center_imgname = mf_ele.getOriginalFilename();
+                log.info("======센터 이미지 이름 추출 " + center_imgname + "=====================");
+                gym.setGymImgname(center_imgname); // 이미지명 셋
+                gym.setGymImgdetailCk("0"); //디테일 아님 '0' 등록
+                gymService.insertImg(gym); // 이미지 등록
+                FileUploadUtil.saveFile(mf_ele,imgdir); // 이미지 파일 저장
+            }
         }
-
-//        try {
-//            for (MultipartFile file : gymImages) {
-//                if (!file.isEmpty()) {
-//                    log.info("======이미지 이름 추출file================" + file.getOriginalFilename());
-//                    new_imgname = file.getOriginalFilename();
-//                    if (new_imgname.equals("") || new_imgname == null) {
-//                        gymService.modify(gym);
-//                    } else {  // 이미지가 들어온 경우
-//                        gym.setGymImgname(new_imgname); // 이미지 이름 셋
-//                        gymService.modify(gym);
-//                        FileUploadUtil.saveFile(file, imgdir);
-//                    }
-//                }
-//            }
-//        } catch(Exception e){
-//            e.printStackTrace();
-//        }
+        
+        // 디테일 이미지 첨부
+        MultipartFile mf = gym.getGymimg_isdetail();
+        if(mf != null) {
+            log.info("센터 디테일 이미지 등록 화면 진입");
+            String detail_imgname = mf.getOriginalFilename();
+            log.info("======디테일 이미지 이름 추출 " + detail_imgname + "=====================");
+            gym.setGymImgname(detail_imgname); // 이미지명 셋
+            gym.setGymImgdetailCk("1"); // 디테일임 '1' 등록
+            gymService.insertImg(gym); // 이미지 등록
+            FileUploadUtil.saveFile(mf,imgdir); // 이미지 파일 저장
+        }
 
         return "redirect:/"; // 추후 수정
     }
