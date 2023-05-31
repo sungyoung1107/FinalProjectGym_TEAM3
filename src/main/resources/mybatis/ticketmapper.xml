@@ -5,11 +5,17 @@
 
 <mapper namespace="com.kbstar.mapper.TicketMapper">
 
+<!--    <insert id="insert" parameterType="ticket">-->
+<!--        INSERT INTO ticket VALUES (ticket_seq.NextVAL, TO_NUMBER(#{gymNo}), #{gymMasterCk}, #{ticketType},-->
+<!--                                   #{ticketMonth}, #{ticketNumber}, #{ticketJoin}, #{ticketTotal},-->
+<!--                                   #{ticketSales}, #{ticketCost}, #{ticketDiscount},-->
+<!--                                   #{ticketCost} * (1-#{ticketDiscount} / 100), #{ticketImgname}, #{sportsType}, #{sportsClasstype})-->
+<!--    </insert>-->
     <insert id="insert" parameterType="ticket">
-        INSERT INTO ticket VALUES (ticket_seq.NextVAL, TO_NUMBER(#{gymNo}), #{gymMasterCk}, #{ticketType},
+        INSERT INTO ticket VALUES (ticket_seq.NextVAL, #{gymNo}, #{gymMasterCk}, #{ticketType},
                                    #{ticketMonth}, #{ticketNumber}, #{ticketJoin}, #{ticketTotal},
                                    #{ticketSales}, #{ticketCost}, #{ticketDiscount},
-                                   #{ticketPrice}, #{ticketImgname}, #{sportsType}, #{sportsClasstype})
+                                   #{ticketCost} * (1-#{ticketDiscount} / 100), #{ticketImgname}, #{sportsType}, #{sportsClasstype})
     </insert>
 
 
@@ -21,12 +27,17 @@
         SELECT * FROM ticket
     </select>
 
-<!--    <update id="update" parameterType="item">-->
-<!--        UPDATE item SET name=#{name},price=#{price},imgname=#{imgname} WHERE id=#{id}-->
-<!--    </update>-->
+    <update id="update" parameterType="ticket">
+        UPDATE ticket
+        SET ticketType=#{ticketTpye}, ticketMonth=#{ticketMonth}, ticketNumber=#{ticketNumber}
+            , ticketJoin=#{ticketJoin}, ticketTotal=#{ticketTotal}, ticketSales=#{ticketSales}
+            , ticketCost=#{ticketCost}, ticketDiscount=#{ticketDiscount}, ticketPrice = (#{ticketCost} * (1-#{ticketDiscount} / 100))
+            , ticketImgname=#{ticketImgname}, sportsType=#{sportsType}, sportsClasstype=#{sportsClasstype}
+        WHERE ticketNo=#{ticketNo}
+    </update>
 
-<!--    <delete id="delete" parameterType="Integer">-->
-<!--        DELETE FROM item WHERE id=#{id}-->
-<!--    </delete>-->
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM ticket WHERE ticketNo=#{ticketNo}
+    </delete>
 
 </mapper>

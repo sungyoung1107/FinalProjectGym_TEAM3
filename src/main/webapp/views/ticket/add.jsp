@@ -16,6 +16,7 @@
                 ticket_form.send();
             });
         },
+
         send: function () {
             $('#ticket_form').attr({
                 method : 'post',
@@ -31,7 +32,9 @@
         ticket_form.init();
     })
 
+
 </script>
+
 
 
     <div class="container-fluid py-4">
@@ -160,16 +163,16 @@
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
                                                 <label>이용권 가격</label>
-                                                <input class="multisteps-form__input form-control" name="ticketPrice" type="text" placeholder="숫자로 입력 / eg. 100000, 150000" />
+                                                <input class="multisteps-form__input form-control" name="ticketCost" type="text" placeholder="숫자로 입력 / eg. 100000, 150000"  />
                                             </div>
                                             <div class="col-12 col-sm-6">
                                                 <label>할인율</label>
                                                 <input class="multisteps-form__input form-control" name="ticketDiscount" type="text" placeholder="숫자로 입력 / eg. 10, 15, 50 " />
                                             </div>
-                                            <div class="col-12 col-sm-6">
-                                                <label>ticketCost</label>
-                                                <input class="multisteps-form__input form-control" name="ticketCost" type="text"/>
-                                            </div>
+<%--                                            <div class="col-12 col-sm-6">--%>
+<%--                                                <label>판매 가격</label>--%>
+<%--                                                <input class="multisteps-form__input form-control" name="ticketCost" type="text" value="${logingym.gymNo}" placeholder="${logingym.gymNo}"/>--%>
+<%--                                            </div>--%>
                                         </div>
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">이전</button>
