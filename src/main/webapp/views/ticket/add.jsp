@@ -9,25 +9,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
-    let ticket_add = {
-        init:function(){
-            $('#register_btn').click(function(){
-                ticket_add.send();
+
+    let ticket_form = {
+        init: function () {
+            $('#ticket_register_btn').click(function () {
+                ticket_form.send();
             });
         },
-        send:function(){
-            $('#register_form').attr({
-                method:'post',
-                action:'/ticket/addimpl',
+        send: function () {
+            $('#ticket_form').attr({
+                method : 'post',
+                action : '/ticket/addimpl',
                 enctype: 'multipart/form-data'
             });
-            $('#register_form').submit();
+            $('#ticket_form').submit();
         }
     };
 
+
     $(function(){
-        ticket_add.init();
+        ticket_form.init();
     })
+
 </script>
 
 
@@ -50,11 +53,14 @@
                     <!--form panels-->
                     <div class="row">
                         <div class="col-12 col-lg-8 m-auto">
-                            <form id="register_form"  class="multisteps-form__form mb-8">
+                            <form id="ticket_form"  class="multisteps-form__form mb-8">
                                 <!--single form panel-->
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                                     <h5 class="font-weight-bolder"> 정보 </h5>
                                     <div class="multisteps-form__content">
+                                        <input type="text" name="gymNo" class="form-control" id="gymNo" value="${logingym.gymNo}" placeholder="${logingym.gymNo}" readonly>
+                                        <input type="text" name="gymMasterCk" class="form-control" id="gymMasterCk" value="${logingym.gymMasterCk}" placeholder="${logingym.gymMasterCk}" readonly>
+
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
                                                 <label>이용권 종류</label>
@@ -133,7 +139,11 @@
                                         <div class="row mt-3">
                                             <div class="col-12">
                                                 <label>이용권 사진</label>
-                                                <div action="/file-upload" class="form-control dropzone" id="productImg"></div>
+<%--                                                <div action="/file-upload" name="img" class="form-control dropzone" id="img"></div>--%>
+                                                <input type="file" name="img" class="form-control dropzone" id="img"></input>
+<%--                                                <input type="file" class="form-control" placeholder="사업자등록증 첨부"--%>
+<%--                                                       aria-label="gymRegimg"--%>
+<%--                                                       name="gymRegimg" id="gymRegimg">--%>
                                             </div>
                                         </div>
                                         <div class="button-row d-flex mt-4">
@@ -150,17 +160,21 @@
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
                                                 <label>이용권 가격</label>
-                                                <input class="multisteps-form__input form-control" type="text" placeholder="숫자로 입력 / eg. 100000, 150000" />
+                                                <input class="multisteps-form__input form-control" name="ticketPrice" type="text" placeholder="숫자로 입력 / eg. 100000, 150000" />
                                             </div>
-
                                             <div class="col-12 col-sm-6">
                                                 <label>할인율</label>
-                                                <input class="multisteps-form__input form-control" type="text" placeholder="숫자로 입력 / eg. 10, 15, 50 " />
+                                                <input class="multisteps-form__input form-control" name="ticketDiscount" type="text" placeholder="숫자로 입력 / eg. 10, 15, 50 " />
+                                            </div>
+                                            <div class="col-12 col-sm-6">
+                                                <label>ticketCost</label>
+                                                <input class="multisteps-form__input form-control" name="ticketCost" type="text"/>
                                             </div>
                                         </div>
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">이전</button>
-                                            <button class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">제출하기</button>
+                                            <button id="ticket_register_btn" class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">제출하기</button>
+<%--                                            <button id="register_btn" type="button" class="btn btn-info">Register</button>--%>
                                         </div>
                                     </div>
                                 </div>
