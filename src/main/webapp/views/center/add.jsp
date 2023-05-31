@@ -2,11 +2,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
+
+    let center_form = {
+        init: function () {
+            $('#center_register_btn').click(function () {
+                center_form.send();
+            });
+        },
+        send: function () {
+            $('#center_form').attr({
+                method : 'post',
+                action : '/center/updateimpl',
+                enctype: 'multipart/form-data'
+            });
+            $('#center_form').submit();
+        }
+    };
+
     $(document).ready(function () {
         let gymReginumber = $("#gymReginumber").val();
         let gymTitle = $("#gymTitle").val();
         console.log("센터 사업자 번호 " + gymReginumber);
         console.log("센터 제목 " + gymTitle);
+        center_form.init();
     });
 </script>
 
@@ -30,7 +48,9 @@
                 <!--form panels-->
                 <div class="row">
                     <div class="col-12 col-lg-8 m-auto">
-                        <form class="multisteps-form__form mb-8">
+                        <form class="multisteps-form__form mb-8" id="center_form">
+                            <input type="hidden" name="gymNo" val="${logingym.gymNo}">
+                            <input type="hidden" name="gymEmail" val="${logingym.gymEmail}">
                             <!-- 1. 센터 기본정보 확인 -->
                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
                                  data-animation="FadeIn">
@@ -94,7 +114,7 @@
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" placeholder="OOO-OO-OOOOO"
                                                        aria-label="gymReginumber" name="gymReginumber"
-                                                       id="gymReginumber" value="${logingym.gymReginumber}">
+                                                       id="gymReginumber" value="${logingym.gymReginumber}" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -130,6 +150,8 @@
                                                 (한글 60자 이내)
                                             </p>
                                             <div id="edit-deschiption-edit" class="h-50">
+                                                <span id="gymContents" name="gymContents"
+                                                      class="h-50">${logingym.gymContents}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -157,7 +179,8 @@
                                 </div>
                             </div>
                             <!--3. 센터 이미지 등록-->
-                            <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
+                            <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
+                                 data-animation="FadeIn">
                                 <h5 class="font-weight-bolder">3. 센터 이미지 등록</h5>
                                 <div class="multisteps-form__content">
                                     <div class="row mt-3">
@@ -166,13 +189,19 @@
                                             <p class="form-text text-muted text-xs ms-1 d-inline">
                                                 최대 10장 이내
                                             </p>
-                                            <div action="/file-upload" class="form-control dropzone" id="productImg"></div>
+                                            <%--                                            <div action="/" class="form-control dropzone">--%>
+                                            <input type="file" class="form-control" id="gymimg" name="gymimg" multiple>
+                                            <%--                                            </div>--%>
                                         </div>
                                     </div>
-                                    <div class="button-row d-flex mt-4">
-                                        <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
-                                        <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
-                                    </div>
+                                </div>
+                                <div class="button-row d-flex mt-4">
+                                    <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button"
+                                            title="Prev">Prev
+                                    </button>
+                                    <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"
+                                            id="center_register_btn">등록(변경)
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -182,4 +211,4 @@
         </div>
     </div>
 </div>
-
+</div>

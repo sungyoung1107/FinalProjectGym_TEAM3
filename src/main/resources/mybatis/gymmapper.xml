@@ -22,7 +22,7 @@
     <update id="update" parameterType="gym">
         UPDATE gym SET gymName=#{gymName}, gymPhone=#{gymPhone}, gymZipcode=#{gymZipcode},
                        gymAddress1=#{gymAddress1}, gymAddress2=#{gymAddress2}, gymAddress3=#{gymAddress3},
-                       gymRegiimgname=#{gymRegiimgname}, gymReginumber=#{gymReginumber}
+                       gymTitle=#{gymTitle}, gymContents=#{gymContents}
                        WHERE gymNo=#{gymNo}
     </update>
     <!-- 이메일로 삭제 -->

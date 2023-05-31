@@ -927,9 +927,6 @@
         var quill = new Quill('#edit-deschiption', {
             theme: 'snow' // Specify theme in configuration
         });
-        // 성영 개별 추가
-        var gymContents = "${logingym.gymContents}"; // 샘플 gymContents 값
-        $('#edit-deschiption-edit').html(gymContents);
     };
 
     if (document.getElementById('choices-category')) {

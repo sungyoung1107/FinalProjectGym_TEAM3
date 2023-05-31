@@ -17,6 +17,7 @@ class SelectOneTest {
             service.get("esy1107@naver.com");
         } catch (Exception e) {
             log.info("오류");
+            e.printStackTrace();
         }
     }
 

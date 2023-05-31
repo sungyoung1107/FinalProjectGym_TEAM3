@@ -60,6 +60,8 @@ public class GymController {
         String nextPage = "loginfail";
         try {
             gym = gymService.get(gymEmail);
+            log.info("==========센터 타이틀 "+ gym.getGymTitle());
+            log.info("==========센터 내용 "+ gym.getGymContents());
             if(gym != null && encoder.matches(gymPwd, gym.getGymPwd())){
                 nextPage = "loginok";
                 session.setMaxInactiveInterval(100000);

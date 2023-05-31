@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @ToString
 public class Gym {
 
-    private int gymNo; // 센터회원번호
+    private Integer gymNo; // 센터회원번호
     private String gymMasterCk; // 대표계정여부 (대표계정 1)
     @NotEmpty(message = "Email은 필수 항목 입니다.")
     private String gymEmail; // 이메일 ㅇ
@@ -35,8 +35,13 @@ public class Gym {
 
     private MultipartFile gymRegimg;
 
-    /* detail 정보 등록 */
+    /* center 관련 추가 정보 등록 */
+    private int gymImgNo;
+    private String gymImgname;
+    private int typeNo;
+    private String sportsType;
 
+    private MultipartFile gymimg;
 
 
     // insert
