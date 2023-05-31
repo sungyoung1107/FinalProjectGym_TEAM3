@@ -58,14 +58,16 @@ public class GymController {
                             HttpSession session, String redirectURL) throws Exception {
         Gym gym = null;
         String nextPage = "loginfail";
+
         try {
-            gym = gymService.get(gymEmail);
+            gym = gymService.getMyemail(gymEmail);
             log.info("==========센터 타이틀 "+ gym.getGymTitle());
             log.info("==========센터 내용 "+ gym.getGymContents());
             if(gym != null && encoder.matches(gymPwd, gym.getGymPwd())){
                 nextPage = "loginok";
                 session.setMaxInactiveInterval(100000);
                 session.setAttribute("logingym",gym);
+                model.addAttribute("rgym", gym);
                 if (redirectURL == null || redirectURL.equals("")) {
                     return "redirect:/";
                 }else {
@@ -99,7 +101,7 @@ public class GymController {
     public String checkEmail(String gymEmail) {
         Gym result = null;
         try {
-            result = gymService.get(gymEmail); // 일치하는 email이 있다면
+            result = gymService.getMyemail(gymEmail); // 일치하는 email이 있다면
             if (result != null) {
                 return "fail";
             }

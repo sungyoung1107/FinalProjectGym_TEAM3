@@ -1,33 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<script>
-
-    let center_form = {
-        init: function () {
-            $('#center_register_btn').click(function () {
-                center_form.send();
-            });
-        },
-        send: function () {
-            $('#center_form').attr({
-                method : 'post',
-                action : '/center/updateimpl',
-                enctype: 'multipart/form-data'
-            });
-            $('#center_form').submit();
-        }
-    };
-
-    $(document).ready(function () {
-        let gymReginumber = $("#gymReginumber").val();
-        let gymTitle = $("#gymTitle").val();
-        console.log("센터 사업자 번호 " + gymReginumber);
-        console.log("센터 제목 " + gymTitle);
-        center_form.init();
-    });
-</script>
-
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-12">
@@ -49,8 +22,10 @@
                 <div class="row">
                     <div class="col-12 col-lg-8 m-auto">
                         <form class="multisteps-form__form mb-8" id="center_form">
-                            <input type="hidden" name="gymNo" val="${logingym.gymNo}">
-                            <input type="hidden" name="gymEmail" val="${logingym.gymEmail}">
+                            <input type="hidden" name="gymNo" id="gymNo" value="${logingym.gymNo}">
+                            <input type="hidden" name="gymEmail" id="gymEmail" value="${logingym.gymEmail}">
+                            <input type="hidden" name="gymPwd" id="gymPwd" value="${logingym.gymPwd}">
+                            <input type="hidden" name="gymContents" id="gymContents" value=""> <!-- 내용은 span 이기 때문에 input 값을 js에서 할당해서 보내기 -->
                             <!-- 1. 센터 기본정보 확인 -->
                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
                                  data-animation="FadeIn">
@@ -150,14 +125,13 @@
                                                 (한글 60자 이내)
                                             </p>
                                             <div id="edit-deschiption-edit" class="h-50">
-                                                <span id="gymContents" name="gymContents"
-                                                      class="h-50">${logingym.gymContents}</span>
+                                                <span id="gymContents_temp">${logingym.gymContents}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
                                         <label class="mt-4">센터 운동 종목</label>
-                                        <select class="form-control" name="choices-tags" id="choices-tags-edit"
+                                        <select class="form-control" name="sportsType" id="choices-tags-edit"
                                                 multiple>
                                             <option value="1">헬스</option>
                                             <option value="2">PT</option>
@@ -211,4 +185,67 @@
         </div>
     </div>
 </div>
-</div>
+
+<script>
+    $(document).ready(function () {
+
+        let gymNo = $("#gymNo").val();
+        let gymEmail = $("#gymEmail").val();
+        let gymName = $("#gymName").val();
+        let gymZipcode = $("#gymZipcode").val();
+        let gymAddress1 = $("#gymAddress1").val();
+        let gymAddress2 = $("#gymAddress2").val();
+        let gymAddress3 = $("#gymAddress3").val();
+        let gymPhone =  $("#gymPhone").val();
+        let gymReginumber = $("#gymReginumber").val();
+
+        let gymTitle = $("#gymTitle").val();
+        // <span> 태그의 값을 가져옴
+        let parser = new DOMParser();
+        let gymContents_temp_html = document.getElementById('edit-deschiption-edit').innerHTML;
+        let gymContents_temp_doc = parser.parseFromString(gymContents_temp_html, "text/html");
+        let gymContents_temp_text = gymContents_temp_doc.querySelector("p").innerText;
+        // 운동종목은 나중에
+        // 이미지
+
+        let gymPwd = $("#gymPwd").val();
+
+        console.log("센터 식별번호 " + gymNo);
+        console.log("센터 이메일 " + gymEmail);
+        console.log("센터 이름 " + gymName);
+        console.log("센터 우편번호 " + gymZipcode);
+        console.log("센터 도로명또는지번주소 " + gymAddress1);
+        console.log("센터 상세주소 " + gymAddress2);
+        console.log("센터 참고항목 " + gymAddress3);
+        console.log("대표자 연락처 " + gymPhone);
+        console.log("센터 사업자 번호 " + gymReginumber);
+
+        console.log("센터 제목 " + gymTitle);
+        console.log("센터 소개 내용1: " + gymContents_temp_html);
+        console.log("센터 소개 내용 파싱: " + gymContents_temp_text);
+
+        console.log("셋할 비밀번호" + gymPwd)
+
+        // 가져온 값으로 숨겨진 <input> 태그에 할당
+        document.getElementById('gymContents').value = gymContents_temp_text;
+
+        center_form.init();
+    });
+
+    let center_form = {
+        init: function () {
+            $('#center_register_btn').click(function () {
+                center_form.send();
+            });
+        },
+        send: function () {
+            $('#center_form').attr({
+                method : 'post',
+                action : '/center/updateimpl',
+                enctype: 'multipart/form-data'
+            });
+            $('#center_form').submit();
+        }
+    };
+
+</script>

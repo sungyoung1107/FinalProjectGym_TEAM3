@@ -8,17 +8,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @Slf4j
 @SpringBootTest
-class DeleteTest {
+class SelectOneEmailTest {
     @Autowired
     GymService service;
     @Test
     void contextLoads() {
-         try {
-            service.remove(1);
-            service.get();
+        try {
+            service.getMyemail("esy1107@naver.com");
         } catch (Exception e) {
-             log.info("오류");
-         }
+            log.info("오류");
+            e.printStackTrace();
+        }
     }
 
 }
