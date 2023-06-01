@@ -20,6 +20,11 @@
         SELECT * FROM trainer
     </select>
 
+    <!-- 운동센터별 트레이너 조회 -->
+    <select id="getmytrainer" resultType="trainer">
+        SELECT * FROM trainer WHERE gymNo=#{gymNo}
+    </select>
+
     <update id="update" parameterType="trainer">
         UPDATE trainer
         SET trainerName=#{trainerName}, trainerGender=#{trainerGender}, trainerCareer=#{trainerCareer}

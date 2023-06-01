@@ -21,7 +21,7 @@
                 <!--form panels-->
                 <div class="row">
                     <div class="col-12 col-lg-8 m-auto">
-                        <form class="multisteps-form__form mb-8" id="center_form">
+                        <form class="multisteps-form__form mb-8" id="class_form">
                             <input type="hidden" name="gymNo" id="gymNo" value="${logingym.gymNo}">
                             <input type="hidden" name="gymMasterCk" id="gymMasterCk" value="${logingym.gymMasterCk}">
                             <input type="hidden" name="gymEmail" id="gymEmail" value="${logingym.gymEmail}">
@@ -134,7 +134,13 @@
                                         </div>
                                     </div>
                                     <div class="row mt-3">
-                                        <div class="col-12">
+                                        <div class="col-6">
+                                            <label class="form-label">시작시간</label>
+                                            <input class="form-control" type="time" placeholder="시작시간" id="classStarttime" name="classStarttime" data-input>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">시작시간</label>
+                                            <input class="form-control" type="time" placeholder="종료시간" id="classEndtime" name="classEndtime" data-input>
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +149,7 @@
                                             title="Prev">Prev
                                     </button>
                                     <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"
-                                            id="center_register_btn">등록(변경)
+                                            id="class_register_btn">등록(변경)
                                     </button>
                                 </div>
                             </div>
@@ -157,67 +163,22 @@
 
 <script>
     $(document).ready(function () {
-
-        let gymNo = $("#gymNo").val();
-        let gymEmail = $("#gymEmail").val();
-        let gymName = $("#gymName").val();
-        let gymZipcode = $("#gymZipcode").val();
-        let gymAddress1 = $("#gymAddress1").val();
-        let gymAddress2 = $("#gymAddress2").val();
-        let gymAddress3 = $("#gymAddress3").val();
-        let gymPhone = $("#gymPhone").val();
-        let gymReginumber = $("#gymReginumber").val();
-
-        let gymTitle = $("#gymTitle").val();
-        // <span> 태그의 값을 가져옴
-        let parser = new DOMParser();
-        // let gymContents_temp_html = document.getElementById('edit-deschiption-edit').innerHTML;
-        // let gymContents_temp_doc = parser.parseFromString(gymContents_temp_html, "text/html");
-        // let gymContents_temp_text = gymContents_temp_doc.querySelector("p").innerText;
-        let gymContents_temp_text = $(".ql-editor > p").html();
-
-        // 운동종목은 나중에
-        // 이미지
-
-        let gymPwd = $("#gymPwd").val();
-
-        console.log("센터 식별번호 " + gymNo);
-        console.log("센터 이메일 " + gymEmail);
-        console.log("센터 이름 " + gymName);
-        console.log("센터 우편번호 " + gymZipcode);
-        console.log("센터 도로명또는지번주소 " + gymAddress1);
-        console.log("센터 상세주소 " + gymAddress2);
-        console.log("센터 참고항목 " + gymAddress3);
-        console.log("대표자 연락처 " + gymPhone);
-        console.log("센터 사업자 번호 " + gymReginumber);
-
-        console.log("센터 제목 " + gymTitle);
-        // console.log("센터 소개 내용 전체: " + gymContents_temp_html);
-        console.log("센터 소개 내용 파싱: " + gymContents_temp_text);
-        console.log("셋할 비밀번호" + gymPwd)
-
-        // 가져온 값으로 숨겨진 <input> 태그에 할당
-
-        $("#gymContents").val(gymContents_temp_text);
-
-        center_form.init();
+        class_form.init();
     });
 
-    let center_form = {
+    let class_form = {
         init: function () {
-            $('#center_register_btn').click(function () {
-                gymContents_temp_text = $(".ql-editor > p").html(); // 변경된 값 추출
-                $("#gymContents").val(gymContents_temp_text); // 폼 필드 업데이트
-                center_form.send();
+            $('#class_register_btn').click(function () {
+                class_form.send();
             });
         },
         send: function () {
-            $('#center_form').attr({
+            $('#class_form').attr({
                 method : 'post',
-                action : '/center/updateimpl',
-                enctype: 'multipart/form-data'
+                action : '/class/updateimpl',
+                // enctype: 'multipart/form-data'
             });
-            $('#center_form').submit();
+            $('#class_form').submit();
         }
     };
 

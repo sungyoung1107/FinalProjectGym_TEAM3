@@ -42,4 +42,8 @@ public class TrainerService implements KBService<Integer, Trainer> {
     public List<Trainer> get() throws Exception {
         return mapper.selectall();
     }
+
+    public List<Trainer> getMytrainer(Integer integer) throws Exception {
+        return mapper.getmytrainer(integer);
+    }
 }

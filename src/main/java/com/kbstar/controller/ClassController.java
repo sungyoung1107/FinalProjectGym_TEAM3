@@ -17,6 +17,15 @@ public class ClassController {
         return "index";
     }
 
+    @RequestMapping("/addimpl")
+    public String addimpl(Model model){
+
+
+
+
+        return "redirect:/";
+    }
+
     @RequestMapping("/all")
     public String all(Model model){
         model.addAttribute("page", "Class Calender"); // 캘린더
