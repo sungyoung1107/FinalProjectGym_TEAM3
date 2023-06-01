@@ -18,10 +18,10 @@ public class Class {
     private String gymMasterCk; // 대표계정여부
     private Integer trainerNo; // 강사번호(시퀀스) ㅇ
     private String className; // 수업명 ㅇ
-    private String classDate; // 수업일시
-    private String classStarttime; // 수업시작시간
-    private String classEndtime; // 수업종료시간
-    private Integer classMaximum; // 최대참가인원 d
+    private String classDate; // 수업일시 ㅇ
+    private String classStarttime; // 수업시작시간 ㅇ
+    private String classEndtime; // 수업종료시간 ㅇ
+    private Integer classMaximum; // 최대참가인원 ㅇ
     private Integer classJoin; // 참가인원
     private String classFullbooked; // 수업마감여부
     private String sportsType; // 운동종목구분 ㅇ

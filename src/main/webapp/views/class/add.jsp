@@ -11,7 +11,7 @@
                             <button class="multisteps-form__progress-btn js-active" type="button" title="Product Info">
                                 <span>1. 클래스 기본정보</span>
                             </button>
-                            <button class="multisteps-form__progress-btn" type="button" title="Media">2. 클래스 강사정보
+                            <button class="multisteps-form__progress-btn" type="button" title="Media">2. 클래스 트레이너 정보
                             </button>
                             <button class="multisteps-form__progress-btn" type="button" title="Socials">3. 클래스 일정
                             </button>
@@ -46,14 +46,7 @@
                                         <div class="col-6">
                                             <label>운동 종목</label>
                                             <select class="form-control" name="sportsType" id="sportsType">
-                                                <c:choose>
-                                                    <c:when test="${logingym == null}">
-                                                        <option value="" selected=""> 선택</option>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <option value="" selected=""> ${logingym.sportsType} </option>
-                                                    </c:otherwise>
-                                                </c:choose>
+                                                <option value=""> 선택</option>
                                                 <option value="1"> 헬스</option>
                                                 <option value="2"> PT</option>
                                                 <option value="3"> 크로스핏</option>
@@ -66,7 +59,7 @@
                                         <div class="col-6">
                                             <label>클래스 형태</label>
                                             <select class="form-control" name="sportsClassType" id="sportsClassType">
-                                                <option value="" selected=""> 선택</option>
+                                                <option value=""> 선택</option>
                                                 <option value="1"> 1:1수업</option>
                                                 <option value="2"> 그룹수업</option>
                                                 <option value="3"> 자유수업</option>
@@ -98,17 +91,18 @@
                             <!--2. 센터 상세정보 등록-->
                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
                                  data-animation="FadeIn">
-                                <h5 class="font-weight-bolder">2. 클래스 강사정보</h5>
+                                <h5 class="font-weight-bolder">2. 클래스 트레이너 정보</h5>
                                 <div class="multisteps-form__content">
                                     <div class="row mt-3">
                                         <div class="col-12">
                                             <label>강사 정보</label>
-                                            <p class="form-text text-muted text-xs ms-1 d-inline">
-                                            </p>
+                                            <a href="/trainer/add"><p class="form-text text-muted text-xs ms-1 d-inline">
+                                                정보가 없다면 이곳을 클릭하여 트레이너를 먼저 등록해주세요(Click!)
+                                            </p></a>
                                             <div class="mb-3">
-                                                <input type="text" class="form-control" placeholder="강사이름을 입력해주세요"
-                                                       aria-label="trainerNo" name="trainerNo"
-                                                       id="trainerNo" value="">
+                                                <select class="form-control" name="trainerNo" id="trainerNo">
+                                                    <option value="">선택</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -130,7 +124,7 @@
                                     <div class="row mt-3">
                                         <div class="col-12">
                                             <label class="form-label">클래스 날짜 지정</label>
-                                            <input class="form-control datetimepicker" type="text" placeholder="클래스 날짜 지정" data-input>
+                                            <input class="form-control datetimepicker" type="text" id="classDate" name="classDate"  placeholder="클래스 날짜 지정" data-input>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
@@ -163,11 +157,32 @@
 
 <script>
     $(document).ready(function () {
-        class_form.init();
+        let gymNo = $("#gymNo").val();
+        console.log(gymNo);
+        class_form.init(gymNo);
     });
 
     let class_form = {
-        init: function () {
+        init: function (gymNo) {
+            class_form.getData(gymNo);
+        },
+        getData : function (gymNo){
+            // 트레이너 정보 불러오기
+            $.ajax({
+                url:'/class/gettrainer',
+                data: {'gymNo':gymNo}, // gymNo 전달
+                dataType: "json",
+                success: function(result){
+                    // 받은 데이터를 select 요소에 옵션으로 추가
+                    let trainerSelect = $("#trainerNo");
+                    $.each(result, function(index, trainer) {
+                        let option = $("<option>").val(trainer.trainerNo).text(trainer.trainerName);
+                        console.log("넘버" + trainer.trainerNo);
+                        console.log("이름" + trainer.trainerName);
+                        trainerSelect.append(option);
+                    });
+                }
+            });
             $('#class_register_btn').click(function () {
                 class_form.send();
             });
@@ -175,7 +190,7 @@
         send: function () {
             $('#class_form').attr({
                 method : 'post',
-                action : '/class/updateimpl',
+                action : '/class/addimpl',
                 // enctype: 'multipart/form-data'
             });
             $('#class_form').submit();
