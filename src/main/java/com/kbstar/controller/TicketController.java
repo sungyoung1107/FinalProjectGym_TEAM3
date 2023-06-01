@@ -1,7 +1,9 @@
 package com.kbstar.controller;
 
 
+import com.kbstar.dto.Gym;
 import com.kbstar.dto.Ticket;
+import com.kbstar.service.GymService;
 import com.kbstar.service.TicketService;
 import com.kbstar.util.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +25,8 @@ public class TicketController {
 
     @Autowired
     TicketService ticketService;
-
+    @Autowired
+    GymService gymService;
     String dir = "ticket/";
 
     @Value("${uploadimgdir}")
@@ -64,8 +67,11 @@ public class TicketController {
         //로그인된 사람 아이디로 로그인된 사람 모든정보 get(id)로 가져오고
         //로그인된 사람모든정보에서 gymid를 빼서
         //get(id)로 뿌리세요
+
+        Gym gym = (Gym) session.getAttribute("logingym");
         list = ticketService.get();
         model.addAttribute("clist", list);
+        session.setAttribute("logingym", gym);
         model.addAttribute("page", "Ticket");
         model.addAttribute("center", dir+"all");
         return "index";
