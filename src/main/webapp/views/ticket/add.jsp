@@ -61,8 +61,8 @@
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                                     <h5 class="font-weight-bolder"> 정보 </h5>
                                     <div class="multisteps-form__content">
-                                        <input type="text" name="gymNo" class="form-control" id="gymNo" value="${logingym.gymNo}" placeholder="${logingym.gymNo}" readonly>
-                                        <input type="text" name="gymMasterCk" class="form-control" id="gymMasterCk" value="${logingym.gymMasterCk}" placeholder="${logingym.gymMasterCk}" readonly>
+                                        <input type="hidden" name="gymNo" class="form-control" id="gymNo" value="${logingym.gymNo}" placeholder="${logingym.gymNo}" readonly>
+                                        <input type="hidden" name="gymMasterCk" class="form-control" id="gymMasterCk" value="${logingym.gymMasterCk}" placeholder="${logingym.gymMasterCk}" readonly>
 
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
@@ -189,81 +189,81 @@
         </div>
     </div>
 
-<!--   Core JS Files   -->
-<script src="../../../assets/js/core/popper.min.js"></script>
-<script src="../../../assets/js/core/bootstrap.min.js"></script>
-<script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
-<script src="../../../assets/js/plugins/choices.min.js"></script>
-<script src="../../../assets/js/plugins/dropzone.min.js"></script>
-<script src="../../../assets/js/plugins/quill.min.js"></script>
-<script src="../../../assets/js/plugins/multistep-form.js"></script>
-<script>
-    if (document.getElementById('edit-deschiption')) {
-        var quill = new Quill('#edit-deschiption', {
-            theme: 'snow' // Specify theme in configuration
-        });
-    };
+<%--<!--   Core JS Files   -->--%>
+<%--<script src="../../../assets/js/core/popper.min.js"></script>--%>
+<%--<script src="../../../assets/js/core/bootstrap.min.js"></script>--%>
+<%--<script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>--%>
+<%--<script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>--%>
+<%--<script src="../../../assets/js/plugins/choices.min.js"></script>--%>
+<%--<script src="../../../assets/js/plugins/dropzone.min.js"></script>--%>
+<%--<script src="../../../assets/js/plugins/quill.min.js"></script>--%>
+<%--<script src="../../../assets/js/plugins/multistep-form.js"></script>--%>
+<%--<script>--%>
+<%--    if (document.getElementById('edit-deschiption')) {--%>
+<%--        var quill = new Quill('#edit-deschiption', {--%>
+<%--            theme: 'snow' // Specify theme in configuration--%>
+<%--        });--%>
+<%--    };--%>
 
-    if (document.getElementById('choices-category')) {
-        var element = document.getElementById('choices-category');
-        const example = new Choices(element, {
-            searchEnabled: false
-        });
-    };
+<%--    if (document.getElementById('choices-category')) {--%>
+<%--        var element = document.getElementById('choices-category');--%>
+<%--        const example = new Choices(element, {--%>
+<%--            searchEnabled: false--%>
+<%--        });--%>
+<%--    };--%>
 
-    if (document.getElementById('choices-sizes')) {
-        var element = document.getElementById('choices-sizes');
-        const example = new Choices(element, {
-            searchEnabled: false
-        });
-    };
+<%--    if (document.getElementById('choices-sizes')) {--%>
+<%--        var element = document.getElementById('choices-sizes');--%>
+<%--        const example = new Choices(element, {--%>
+<%--            searchEnabled: false--%>
+<%--        });--%>
+<%--    };--%>
 
-    if (document.getElementById('choices-currency')) {
-        var element = document.getElementById('choices-currency');
-        const example = new Choices(element, {
-            searchEnabled: false
-        });
-    };
+<%--    if (document.getElementById('choices-currency')) {--%>
+<%--        var element = document.getElementById('choices-currency');--%>
+<%--        const example = new Choices(element, {--%>
+<%--            searchEnabled: false--%>
+<%--        });--%>
+<%--    };--%>
 
-    if (document.getElementById('choices-tags')) {
-        var tags = document.getElementById('choices-tags');
-        const examples = new Choices(tags, {
-            removeItemButton: true
-        });
+<%--    if (document.getElementById('choices-tags')) {--%>
+<%--        var tags = document.getElementById('choices-tags');--%>
+<%--        const examples = new Choices(tags, {--%>
+<%--            removeItemButton: true--%>
+<%--        });--%>
 
-        examples.setChoices(
-            [{
-                value: 'One',
-                label: 'Expired',
-                disabled: true
-            },
-                {
-                    value: 'Two',
-                    label: 'Out of Stock',
-                    selected: true
-                }
-            ],
-            'value',
-            'label',
-            false,
-        );
-    }
-</script>
-<!-- Kanban scripts -->
-<script src="../../../assets/js/plugins/dragula/dragula.min.js"></script>
-<script src="../../../assets/js/plugins/jkanban/jkanban.js"></script>
-<script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
-        }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-</script>
-<!-- Github buttons -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../../../assets/js/soft-ui-dashboard.min.js?v=1.1.1"></script>
+<%--        examples.setChoices(--%>
+<%--            [{--%>
+<%--                value: 'One',--%>
+<%--                label: 'Expired',--%>
+<%--                disabled: true--%>
+<%--            },--%>
+<%--                {--%>
+<%--                    value: 'Two',--%>
+<%--                    label: 'Out of Stock',--%>
+<%--                    selected: true--%>
+<%--                }--%>
+<%--            ],--%>
+<%--            'value',--%>
+<%--            'label',--%>
+<%--            false,--%>
+<%--        );--%>
+<%--    }--%>
+<%--</script>--%>
+<%--<!-- Kanban scripts -->--%>
+<%--<script src="../../../assets/js/plugins/dragula/dragula.min.js"></script>--%>
+<%--<script src="../../../assets/js/plugins/jkanban/jkanban.js"></script>--%>
+<%--<script>--%>
+<%--    var win = navigator.platform.indexOf('Win') > -1;--%>
+<%--    if (win && document.querySelector('#sidenav-scrollbar')) {--%>
+<%--        var options = {--%>
+<%--            damping: '0.5'--%>
+<%--        }--%>
+<%--        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);--%>
+<%--    }--%>
+<%--</script>--%>
+<%--<!-- Github buttons -->--%>
+<%--<script async defer src="https://buttons.github.io/buttons.js"></script>--%>
+<%--<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->--%>
+<%--<script src="../../../assets/js/soft-ui-dashboard.min.js?v=1.1.1"></script>--%>
 

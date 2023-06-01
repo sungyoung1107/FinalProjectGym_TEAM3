@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kbstar.mapper.TrainerMapper">
+
+    <insert id="insert" parameterType="trainer">
+        INSERT INTO trainer VALUES (trainer_seq.NextVAL, #{gymNo}, #{gymMasterCk}
+                                    , #{trainerName}, #{trainerGender}, #{trainerCareer}
+                                    , #{trainerIntro}, #{trainerImgname})
+    </insert>
+
+
+    <select id="select" parameterType="Integer" resultType="trainer">
+        SELECT * FROM trainer WHERE trainerNo=#{trainerNo}
+    </select>
+
+    <select id="selectall" resultType="trainer">
+        SELECT * FROM trainer
+    </select>
+
+    <update id="update" parameterType="trainer">
+        UPDATE trainer
+        SET trainerName=#{trainerName}, trainerGender=#{trainerGender}, trainerCareer=#{trainerCareer}
+                , trainerIntro=#{trainerIntro}, trainerImgname=#{trainerImgname}
+        WHERE trainerNo=#{trainerNo}
+    </update>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM trainer WHERE trainerNo=#{trainerNo}
+    </delete>
+
+</mapper>

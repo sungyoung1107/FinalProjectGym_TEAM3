@@ -48,13 +48,8 @@
                             <tbody>
                             <c:forEach var ="obj" items="${clist}">
                             <tr>
-                                <td>
-                                    <div class="d-sm-flex">
-                                        <img class="w-10 ms-3" src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/adidas-hoodie.jpg" alt="hoodie">
-                                        <h6 class="ms-5 my-auto">${obj.ticketNo}</h6>
-                                    </div>
-                                </td>
-                                <td class="text-sm">${obj.ticketType}</td>
+                                <td>${obj.ticketNo}</td>
+                                <td>${obj.ticketType}</td>
                                 <td class="text-sm">${obj.ticketMonth}</td>
                                 <td class="text-sm">${obj.ticketNumber}</td>
                                 <td class="text-sm">${obj.ticketJoin}</td>
@@ -65,7 +60,7 @@
                                 <td class="text-sm">${obj.ticketPrice}</td>
                                 <td class="text-sm">${obj.sportsType}</td>
                                 <td class="text-sm">${obj.sportsClasstype}</td>
-                                <td class="text-sm">
+                                <td class="d-sm-flex">
                                     <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
                                         <i class="fas fa-user-edit text-secondary"></i>
                                     </a>

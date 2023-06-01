@@ -31,7 +31,7 @@ public class TicketController {
 
     @RequestMapping("/add")
     public String add(Model model){
-        model.addAttribute("page", "Ticket");
+        model.addAttribute("page", "Ticket Register");
         model.addAttribute("center", dir+"add");
         return "index";
     }
@@ -43,9 +43,9 @@ public class TicketController {
 
         MultipartFile mf = ticket.getImg();
         String imgname = mf.getOriginalFilename();
-        log.info("----------------------------------------");
-        log.info(imgname);
-        log.info("----------------------------------------");
+//        log.info("----------------------------------------");
+//        log.info(imgname);
+//        log.info("----------------------------------------");
         ticket.setTicketImgname(imgname);
         ticketService.register(ticket);
         FileUploadUtil.saveFile(mf,imgdir);
