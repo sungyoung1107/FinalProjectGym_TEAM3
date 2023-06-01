@@ -215,7 +215,7 @@
         let gymTitle = $("#gymTitle").val();
         // <span> 태그의 값을 가져옴
         let parser = new DOMParser();
-        // let gymContents_temp_html = document.getElementById('edit-deschiption-edit').innerHTML;
+        let gymContents_temp_html = document.getElementById('edit-deschiption-edit').innerHTML;
         // let gymContents_temp_doc = parser.parseFromString(gymContents_temp_html, "text/html");
         // let gymContents_temp_text = gymContents_temp_doc.querySelector("p").innerText;
         let gymContents_temp_text = $(".ql-editor > p").html();
@@ -236,7 +236,7 @@
         console.log("센터 사업자 번호 " + gymReginumber);
 
         console.log("센터 제목 " + gymTitle);
-        // console.log("센터 소개 내용 전체: " + gymContents_temp_html);
+        console.log("센터 소개 내용 전체: " + gymContents_temp_html);
         console.log("센터 소개 내용 파싱: " + gymContents_temp_text);
         console.log("셋할 비밀번호" + gymPwd)
 

@@ -13,6 +13,7 @@ public class ClassController {
     @RequestMapping("/add")
     public String add(Model model){
         model.addAttribute("page", "Class Register");
+        model.addAttribute("center", dir+"add");
         return "index";
     }
 

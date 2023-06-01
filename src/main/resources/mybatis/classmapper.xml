@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbstar.mapper.ClassMapper">
+    <!-- 센터회원번호로 조회 (pk : classNo(수업번호) ) -->
+    <select id="select" parameterType="Integer" resultType="class">
+        SELECT * FROM class WHERE gymNo=#{gymNo} and gymMasterCk ='1'
+    </select>
+    <!-- 대표계정 '1' 기준 모든 수업 추출 -->
+    <select id="selectall" resultType="class">
+        SELECT * FROM class WHERE gymMasterCk ='1'
+    </select>
+    <!-- 수업 추후 등록 -->
+    <insert id="insert" parameterType="class">
+        INSERT INTO class (classNo, gymNo, gymMasterCk, trainerNo, className, classDate, classStarttime, classEndtime, classMaximum, classJoin,
+                         classFullbooked, sportsType, sportsClassType)
+        VALUES (Class_seq.NEXTVAL, #{gymNo}, '1', #{trainerNo}, #{className}, TO_DATE(#{classDate},'YYYY-MM-DD'), #{classStarttime}, #{classEndtime},
+                #{classMaximum}, 0, '0', #{sportsType}, #{sportsClassType})
+    </insert>
+    <!-- 수업번호로 업데이트 -->
+    <update id="update" parameterType="class">
+        UPDATE class SET trainerNo=#{trainerNo}, className=#{className}, classDate=#{classDate},
+                         classStarttime=#{classStarttime}, classEndtime=#{classEndtime}, classMaximum=#{classMaximum},
+                         classJoin=#{classJoin}, classFullbooked=#{classFullbooked} sportsType=#{sportsType}, sportsClassType=#{sportsClassType}
+                       WHERE classNo=#{classNo}
+    </update>
+    <!-- 수업번호로 삭제 -->
+    <delete id="delete" parameterType="class">
+        DELETE FROM class WHERE classNo=#{classNo}
+    </delete>
+</mapper>
