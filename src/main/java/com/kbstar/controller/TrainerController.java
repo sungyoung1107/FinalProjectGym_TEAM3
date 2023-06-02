@@ -78,18 +78,11 @@ public class TrainerController {
 
 
     @RequestMapping("/detail")
-    @ResponseBody
-    public Trainer getTrainerDetails(Model model, @RequestParam("trainerNo") Integer trainerNo) throws Exception {
-        // trainerNo를 사용하여 데이터베이스에서 강사 정보를 조회한 후 반환
-        Trainer trainer = trainerService.get(trainerNo);
-        log.info("----------------------------------------");
-        String trainerNo1 = trainer.getTrainerName();
-        log.info(trainerNo1);
-        log.info("----------------------------------------");
-
-        return trainer;
+    public String detail(Model model){
+        model.addAttribute("page", "Edit Trainer Information");
+        model.addAttribute("center", dir+"detail");
+        return "index";
     }
-
 
 
 

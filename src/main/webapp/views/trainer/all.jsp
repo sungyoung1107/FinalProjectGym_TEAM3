@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="text-end ms-auto">
-                            <a href="/trainer/detail">
+                            <a href="/trainer/detail?trainerNo=${obj.trainerNo}">
                                 <button type="button" class="btn btn-sm bg-gradient-primary mb-0">
                                     수정
                                 </button>
