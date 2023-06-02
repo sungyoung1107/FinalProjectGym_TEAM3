@@ -10,7 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -47,7 +50,7 @@ public class TrainerController {
         trainer.setTrainerImgname(imgname);
         trainerService.register(trainer);
         FileUploadUtil.saveFile(mf,imgdir);
-        return "redirect:/all";
+        return "redirect:/trainer/all";
     }
 
     @RequestMapping("/all")
@@ -69,7 +72,27 @@ public class TrainerController {
         session.setAttribute("logingym", gym);
         model.addAttribute("page", "Trainer Information");
         model.addAttribute("center", dir + "all");
+        model.addAttribute("card", dir + "detail");
         return "index";
     }
+
+
+    @RequestMapping("/detail")
+    @ResponseBody
+    public Trainer getTrainerDetails(Model model, @RequestParam("trainerNo") Integer trainerNo) throws Exception {
+        // trainerNo를 사용하여 데이터베이스에서 강사 정보를 조회한 후 반환
+        Trainer trainer = trainerService.get(trainerNo);
+        log.info("----------------------------------------");
+        String trainerNo1 = trainer.getTrainerName();
+        log.info(trainerNo1);
+        log.info("----------------------------------------");
+
+        return trainer;
+    }
+
+
+
+
+
 
 }

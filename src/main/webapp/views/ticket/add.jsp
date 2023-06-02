@@ -85,7 +85,7 @@
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                 <label>개월 수</label>
                                                 <select class="form-control" name="ticketMonth" id="ticketMonth">
-                                                    <option value="" selected=""> 선택 </option>
+                                                    <option value="99" selected=""> 선택 </option>
                                                     <option value="1">1개월</option>
                                                     <option value="3">3개월</option>
                                                     <option value="6">6개월</option>
@@ -99,7 +99,7 @@
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                 <label>횟수</label>
                                                 <select class="form-control" name="ticketNumber" id="ticketNumber">
-                                                    <option value="" selected=""> 선택 </option>
+                                                    <option value="99" selected=""> 선택 </option>
                                                     <option value="10" >10회</option>
                                                     <option value="20">20회</option>
                                                     <option value="30">30회</option>

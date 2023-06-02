@@ -52,4 +52,13 @@ public class Trainer {
         this.trainerIntro = trainerIntro;
         this.trainerImgname = trainerImgname;
     }
+
+
+
+
+
+    // ajax - string 형식으로 보내기 위해 추가
+    public String toJson() {
+        return "{\"trainerImgname\":\"" + trainerImgname + "\",\"trainerName\":\"" + trainerName + "\",\"trainerNo\":\"" + trainerNo + "\",\"trainerCareer\":\"" + trainerCareer + "\",\"trainerIntro\":\"" + trainerIntro + "\"}";
+    }
 }
