@@ -50,32 +50,32 @@
                                 <c:forEach var="obj" items="${clist}">
                                     <!-- logingym 정보를 기준으로 데이터를 필터링하여 표시 -->
                                     <c:if test="${obj.gymNo == sessionScope.logingym.gymNo}">
-                                    <tr>
-                                        <td>${obj.ticketNo}</td>
-                                        <td>${obj.ticketType}</td>
-                                        <td class="text-sm">${obj.ticketMonth}</td>
-                                        <td class="text-sm">${obj.ticketNumber}</td>
-                                        <td class="text-sm">${obj.ticketJoin}</td>
-                                        <td class="text-sm">${obj.ticketTotal}</td>
-                                        <td class="text-sm">${obj.ticketSales}</td>
-                                        <td class="text-sm">${obj.ticketCost}</td>
-                                        <td class="text-sm">${obj.ticketDiscount}</td>
-                                        <td class="text-sm">${obj.ticketPrice}</td>
-                                        <td class="text-sm">${obj.sportsType}</td>
-                                        <td class="text-sm">${obj.sportsClasstype}</td>
-                                        <td class="d-sm-flex">
-                                    <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
-                                        <i class="fas fa-user-edit text-secondary"></i>
-                                    </a>
-                                    <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
-                                        <i class="fas fa-trash text-secondary"></i>
-                                    </a>
-                                    </td>
-                                </tr>
-                                </c:if>
-                            </c:forEach>
-                        </c:if>
-                        </tbody>
+                                        <tr>
+                                            <td>${obj.ticketNo}</td>
+                                            <td>${obj.ticketType}</td>
+                                            <td class="text-sm">${obj.ticketMonth}</td>
+                                            <td class="text-sm">${obj.ticketNumber}</td>
+                                            <td class="text-sm">${obj.ticketJoin}</td>
+                                            <td class="text-sm">${obj.ticketTotal}</td>
+                                            <td class="text-sm">${obj.ticketSales}</td>
+                                            <td class="text-sm">${obj.ticketCost}</td>
+                                            <td class="text-sm">${obj.ticketDiscount}</td>
+                                            <td class="text-sm">${obj.ticketPrice}</td>
+                                            <td class="text-sm">${obj.sportsType}</td>
+                                            <td class="text-sm">${obj.sportsClasstype}</td>
+                                            <td class="d-sm-flex">
+                                            <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit product">
+                                                <i class="fas fa-user-edit text-secondary"></i>
+                                            </a>
+                                            <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Delete product">
+                                                <i class="fas fa-trash text-secondary"></i>
+                                            </a>
+                                            </td>
+                                        </tr>
+                                    </c:if>
+                                </c:forEach>
+                            </c:if>
+                            </tbody>
 
 <%--                            <c:forEach var ="obj" items="${clist}">--%>
 <%--                                <tr>--%>

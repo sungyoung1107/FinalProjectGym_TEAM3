@@ -128,7 +128,7 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link " href="/trainer/trainerinfo">
+                        <a class="nav-link " href="/trainer/all">
                             <span class="sidenav-mini-icon"> T </span>
                             <span class="sidenav-normal"> 트레이너 </span>
                         </a>
