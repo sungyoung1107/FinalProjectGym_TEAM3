@@ -1588,6 +1588,10 @@ var soft = {
             Swal.fire('Email을 입력해주세요')
         } else if (type == 'email_format') {
             Swal.fire('Email 형식이 아닙니다')
+        } else if (type == 'reginum_default'){
+            Swal.fire('사업자번호를 입력해주세요');
+        } else if (type == 'reginum_format') {
+            Swal.fire('사업자번호 형식이 아닙니다')
         } else if (type == 'title-and-text') {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {

@@ -14,6 +14,7 @@ let register_form = {
         let id_duplicate_check = false; // 아이디 중복 검사
         let mail_co_check = false; // 인증번호 검사
         let code = "" // 이메일 인증코드
+        let reginum_check = false; // 휴폐업조회 검사
 
         /* 가입하기 버튼 클릭 */
         $("#register_btn").click(function () {
@@ -51,6 +52,13 @@ let register_form = {
                 $("#register_info").show();
                 $("#gymPwd2").val(""); // 초기화
                 $("#gymPwd2").focus(); // 비밀번호 확인란에 커서
+                return;
+            }
+
+            // 휴폐업 조회를 했는지 확인
+            if (reginum_check == false) {
+                $("#register_info_msg").text("휴폐업 조회 인증을 해주세요");
+                $("#register_info").show();
                 return;
             }
 
@@ -143,6 +151,51 @@ let register_form = {
             }
         });
 
+        // 휴폐업조회 버튼 클릭시
+        $("#reginum_btn").click(function () {
+            var gymReginumber = $("#gymReginumber").val();
+            var formattedGymReginumber = gymReginumber.replace(/-/g, "");
+            var data = {
+                "b_no": [formattedGymReginumber]
+            };
+
+            // 사업자번호가 없는 경우
+            if (gymReginumber === "") {
+                $('#registernumCheckModal').modal('hide');
+                soft.showSwal('reginum_default');
+                return;
+            }
+            $('#registernumCheckModal').modal('show');
+
+            $.ajax({
+                url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey=B%2F0lPkySceHb4AYBl3VgI80IOx3bUOCnNcsCT2AkwPBx4rSTiAyMUPXkufDzpzqoIVo2rqIYW9Eg7gIOKYfS4Q%3D%3D",  // serviceKey 값을 xxxxxx에 입력
+                type: "POST",
+                data: JSON.stringify(data),// json 을 string으로 변환하여 전송
+                dataType: "JSON",
+                contentType: "application/json",
+                accept: "application/json",
+                success: function(result) {
+                    if (result.data[0].b_stt_cd == '01') {
+                        console.log('01-계속사업자');
+                        $("#status").text("정상 사업자입니다. 인증 완료 버튼을 눌러주세요. ");
+                    } else if(result.data[0].b_stt_cd == '02'){
+                        console.log('02-휴업자');
+                        $("#status").text("휴업 중인 사업자입니다. 가입 불가 합니다.");
+                    } else {
+                        console.log('03-폐업자');
+                        $("#status").text("폐업 사업자입니다. 가입 불가 합니다.");
+                    }
+                },
+                error: function(result) {
+                    console.log(result.responseText); //responseText의 에러메세지 확인
+                }
+            });
+
+            // 인증 완료 버튼 눌렀을 시
+            $("#reginumConfirm").click(function () {
+                reginum_check = true;
+            })
+        });
     },
     send: function () {
         $('#register_form').attr({

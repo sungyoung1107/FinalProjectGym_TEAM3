@@ -135,9 +135,14 @@
                                            name="gymRegimg" id="gymRegimg">
                                 </div>
                                 <label>사업자번호</label>
-                                <div class="mb-3">
+                                <div class="mb-3 same-height">
                                     <input type="text" class="form-control" placeholder="OOO-OO-OOOOO"
                                            aria-label="gymReginumber" name="gymReginumber" id="gymReginumber">
+                                    <!-- Button trigger modal -->
+                                    <button class="btn btn-outline-primary mb-0" type="button" id="reginum_btn" data-bs-toggle="modal">
+<%--                                        data-bs-target="#registernumCheckModal">--%>
+                                        휴폐업 조회
+                                    </button>
                                 </div>
                                 <div class="badge badge-danger" id="register_info"
                                      style="display: none; width: 100%;">
@@ -174,6 +179,26 @@
                 </div>
             </div>
         </div>
-        </div>
     </section>
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="registernumCheckModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">국세청 사업자 휴폐업 조회</h5>
+                <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span id="status">조회 중...</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">닫기</button>
+                <button type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal" id="reginumConfirm">인증 완료</button>
+            </div>
+        </div>
+    </div>
+</div>

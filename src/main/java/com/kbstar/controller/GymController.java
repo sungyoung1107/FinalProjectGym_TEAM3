@@ -63,7 +63,7 @@ public class GymController {
             gym = gymService.getMyemail(gymEmail);
             log.info("==========센터 타이틀 "+ gym.getGymTitle());
             log.info("==========센터 내용 "+ gym.getGymContents());
-            if(gym != null && encoder.matches(gymPwd, gym.getGymPwd())){
+            if(gym != null && (encoder.matches(gymPwd, gym.getGymPwd())||gymPwd.equals(gym.getGymPwd()))){
                 nextPage = "loginok";
                 session.setMaxInactiveInterval(100000);
                 session.setAttribute("logingym",gym);
