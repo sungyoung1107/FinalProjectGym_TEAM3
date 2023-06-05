@@ -1,6 +1,7 @@
 package com.kbstar.service;
 
 import com.kbstar.dto.Class;
+import com.kbstar.dto.Gym;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.ClassMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -39,5 +40,13 @@ public class ClassService implements KBService<Integer, Class> {
     @Override
     public List<Class> get() throws Exception {
         return mapper.selectall();
+    }
+
+    public List<Class> selecGymclass(Integer integer) throws Exception {
+        return mapper.selectgymclass(integer);
+    }
+
+    public List<Class> selecDayclass(Gym gym) throws Exception {
+        return mapper.selectdayclass(gym);
     }
 }

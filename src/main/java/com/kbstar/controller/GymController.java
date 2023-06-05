@@ -67,6 +67,7 @@ public class GymController {
                 nextPage = "loginok";
                 session.setMaxInactiveInterval(100000);
                 session.setAttribute("logingym",gym);
+                session.setAttribute("logingymno",gym.getGymNo()); // 추가
                 model.addAttribute("rgym", gym);
                 if (redirectURL == null || redirectURL.equals("")) {
                     return "redirect:/";
@@ -165,6 +166,7 @@ public class GymController {
             // DB 가입
             gymService.register(gym);
             session.setAttribute("logingym", gym);
+            session.setAttribute("logingymno",gym.getGymNo()); // 추가
             // file 저장
             FileUploadUtil.saveFile(mf, imgdir);
         } catch(Exception e){

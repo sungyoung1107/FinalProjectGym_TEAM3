@@ -3,13 +3,22 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kbstar.mapper.ClassMapper">
-    <!-- 센터회원번호로 조회 (pk : classNo(수업번호) ) -->
+    <!-- 수업번호로 조회 (pk : classNo(수업번호) ) -->
     <select id="select" parameterType="Integer" resultType="class">
-        SELECT * FROM class WHERE gymNo=#{gymNo} and gymMasterCk ='1'
+        SELECT * FROM class WHERE classNo=#{classNo}
     </select>
-    <!-- 대표계정 '1' 기준 모든 수업 추출 -->
+    <!-- 모든 수업 추출 -->
     <select id="selectall" resultType="class">
-        SELECT * FROM class WHERE gymMasterCk ='1'
+        SELECT * FROM class
+    </select>
+    <!-- 특정 gym의 모든 수업(대표계정 1로) 추출 -->
+    <select id="selectgymclass" parameterType="Integer" resultType="class">
+        SELECT * FROM class where gymNo=#{gymNo} and gymMasterCk ='1'
+    </select>
+    <!-- 특정 gym, 특정 날짜의 모든 수업(대표계정 1로) 추출 -->
+    <select id="selectdayclass" parameterType="gym" resultType="class">
+        SELECT * FROM class where gymNo=#{gymNo} and gymMasterCk ='1' and classDate=#{classDate}
+        order by CLASSSTARTTIME
     </select>
     <!-- 수업 추후 등록 -->
     <insert id="insert" parameterType="class">

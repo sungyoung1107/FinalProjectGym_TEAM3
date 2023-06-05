@@ -1,16 +1,22 @@
 package com.kbstar.controller;
 
+import com.kbstar.dto.Gym;
 import com.kbstar.dto.Trainer;
 import com.kbstar.dto.Class;
 import com.kbstar.service.ClassService;
 import com.kbstar.service.TrainerService;
+import com.kbstar.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -54,6 +60,76 @@ public class ClassController {
         model.addAttribute("page", "Class Calender"); // 캘린더
         model.addAttribute("center", dir+"all"); // 캘린더
         return "index";
+    }
+
+    @RequestMapping("/gettime")
+    @ResponseBody
+    public Object gettime(Model model, String tdate, HttpSession session) throws Exception {
+
+        Gym gym = null;
+        int gymNo = 0;
+        JSONArray ja = new JSONArray();
+        // 세션에서 gym, gymNo 가져오기
+        if (session != null) {
+            gym = (Gym) session.getAttribute("logingym");
+            gym.setClassDate(tdate); // 선택한 tdate set
+            if (gym != null) {
+                gymNo = gym.getGymNo();
+                log.info("========== 세션의 gymNo는 " + gymNo + "============");
+            }
+
+            List<Class> list = null;
+            list = classService.selecDayclass(gym);
+
+            // Java Object ---> JSON
+            // JSON(JavaScript Object Notation)
+            // [시간1, 시간2, ... ]
+            for (Class obj : list) {
+                ja.add(obj.getClassStarttime()+"~"+obj.getClassEndtime()); // 수업시작시간 select하여 add
+            }
+
+        }
+        return ja;
+    }
+
+    @RequestMapping("/getClassdata")
+    @ResponseBody
+    public Object getClassdata(Model model, HttpSession session) throws Exception {
+
+        Gym gym = null;
+        int gymNo = 0;
+        List<Class> list = null;
+        JSONArray ja = new JSONArray();
+
+        if (session != null) {
+            gym = (Gym) session.getAttribute("logingym");
+            if (gym != null) {
+                gymNo = gym.getGymNo();
+                log.info("========== 세션의 gymNo는 " + gymNo + "============");
+            }
+
+            list = classService.selecGymclass(gymNo);
+
+            // Java Object ---> JSON
+            // JSON(JavaScript Object Notation)
+            // [{},{},{},...]
+            for(Class obj:list){
+                JSONObject jo = new JSONObject();
+
+                jo.put("title",obj.getClassName());
+                jo.put("start", DateUtil.getDateStr(obj.getClassDate()) + "T" + DateUtil.getTimeStr(obj.getClassStarttime()));
+                jo.put("end", DateUtil.getDateStr(obj.getClassDate()) + "T" + DateUtil.getTimeStr(obj.getClassEndtime()));
+
+                if(obj.getClassFullbooked().equals("1")){ // 수업 마감시 빨간색
+                    jo.put("className","bg-gradient-danger");
+                }else {
+                    jo.put("className","bg-gradient-success"); // 마감 안되었으면 초록색
+                }
+//                jo.put("url",obj.getUrl());
+                ja.add(jo);
+            }
+        }
+        return ja;
     }
 
 }

@@ -27,6 +27,8 @@ public class Class {
     private String sportsType; // 운동종목구분 ㅇ
     private String sportsClassType; // 운동수업형태 ㅇ
 
+    private String url;
+
     public Class(Integer gymNo, Integer trainerNo, String className, String classDate, String classStarttime, String classEndtime, Integer classMaximum, String sportsType, String sportsClassType) {
         this.gymNo = gymNo;
         this.trainerNo = trainerNo;
@@ -37,5 +39,11 @@ public class Class {
         this.classMaximum = classMaximum;
         this.sportsType = sportsType;
         this.sportsClassType = sportsClassType;
+    }
+
+    // 특정 gym 특정일자의 수업 추출
+    public Class(Integer gymNo, String classDate) {
+        this.gymNo = gymNo;
+        this.classDate = classDate;
     }
 }

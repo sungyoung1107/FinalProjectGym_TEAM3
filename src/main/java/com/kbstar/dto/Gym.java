@@ -47,6 +47,8 @@ public class Gym {
     private MultipartFile[] gymimg_notdetail; // 디테일 이미지 X
     private MultipartFile gymimg_isdetail; // 디테일 이미지 O
 
+    private String classDate; // 로그인된 gym 기준 수업 시간 select 해오기 위해 추가
+
     // insert
     public Gym(String gymEmail, String gymPwd, String gymName, String gymPhone, String gymZipcode, String gymAddress1, String gymAddress2, String gymAddress3, String gymRegiimgname, String gymReginumber) {
         this.gymEmail = gymEmail;
@@ -80,5 +82,11 @@ public class Gym {
         this.gymMasterCk = gymMasterCk;
         this.gymImgname = gymImgname;
         this.gymImgdetailCk = gymImgdetailCk;
+    }
+
+    // 수업 추출을 위해 추가 등록
+    public Gym(Integer gymNo, String classDate) {
+        this.gymNo = gymNo;
+        this.classDate = classDate;
     }
 }
