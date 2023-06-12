@@ -1,5 +1,6 @@
 package com.kbstar.controller;
 
+import com.kbstar.dto.Class;
 import com.kbstar.dto.Gym;
 import com.kbstar.dto.Ticket;
 import com.kbstar.dto.Trainer;
@@ -78,14 +79,43 @@ public class TrainerController {
 
 
     @RequestMapping("/detail")
-    public String detail(Model model){
+    public String detail(Model model, Integer trainerNo) throws Exception {
+        Trainer trainer = null;
+        trainer = trainerService.get(trainerNo);
+        model.addAttribute("gtrainer", trainer);
         model.addAttribute("page", "Edit Trainer Information");
         model.addAttribute("center", dir+"detail");
         return "index";
     }
 
+    @RequestMapping("/updateimpl")
+    public String updateimpl(Model model, Trainer trainer) throws Exception {
+        log.info("==트레이너 업데이트 화면 진입: 트레이너 이름 " + trainer.getTrainerName() + "==");
+        log.info("==트레이너 업데이트 화면 진입: 이미지명 이름 " + trainer.getImg().getOriginalFilename() + "==");
+        log.info("==트레이너 업데이트 화면 진입: 트레이너 넘버 " +  trainer.getTrainerNo() + "==");
 
+        //mf에 뭔가 들어있다는 것은 새로운 이미지가 있다라는 것
+        MultipartFile mf = trainer.getImg();
+        String new_imgname = mf.getOriginalFilename();
 
+        if (new_imgname.equals("") || new_imgname == null) {
+            trainer.setTrainerImgname(trainer.getImg_before()); // 이미지가 들어오지 않은 경우 기존 이미지명을 셋한다.
+            trainerService.modify(trainer);
+        } else {  // 이미지가 들어온 경우
+            trainer.setTrainerImgname(new_imgname);
+            trainerService.modify(trainer);
+            FileUploadUtil.saveFile(mf, imgdir);
+        }
 
+        return "redirect:/trainer/detail?trainerNo="+trainer.getTrainerNo();
+    }
+
+    @RequestMapping("/deleteimpl")
+    public String deleteimpl(Model model, Trainer trainer) throws Exception {
+        log.info("=== 트레이너 삭제 진입 " + trainer.getTrainerNo() + "===");
+        trainerService.remove(trainer.getTrainerNo());
+
+        return "redirect:/trainer/all";
+    }
 
 }

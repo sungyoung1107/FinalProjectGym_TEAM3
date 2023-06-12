@@ -242,7 +242,10 @@
             });
             // 삭제 버튼을 눌렀을 때
             $('#class_delete_btn').click(function () {
-                calendar_form.delete();
+                let c = confirm("삭제하시겠습니까?")
+                if(c == true){
+                    calendar_form.delete();
+                }
             });
         },
         update   : function () {

@@ -179,16 +179,17 @@ var calendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
         console.log("로그" + eventObj.title);
 
         if (eventObj.url) {
-            alert(
-                'Clicked ' + eventObj.title + '.\n' +
-                'Will open ' + eventObj.url + ' in a new tab'
-            );
+            // alert(
+            //     'Clicked ' + eventObj.title + '.\n' +
+            //     'Will open ' + eventObj.url + ' in a new tab'
+            // );
 
             window.open(eventObj.url);
 
             info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
         } else {
-            alert('Clicked ' + eventObj.title);
+            // alert('Clicked ' + eventObj.title);
+            alert("["+eventObj.title+"]"+" 날짜를 선택하고 오른쪽 수업 일정표에서 수업시간을 선택해주세요")
         }
     },
     eventAdd   : function (obj) { // 이벤트가 추가되면 발생하는 이벤트

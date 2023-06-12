@@ -33,19 +33,21 @@
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
        id="sidenav-main">
     <div class="sidenav-header">
-        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        <i class="fas fa-times p-2 cursor-pointer text-secondary opacity-7 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0"
            href="/">
-            <img src="/assets/img/logo.png" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold">사장님 전용</span>
+            <img src="/assets/img/logo.png" style="height: 60px; width: 60px;" class="navbar-brand-img h-100"
+                 alt="main_logo">
+            <span class="ms-2 font-weight-bold h5">사장님 전용</span>
         </a>
     </div>
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="#dashboardsExamples" class="nav-link active" aria-controls="dashboardsExamples" role="button"
+                <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link active"
+                   aria-controls="dashboardsExamples" role="button"
                    aria-expanded="false">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -68,7 +70,7 @@
                     </div>
                     <span class="nav-link-text ms-1">센터 통계정보</span>
                 </a>
-                <div class="collapse  show " id="dashboardsExamples">
+                <div class="collapse" id="dashboardsExamples">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item">
                             <a class="nav-link" href="/">
@@ -76,13 +78,13 @@
                                 <span class="sidenav-normal"> 매출 </span>
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link " href="/">
                                 <span class="sidenav-mini-icon"> C </span>
                                 <span class="sidenav-normal"> 고객 </span>
                             </a>
                         </li>
-                        <li class="nav-item ">
+                        <li class="nav-item">
                             <a class="nav-link " href="/">
                                 <span class="sidenav-mini-icon"> T </span>
                                 <span class="sidenav-normal"> 트레이너 </span>
@@ -142,20 +144,19 @@
                 <a href="/class/all" class="nav-link " aria-controls="ecommerceExamples" role="button"
                    aria-expanded="false">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                        <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>customer-support</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                    <g transform="translate(1716.000000, 291.000000)">
-                                        <g transform="translate(1.000000, 0.000000)">
+                        <svg class="text-dark" width="16px" height="16px" viewBox="0 0 43 36" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>
+                            credit-card</title>
+                            <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Rounded-Icons" transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF"
+                                   fill-rule="nonzero">
+                                    <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)">
+                                        <g id="credit-card" transform="translate(453.000000, 454.000000)">
                                             <path class="color-background"
-                                                  d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z"
-                                                  opacity="0.59858631"></path>
-                                            <path class="color-foreground"
-                                                  d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z"></path>
-                                            <path class="color-foreground"
-                                                  d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z"></path>
+                                                  d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                                  id="Path" opacity="0.593633743"></path>
+                                            <path class="color-background"
+                                                  d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
                                         </g>
                                     </g>
                                 </g>
@@ -241,20 +242,19 @@
                 <a href="/class/add" class="nav-link " aria-controls="componentsExamples" role="button"
                    aria-expanded="false">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                        <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>customer-support</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                    <g transform="translate(1716.000000, 291.000000)">
-                                        <g transform="translate(1.000000, 0.000000)">
+                        <svg class="text-dark" width="16px" height="16px" viewBox="0 0 43 36" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>
+                            credit-card</title>
+                            <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Rounded-Icons" transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF"
+                                   fill-rule="nonzero">
+                                    <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)">
+                                        <g id="credit-card" transform="translate(453.000000, 454.000000)">
                                             <path class="color-background"
-                                                  d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z"
-                                                  opacity="0.59858631"></path>
-                                            <path class="color-foreground"
-                                                  d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z"></path>
-                                            <path class="color-foreground"
-                                                  d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z"></path>
+                                                  d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                                  id="Path" opacity="0.593633743"></path>
+                                            <path class="color-background"
+                                                  d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
                                         </g>
                                     </g>
                                 </g>
@@ -476,7 +476,7 @@
     <!-- center 시작 -->
     <c:choose>
         <c:when test="${center == null}">
-            <jsp:include page="center.jsp"/>
+            <jsp:include page="main.jsp"/>
         </c:when>
         <c:otherwise>
             <jsp:include page="${center}.jsp"/>
@@ -605,73 +605,6 @@
 <script src="/assets/js/plugins/sweetalert.min.js"></script>
 
 <script>
-    // var ctx = document.getElementById("chart-bars").getContext("2d");
-
-    new Chart(ctx, {
-        type   : "bar",
-        data   : {
-            labels  : ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            datasets: [{
-                label          : "Sales",
-                tension        : 0.4,
-                borderWidth    : 0,
-                borderRadius   : 4,
-                borderSkipped  : false,
-                backgroundColor: "#fff",
-                data           : [450, 200, 100, 220, 500, 100, 400, 230, 500],
-                maxBarThickness: 6
-            },],
-        },
-        options: {
-            responsive         : true,
-            maintainAspectRatio: false,
-            plugins            : {
-                legend: {
-                    display: false,
-                }
-            },
-            interaction        : {
-                intersect: false,
-                mode     : 'index',
-            },
-            scales             : {
-                y: {
-                    grid : {
-                        drawBorder     : false,
-                        display        : false,
-                        drawOnChartArea: false,
-                        drawTicks      : false,
-                    },
-                    ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 500,
-                        beginAtZero : true,
-                        padding     : 15,
-                        font        : {
-                            size      : 14,
-                            family    : "Open Sans",
-                            style     : 'normal',
-                            lineHeight: 2
-                        },
-                        color       : "#fff"
-                    },
-                },
-                x: {
-                    grid : {
-                        drawBorder     : false,
-                        display        : false,
-                        drawOnChartArea: false,
-                        drawTicks      : false
-                    },
-                    ticks: {
-                        display: false
-                    },
-                },
-            },
-        },
-    });
-
-
     var ctx2 = document.getElementById("chart-line").getContext("2d");
 
     var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
@@ -685,95 +618,6 @@
     gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
     gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
     gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
-
-    new Chart(ctx2, {
-        type   : "line",
-        data   : {
-            labels  : ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            datasets: [{
-                label          : "Mobile apps",
-                tension        : 0.4,
-                borderWidth    : 0,
-                pointRadius    : 0,
-                borderColor    : "#cb0c9f",
-                borderWidth    : 3,
-                backgroundColor: gradientStroke1,
-                fill           : true,
-                data           : [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                maxBarThickness: 6
-
-            },
-                {
-                    label          : "Websites",
-                    tension        : 0.4,
-                    borderWidth    : 0,
-                    pointRadius    : 0,
-                    borderColor    : "#3A416F",
-                    borderWidth    : 3,
-                    backgroundColor: gradientStroke2,
-                    fill           : true,
-                    data           : [30, 90, 40, 140, 290, 290, 340, 230, 400],
-                    maxBarThickness: 6
-                },
-            ],
-        },
-        options: {
-            responsive         : true,
-            maintainAspectRatio: false,
-            plugins            : {
-                legend: {
-                    display: false,
-                }
-            },
-            interaction        : {
-                intersect: false,
-                mode     : 'index',
-            },
-            scales             : {
-                y: {
-                    grid : {
-                        drawBorder     : false,
-                        display        : true,
-                        drawOnChartArea: true,
-                        drawTicks      : false,
-                        borderDash     : [5, 5]
-                    },
-                    ticks: {
-                        display: true,
-                        padding: 10,
-                        color  : '#b2b9bf',
-                        font   : {
-                            size      : 11,
-                            family    : "Open Sans",
-                            style     : 'normal',
-                            lineHeight: 2
-                        },
-                    }
-                },
-                x: {
-                    grid : {
-                        drawBorder     : false,
-                        display        : false,
-                        drawOnChartArea: false,
-                        drawTicks      : false,
-                        borderDash     : [5, 5]
-                    },
-                    ticks: {
-                        display: true,
-                        color  : '#b2b9bf',
-                        padding: 20,
-                        font   : {
-                            size      : 11,
-                            family    : "Open Sans",
-                            style     : 'normal',
-                            lineHeight: 2
-                        },
-                    }
-                },
-            },
-        },
-    });
-
 
     (function () {
         const container = document.getElementById("globe");

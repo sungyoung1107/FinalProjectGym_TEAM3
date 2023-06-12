@@ -12,12 +12,14 @@
                         <a href="/trainer/add" class="avatar avatar-lg border-1 rounded-circle bg-gradient-primary">
                             <i class="fas fa-plus text-white"></i>
                         </a>
-                        <p class="mb-0 text-sm" style="margin-top:6px;">강사 추가</p>
+                        <p class="mb-0 text-sm" style="margin-top:6px;">추가</p>
                     </div>
                     <c:forEach var="obj" items="${clist}">
                         <div class="col-lg-1 col-md-2 col-sm-3 col-4 text-center">
-                            <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-primary" onclick="moveToTrainer(${obj.trainerNo})">
-                                <img alt="Image placeholder" class="p-1" src="../../../assets/img/${obj.trainerImgname}">
+                            <a href="javascript:;" class="avatar avatar-lg rounded-circle border border-primary"
+                               onclick="moveToTrainer(${obj.trainerNo})">
+                                <img alt="Image placeholder" class="p-1"
+                                     src="../../../assets/img/trainer/${obj.trainerImgname}">
                             </a>
                             <p class="mb-0 text-sm">${obj.trainerName}</p>
                         </div>
@@ -31,25 +33,24 @@
     <!-- 하단 강사 설명  -->
 
     <c:forEach var="obj" items="${clist}">
-        <div class="row mt-4" id="trainerDetails${obj.trainerNo}" style="display: ${obj.trainerNo == clist[0].trainerNo ? 'block' : 'none'};">
+        <div class="row mt-4" id="trainerDetails${obj.trainerNo}"
+             style="display: ${obj.trainerNo == clist[0].trainerNo ? 'block' : 'none'};">
             <div class="col-12">
                 <div class="card">
                     <!-- 강사 사진(작은거), 강사 이름, 수정 버튼 -->
                     <div class="card-header d-flex align-items-center border-bottom py-3">
                         <div class="d-flex align-items-center">
                             <a href="javascript:;">
-                                <img src="../../../assets/img/${obj.trainerImgname}" class="avatar" alt="profile-image">
+                                <img src="../../../assets/img/trainer/${obj.trainerImgname}" class="avatar" alt="profile-image">
                             </a>
                             <div class="mx-3">
-                                <a href="javascript:;" class="text-dark font-weight-600 text-sm">${obj.trainerName}</a>
-                                <small class="d-block text-muted">${obj.trainerNo}</small>
+                                <a href="javascript:;" class="text-dark font-weight-600 text-2xl">${obj.trainerName}</a>
+                                    <%--                                <small class="d-block text-muted">${obj.trainerNo}</small>--%>
                             </div>
                         </div>
                         <div class="text-end ms-auto">
-                            <a href="/trainer/detail?trainerNo=${obj.trainerNo}">
-                                <button type="button" class="btn btn-sm bg-gradient-primary mb-0">
-                                    수정
-                                </button>
+                            <a href="/trainer/detail?trainerNo=${obj.trainerNo}" class="btn btn-sm bg-gradient-primary mb-0">
+                                수정
                             </a>
                         </div>
                     </div>
@@ -65,16 +66,21 @@
                                             <br>
                                             <div class="row">
                                                 <div class="col-xl-5 col-lg-6 text-center">
-                                                    <img class="w-100 border-radius-lg shadow-lg mx-auto" src="../../../assets/img/${obj.trainerImgname}" alt="chair" >
+                                                        <%--                                                    <img class="w-100 border-radius-lg shadow-lg mx-auto"--%>
+                                                        <%--                                                         src="../../../assets/img/trainer/${obj.trainerImgname}" alt="chair">--%>
+                                                    <img class="w-100 border-radius-lg shadow-lg mx-auto"
+                                                         src="../../../assets/img/trainer/${obj.trainerImgname}"
+                                                         alt="chair">
                                                 </div>
                                                 <div class="col-lg-5 mx-auto">
-                                                    <h3 class="mt-lg-0 mt-4" id="trainerCardLargeName">${obj.trainerName}</h3>
-                                                    <h6 class="mb-0 mt-3">강사 경력</h6>
-                                                    <h5 id="trainerCardLargeCareer">${obj.trainerCareer}</h5>
-                                                    <label class="mt-4">강사 설명</label>
-                                                    <ul id="trainerCardLargeIntro">
-                                                        <li>${obj.trainerIntro}</li>
-                                                    </ul>
+                                                    <h2 class="mt-lg-0 mt-4"
+                                                        id="trainerCardLargeName">${obj.trainerName}</h2>
+                                                    <h5 class="mb-0 mt-5">트레이너 경력</h5>
+                                                    <h6 id="trainerCardLargeCareer"
+                                                        class="font-weight-normal">${obj.trainerCareer}</h6>
+                                                    <h5 class="mt-5">트레이너 설명</h5>
+                                                    <h6 id="trainerCardLargeIntro"
+                                                        class="font-weight-normal">${obj.trainerIntro}</h6>
                                                     <br>
                                                     <br>
                                                     <br>
@@ -116,7 +122,7 @@
         trainerCardInsideDetails.style.display = "block";
 
         window.scrollTo({
-            top: trainerDetails.offsetTop,
+            top     : trainerDetails.offsetTop,
             behavior: "smooth"
         });
     }
@@ -218,16 +224,12 @@
 <%--</div>--%>
 
 
-
-
 <%--<script>--%>
 <%--    function moveToTrainer(trainerNo) {--%>
 <%--        // 화면 이동 로직 작성--%>
 <%--        window.location.href = "#trainerDetails" + trainerNo;--%>
 <%--    }--%>
 <%--</script>--%>
-
-
 
 
 <%--<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>--%>
@@ -256,7 +258,6 @@
 <%--                    </c:forEach>--%>
 <%--                </div>--%>
 <%--            </div>--%>
-
 
 
 <%--    <!-- 상단 강사 목록 끝 -->--%>

@@ -11,7 +11,6 @@
                                     , #{trainerIntro}, #{trainerImgname})
     </insert>
 
-
     <select id="select" parameterType="Integer" resultType="trainer">
         SELECT * FROM trainer WHERE trainerNo=#{trainerNo}
     </select>

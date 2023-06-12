@@ -56,7 +56,7 @@
                                             <div class="col-12">
                                                 <label>강사 경력</label>
                                                 <p class="form-text text-muted text-xs ms-1 d-inline">
-                                                    (한글 20자 이내)
+                                                    (한글 30자 이내)
                                                 </p>
                                                 <input name="trainerCareer" class="multisteps-form__input form-control"
                                                        type="text" placeholder="강사님의 경력을 입력해주세요." />
@@ -66,7 +66,7 @@
                                             <div class="col-12">
                                                 <label>강사 설명</label>
                                                 <p class="form-text text-muted text-xs ms-1 d-inline">
-                                                    (한글 60자 이내)
+                                                    (한글 90자 이내)
                                                 </p>
                                                 <div id="edit-deschiption-edit" class="h-50">
                                                     <textarea class="form-control" placeholder="강사님의 소개 내용을 입력해주세요."></textarea>

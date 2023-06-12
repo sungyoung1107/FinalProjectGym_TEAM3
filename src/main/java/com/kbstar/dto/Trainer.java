@@ -19,6 +19,8 @@ public class Trainer {
     private String trainerIntro;
     private String trainerImgname;
 
+    private String img_before; // 기존 이미지 임시 저장 위함
+
     private MultipartFile img;
 
     //     Constructor(img 제외)
