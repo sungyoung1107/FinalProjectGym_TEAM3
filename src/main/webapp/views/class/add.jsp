@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="col-6">
                                             <label>클래스 형태</label>
-                                            <select class="form-control" name="sportsClassType" id="sportsClassType">
+                                            <select class="form-control" name="sportsClasstype" id="sportsClasstype">
                                                 <option value=""> 선택</option>
                                                 <option value="1"> 1:1수업</option>
                                                 <option value="2"> 그룹수업</option>

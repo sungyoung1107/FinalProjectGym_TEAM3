@@ -69,7 +69,7 @@
                                 <input class="form-control datetimepicker" type="text" id="classDate" name="classDate" value="" placeholder="클래스 날짜 지정" data-input>
                             </div>
                             <div class="col-2">
-                                <label for="sportsClassType" class="h6">수업형태</label>
+                                <label for="sportsClasstype" class="h6">수업형태</label>
                             </div>
                             <div class="col-4">
                                 <select class="form-control" name="sportsClasstype" id="sportsClasstype">

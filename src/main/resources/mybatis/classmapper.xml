@@ -25,13 +25,13 @@
     <!-- 수업 추후 등록 -->
     <insert id="insert" parameterType="class">
         INSERT INTO class (classNo, gymNo, gymMasterCk, trainerNo, className, classDate, classStarttime, classEndtime, classMaximum, classJoin,
-                         classFullbooked, sportsType, sportsClassType)
+                         classFullbooked, sportsType, sportsClasstype)
         VALUES (Class_seq.NEXTVAL, #{gymNo}, '1', #{trainerNo}, #{className}, TO_DATE(#{classDate},'YYYY-MM-DD'), #{classStarttime}, #{classEndtime},
-                #{classMaximum}, 0, '0', #{sportsType}, #{sportsClassType})
+                #{classMaximum}, 0, '0', #{sportsType}, #{sportsClasstype})
     </insert>
     <!-- 수업번호로 업데이트 -->
     <update id="update" parameterType="class">
-        UPDATE class SET className=#{className}, trainerNo=#{trainerNo}, TO_DATE(classDate=#{classDate},'YYYY-MM-DD'), sportsClassType=#{sportsClassType}
+        UPDATE class SET className=#{className}, trainerNo=#{trainerNo}, classDate=TO_DATE(#{classDate},'YYYY-MM-DD'), sportsClasstype=#{sportsClasstype},
                          classStarttime=#{classStarttime}, classEndtime=#{classEndtime}, classMaximum=#{classMaximum},
                          classJoin=#{classJoin}, classFullbooked=#{classFullbooked}
                        WHERE classNo=#{classNo}

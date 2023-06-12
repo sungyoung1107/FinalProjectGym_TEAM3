@@ -52,7 +52,7 @@ public class ClassController {
 
         classService.register(aclass);
 
-        return "redirect:/";
+        return "redirect:/class/all";
     }
 
     @RequestMapping("/updateimpl")
@@ -122,7 +122,7 @@ public class ClassController {
                 jo.put("classJoin", obj.getClassJoin());
                 jo.put("classFullbooked", obj.getClassFullbooked());
                 jo.put("sportsType", obj.getSportsType());
-                jo.put("sportsClasstype", obj.getSportsClassType());
+                jo.put("sportsClasstype", obj.getSportsClasstype());
                 ja.add(jo);
             }
 

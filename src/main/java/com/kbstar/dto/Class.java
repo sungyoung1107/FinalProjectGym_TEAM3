@@ -25,23 +25,22 @@ public class Class {
     private Integer classJoin; // 참가인원
     private String classFullbooked; // 수업마감여부
     private String sportsType; // 운동종목구분 ㅇ
-    private String sportsClassType; // 운동수업형태 ㅇ
+    private String sportsClasstype; // 운동수업형태 ㅇ
 
     private String url;
 
     private String trainerName;
 
-    public Class(Integer gymNo, Integer trainerNo, Integer classNo, String className, String classDate, String classStarttime, String classEndtime, Integer classMaximum, String sportsType, String sportsClassType) {
+    public Class(Integer gymNo, Integer trainerNo, String className, String classDate, String classStarttime, String classEndtime, Integer classMaximum, String sportsType, String sportsClasstype) {
         this.gymNo = gymNo;
         this.trainerNo = trainerNo;
-        this.classNo = classNo;
         this.className = className;
         this.classDate = classDate;
         this.classStarttime = classStarttime;
         this.classEndtime = classEndtime;
         this.classMaximum = classMaximum;
         this.sportsType = sportsType;
-        this.sportsClassType = sportsClassType;
+        this.sportsClasstype = sportsClasstype;
     }
 
     // 특정 gym 특정일자의 수업 추출
@@ -51,8 +50,7 @@ public class Class {
     }
 
     // update
-
-    public Class(Integer classNo, Integer trainerNo, String className, String classDate, String classStarttime, String classEndtime, Integer classMaximum, Integer classJoin, String classFullbooked, String sportsClassType) {
+    public Class(Integer classNo, Integer trainerNo, String className, String classDate, String classStarttime, String classEndtime, Integer classMaximum, Integer classJoin, String classFullbooked, String sportsClasstype) {
         this.classNo = classNo;
         this.trainerNo = trainerNo;
         this.className = className;
@@ -62,6 +60,6 @@ public class Class {
         this.classMaximum = classMaximum;
         this.classJoin = classJoin;
         this.classFullbooked = classFullbooked;
-        this.sportsClassType = sportsClassType;
+        this.sportsClasstype = sportsClasstype;
     }
 }
