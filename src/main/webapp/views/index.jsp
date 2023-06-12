@@ -36,7 +36,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0"
-           href="/" >
+           href="/">
             <img src="/assets/img/logo.png" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-1 font-weight-bold">사장님 전용</span>
         </a>
@@ -91,7 +91,8 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item mt-3">
+            <li class="nav-item">
+                <hr class="horizontal dark"/>
                 <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">센터 정보</h6>
             </li>
             <li class="nav-item">
@@ -118,39 +119,43 @@
                     </div>
                     <span class="nav-link-text ms-1">센터 소개</span>
                 </a>
+                <div class="collapse" id="pagesExamples">
+                    <ul class="nav ms-4 ps-3">
+                        <li class="nav-item">
+                            <a class="nav-link " aria-expanded="false"
+                               href="/center/centerinfo">
+                                <span class="sidenav-mini-icon"> C </span>
+                                <span class="sidenav-normal"> 센터 <b class="caret"></b></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " aria-expanded="false"
+                               href="/trainer/all">
+                                <span class="sidenav-mini-icon"> T </span>
+                                <span class="sidenav-normal"> 트레이너 <b class="caret"></b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <div class="collapse" id="pagesExamples">
-                <ul class="nav ms-4 ps-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/center/centerinfo">
-                            <span class="sidenav-mini-icon"> C </span>
-                            <span class="sidenav-normal"> 센터 </span>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link " href="/trainer/all">
-                            <span class="sidenav-mini-icon"> T </span>
-                            <span class="sidenav-normal"> 트레이너 </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
             <li class="nav-item">
                 <a href="/class/all" class="nav-link " aria-controls="ecommerceExamples" role="button"
                    aria-expanded="false">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                        <svg class="text-dark" width="12px" height="12px" viewBox="0 0 42 44" version="1.1"
+                        <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>basket</title>
+                            <title>customer-support</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1869.000000, -741.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
                                     <g transform="translate(1716.000000, 291.000000)">
-                                        <g id="basket" transform="translate(153.000000, 450.000000)">
+                                        <g transform="translate(1.000000, 0.000000)">
                                             <path class="color-background"
-                                                  d="M34.080375,13.125 L27.3748125,1.9490625 C27.1377583,1.53795093 26.6972449,1.28682264 26.222716,1.29218729 C25.748187,1.29772591 25.3135593,1.55890827 25.0860125,1.97535742 C24.8584658,2.39180657 24.8734447,2.89865282 25.1251875,3.3009375 L31.019625,13.125 L10.980375,13.125 L16.8748125,3.3009375 C17.1265553,2.89865282 17.1415342,2.39180657 16.9139875,1.97535742 C16.6864407,1.55890827 16.251813,1.29772591 15.777284,1.29218729 C15.3027551,1.28682264 14.8622417,1.53795093 14.6251875,1.9490625 L7.919625,13.125 L0,13.125 L0,18.375 L42,18.375 L42,13.125 L34.080375,13.125 Z"
-                                                  opacity="0.595377604"></path>
-                                            <path class="color-background"
-                                                  d="M3.9375,21 L3.9375,38.0625 C3.9375,40.9619949 6.28800506,43.3125 9.1875,43.3125 L32.8125,43.3125 C35.7119949,43.3125 38.0625,40.9619949 38.0625,38.0625 L38.0625,21 L3.9375,21 Z M14.4375,36.75 L11.8125,36.75 L11.8125,26.25 L14.4375,26.25 L14.4375,36.75 Z M22.3125,36.75 L19.6875,36.75 L19.6875,26.25 L22.3125,26.25 L22.3125,36.75 Z M30.1875,36.75 L27.5625,36.75 L27.5625,26.25 L30.1875,26.25 L30.1875,36.75 Z"></path>
+                                                  d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z"
+                                                  opacity="0.59858631"></path>
+                                            <path class="color-foreground"
+                                                  d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z"></path>
+                                            <path class="color-foreground"
+                                                  d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z"></path>
                                         </g>
                                     </g>
                                 </g>
@@ -187,7 +192,7 @@
             </li>
             <li class="nav-item">
                 <hr class="horizontal dark"/>
-                <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">등록(수정)</h6>
+                <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">등록</h6>
             </li>
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#basicExamples" class="nav-link " aria-controls="basicExamples"
@@ -286,24 +291,6 @@
             </li>
         </ul>
     </div>
-    <div class="sidenav-footer mx-3 mt-3 pt-3">
-        <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
-            <div class="full-background"
-                 style="background-image: url('/assets/img/curved-images/white-curved.jpg')"></div>
-            <div class="card-body text-start p-3 w-100">
-                <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
-                    <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true"
-                       id="sidenavCardIcon"></i>
-                </div>
-                <div class="docs-info">
-                    <h6 class="text-white up mb-0">Need help?</h6>
-                    <p class="text-xs font-weight-bold">Please check our docs</p>
-                    <a href="https://www.creative-tim.com/learning-lab/bootstrap/overview/soft-ui-dashboard"
-                        class="btn btn-white btn-sm w-100 mb-0">Documentation</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </aside>
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
@@ -348,10 +335,10 @@
             </div>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-<%--                    <div class="input-group">--%>
-<%--                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>--%>
-<%--                        <input type="text" class="form-control" placeholder="Type here...">--%>
-<%--                    </div>--%>
+                    <%--                    <div class="input-group">--%>
+                    <%--                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>--%>
+                    <%--                        <input type="text" class="form-control" placeholder="Type here...">--%>
+                    <%--                    </div>--%>
                 </div>
                 <c:choose>
                     <c:when test="${logingym == null}">
@@ -475,7 +462,7 @@
                             <li class="nav-item d-flex align-items-center">
                                 <a href="/gym/logoutimpl" class="nav-link text-body font-weight-bold px-0">
                                     &nbsp;&nbsp;
-<%--                                    <i class="fa fa-user me-sm-1"></i>--%>
+                                        <%--                                    <i class="fa fa-user me-sm-1"></i>--%>
                                     <span class="d-sm-inline d-none">로그아웃</span>
                                 </a>
                             </li>
@@ -498,9 +485,9 @@
     <!-- center 끝 -->
 </main>
 <div class="fixed-plugin">
-<%--    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">--%>
-<%--        <i class="fa fa-cog py-2"> </i>--%>
-<%--    </a>--%>
+    <%--    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">--%>
+    <%--        <i class="fa fa-cog py-2"> </i>--%>
+    <%--    </a>--%>
     <div class="card shadow-lg blur">
         <div class="card-header pb-0 pt-3  bg-transparent ">
             <div class="float-start">
@@ -585,11 +572,11 @@
                    aria-label="Star creativetimofficial/soft-ui-dashboard on GitHub">Star</a>
                 <h6 class="mt-3">Thank you for sharing!</h6>
                 <a href="https://twitter.com/intent/tweet?text=Check%20Soft%20UI%20Dashboard%20PRO%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard-pro"
-                   class="btn btn-dark mb-0 me-2" >
+                   class="btn btn-dark mb-0 me-2">
                     <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
                 </a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard-pro"
-                   class="btn btn-dark mb-0 me-2" >
+                   class="btn btn-dark mb-0 me-2">
                     <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
                 </a>
             </div>
@@ -927,28 +914,32 @@
         var quill = new Quill('#edit-deschiption', {
             theme: 'snow' // Specify theme in configuration
         });
-    };
+    }
+    ;
 
     if (document.getElementById('choices-category')) {
         var element = document.getElementById('choices-category');
         const example = new Choices(element, {
             searchEnabled: false
         });
-    };
+    }
+    ;
 
     if (document.getElementById('choices-sizes')) {
         var element = document.getElementById('choices-sizes');
         const example = new Choices(element, {
             searchEnabled: false
         });
-    };
+    }
+    ;
 
     if (document.getElementById('choices-currency')) {
         var element = document.getElementById('choices-currency');
         const example = new Choices(element, {
             searchEnabled: false
         });
-    };
+    }
+    ;
 
     if (document.getElementById('choices-tags')) {
         var tags = document.getElementById('choices-tags');
@@ -958,13 +949,13 @@
 
         examples.setChoices(
             [{
-                value: 'One',
-                label: 'Expired',
+                value   : 'One',
+                label   : 'Expired',
                 disabled: true
             },
                 {
-                    value: 'Two',
-                    label: 'Out of Stock',
+                    value   : 'Two',
+                    label   : 'Out of Stock',
                     selected: true
                 }
             ],
@@ -979,28 +970,32 @@
         var quill = new Quill('#edit-deschiption-edit', {
             theme: 'snow' // Specify theme in configuration
         });
-    };
+    }
+    ;
 
     if (document.getElementById('choices-category-edit')) {
         var element = document.getElementById('choices-category-edit');
         const example = new Choices(element, {
             searchEnabled: false
         });
-    };
+    }
+    ;
 
     if (document.getElementById('choices-color-edit')) {
         var element = document.getElementById('choices-color-edit');
         const example = new Choices(element, {
             searchEnabled: false
         });
-    };
+    }
+    ;
 
     if (document.getElementById('choices-currency-edit')) {
         var element = document.getElementById('choices-currency-edit');
         const example = new Choices(element, {
             searchEnabled: false
         });
-    };
+    }
+    ;
 
     if (document.getElementById('choices-tags-edit')) {
         var tags = document.getElementById('choices-tags-edit');
@@ -1010,8 +1005,8 @@
 
         examples.setChoices(
             [{
-                value: 'One',
-                label: '종목 선택',
+                value   : 'One',
+                label   : '종목 선택',
                 disabled: true,
                 selected: true
             }],

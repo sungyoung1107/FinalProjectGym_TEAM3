@@ -55,6 +55,22 @@ public class ClassController {
         return "redirect:/";
     }
 
+    @RequestMapping("/updateimpl")
+    public String updateimpl(Model model, Class aclass) throws Exception {
+        log.info("=== 클래스 업데이트 진입 ===");
+        classService.modify(aclass);
+
+        return "redirect:/class/all";
+    }
+
+    @RequestMapping("/deleteimpl")
+    public String deleteimpl(Model model, Class aclass) throws Exception {
+        log.info("=== 클래스 삭제 진입 " + aclass.getClassNo() + "===");
+        classService.remove(aclass.getClassNo());
+
+        return "redirect:/class/all";
+    }
+
     @RequestMapping("/all")
     public String all(Model model){
         model.addAttribute("page", "Class Calender"); // 캘린더
@@ -84,8 +100,30 @@ public class ClassController {
             // Java Object ---> JSON
             // JSON(JavaScript Object Notation)
             // [시간1, 시간2, ... ]
+//            for (Class obj : list) {
+//                ja.add(obj.getClassStarttime()+"~"+obj.getClassEndtime()); // 수업시작시간 select하여 add
+//            }
+            // [ {classNo: , gymNo; , gymMasterCk: , trainerNo: , className: ,
+            // classDate: , classStarttime: , classEndtime: , classMaximum: , classJoin: ,
+            // classFullbooked: , sportsType: , sportsClasstype: }, {} ]
             for (Class obj : list) {
-                ja.add(obj.getClassStarttime()+"~"+obj.getClassEndtime()); // 수업시작시간 select하여 add
+                JSONObject jo = new JSONObject();
+                jo.put("classNo", obj.getClassNo());
+                jo.put("gymNo", obj.getGymNo());
+                jo.put("gymMasterCk", obj.getGymMasterCk());
+                jo.put("trainerNo", obj.getTrainerNo());
+                jo.put("trainerName", obj.getTrainerName()); // trainer 테이블과 조인
+                jo.put("className", obj.getClassName());
+                jo.put("classDate", obj.getClassDate());
+                jo.put("classStarttime", obj.getClassStarttime());
+                jo.put("classEndtime", obj.getClassEndtime());
+                jo.put("classTime", obj.getClassStarttime()+"~"+obj.getClassEndtime());
+                jo.put("classMaximum", obj.getClassMaximum());
+                jo.put("classJoin", obj.getClassJoin());
+                jo.put("classFullbooked", obj.getClassFullbooked());
+                jo.put("sportsType", obj.getSportsType());
+                jo.put("sportsClasstype", obj.getSportsClassType());
+                ja.add(jo);
             }
 
         }

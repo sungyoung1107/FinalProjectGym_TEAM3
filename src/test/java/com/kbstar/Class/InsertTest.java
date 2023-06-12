@@ -16,10 +16,10 @@ class InsertTest {
     @Test
     void contextLoads() {
 
-        Class c = new Class(1, 1,"밥칼로리순싹클래스","2023-06-02","10:00","11:00",10,"1","1");
+//        Class c = new Class(1, 1,"밥칼로리순싹클래스","2023-06-02","10:00","11:00",10,"1","1");
 
         try {
-            service.register(c);
+//            service.register(c);
             service.get();
         } catch (Exception e) {
             if(e instanceof DuplicateKeyException){

@@ -17,8 +17,10 @@
     </select>
     <!-- 특정 gym, 특정 날짜의 모든 수업(대표계정 1로) 추출 -->
     <select id="selectdayclass" parameterType="gym" resultType="class">
-        SELECT * FROM class where gymNo=#{gymNo} and gymMasterCk ='1' and classDate=#{classDate}
-        order by CLASSSTARTTIME
+        SELECT c.*, t.trainername FROM class c left join trainer t
+                 on c.trainerno = t.trainerno
+                 where c.gymNo=#{gymNo} and c.gymMasterCk ='1' and c.classDate=#{classDate}
+        order by c.CLASSSTARTTIME
     </select>
     <!-- 수업 추후 등록 -->
     <insert id="insert" parameterType="class">
@@ -29,9 +31,9 @@
     </insert>
     <!-- 수업번호로 업데이트 -->
     <update id="update" parameterType="class">
-        UPDATE class SET trainerNo=#{trainerNo}, className=#{className}, classDate=#{classDate},
+        UPDATE class SET className=#{className}, trainerNo=#{trainerNo}, TO_DATE(classDate=#{classDate},'YYYY-MM-DD'), sportsClassType=#{sportsClassType}
                          classStarttime=#{classStarttime}, classEndtime=#{classEndtime}, classMaximum=#{classMaximum},
-                         classJoin=#{classJoin}, classFullbooked=#{classFullbooked} sportsType=#{sportsType}, sportsClassType=#{sportsClassType}
+                         classJoin=#{classJoin}, classFullbooked=#{classFullbooked}
                        WHERE classNo=#{classNo}
     </update>
     <!-- 수업번호로 삭제 -->

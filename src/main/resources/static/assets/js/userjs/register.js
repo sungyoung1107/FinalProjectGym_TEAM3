@@ -29,6 +29,7 @@ let register_form = {
             let gymPhone = $("#gymPhone").val(); // 대표자 연락처 입력란
             let gymRegimg = $("#gymRegimg").val(); // 사업자등록증 이미지명 첨부란
             let gymReginumber = $("#gymReginumber").val(); // 사업자번호 입력란
+            let typeNo = $("#typeNo").val(); // 운동종목 입력란
 
             $("#register_info").hide();
 
@@ -65,7 +66,7 @@ let register_form = {
             // 모든 값 있는지 확인
             if (gymEmail == "" || gymPwd == "" || gymPwd2 == "" || gymName =="" || gymZipcode == "" ||
                 gymAddress1 == "" || gymAddress2 == "" || gymAddress3 == "" || gymPhone == "" ||
-                gymRegimg == "" || gymReginumber == "") {
+                gymRegimg == "" || gymReginumber == "" || typeNo == "") {
                 $("#register_info_msg").text("모든 값을 입력하셔야 합니다. 확인해주세요!");
                 $("#register_info").show();
                 return;
@@ -104,14 +105,13 @@ let register_form = {
                         $("#eAvailable").hide(); // 가능한 이메일입니다 hide
                         $("#btnSendcnum").hide(); // 인증번호 전송 버튼 hide
                         $("#eFailure").show(); // 불가능한 이메일입니다 show
-                        id_duplicate_check = false; // 이메일 중복검사 실팬
+                        id_duplicate_check = false; // 이메일 중복검사 실패
                     }
                 },
                 error  : function (xhr, status, error) {
                     console.log(error);
                 }
             });
-            
         });
 
         /* 이메일 인증번호 전송 버튼 클릭 */
@@ -214,79 +214,52 @@ function mailFormCheck(gymEmail) {
     return form.test(gymEmail); // 정규표현식에 부합할 경우 true, 부합하지 않은 경우 false
 }
 
-
-// // 상세페이지에서 회원정보 수정 관련
-// let user_detail_form = {
-//     init: function(){
-//         let self = user_detail_form;
-//
-//         let user_address = $("#user_address1").val() + " " + $("#user_address2").val() + " " + $("#user_address3").val();
-//         $("#user_address").val(user_address);
-//
-//         $("#btnSendcnum").click(function () {
-//             console.log("인증번호 전송"); // 인증번호 전송
-//             let user_id = $("#user_id").val();
-//             console.log("user_id : "+ user_id); // 인증번호 전송
-//
-//             $.ajax({
-//                 type: "post",
-//                 url: "/forgotPwd",
-//                 data : {
-//                     user_id: user_id
-//                 },
-//                 success: function (result) {
-//                     alert("비밀번호 초기화 : "+ result);
-//                 },
-//                 error  : function (xhr, status, error) {
-//                     console.log(error);
-//                 }
-//             });
-//         });
-//
-//         $('#update_btn').click(function(){
-//             self.send();
-//         });
-//
-//         $('#delete_btn').click(function(){
-//             let c = confirm("삭제하시겠습니까?");
-//             if(c==true){
-//                 location.href="/user/deleteimpl?id="+$("#user_id").val();
-//             }
-//         });
-//     },
-//
-//     send: function(){
-//         $('#user_detail_form').attr({
-//             action : '/user/updateimpl',
-//             method : 'post'
-//         });
-//         $('#user_detail_form').submit();
+// function formatPhoneNumber(event) {
+//     let input = event.target;
+//     let phoneNumber = input.value;
+//     // '-' 제거
+//     phoneNumber = phoneNumber.replace(/-/g, '');
+//     // 숫자만 입력
+//     phoneNumber = phoneNumber.replace(/\D/g, ''); // 숫자가 아닌 문자열은 다 공백으로
+//     // 형식화된 전화번호 적용
+//     let formattedNumber = '';
+//     if (phoneNumber.length > 3) {
+//         formattedNumber += phoneNumber.substr(0, 3) + '-';
+//         if (phoneNumber.length > 7) {
+//             formattedNumber += phoneNumber.substr(3, 4) + '-' + phoneNumber.substr(7);
+//         } else {
+//             formattedNumber += phoneNumber.substr(3);
+//         }
+//     } else {
+//         formattedNumber = phoneNumber;
 //     }
-//
+//     input.value = formattedNumber;
 // }
-//
-// document.getElementById("phoneNumber").addEventListener("input", function(e) {
-//     var phoneNumber = e.target.value;
-//     phoneNumber = phoneNumber.replace(/[^\d]/g, ""); // 숫자 이외의 문자 제거
-//     var formattedPhoneNumber = formatPhoneNumber(phoneNumber);
-//     e.target.value = formattedPhoneNumber;
-// });
 
-function formatPhoneNumber(phoneNumber) {
-    var formattedNumber = "";
-    if (phoneNumber.length > 3) {
-        formattedNumber += phoneNumber.substr(0, 3) + "-";
-        if (phoneNumber.length > 7) {
-            formattedNumber += phoneNumber.substr(3, 4) + "-" + phoneNumber.substr(7);
+function formatBusinessNumber(event) {
+    let input = event.target;
+    let businessNumber = input.value;
+
+    // '-' 제거
+    businessNumber = businessNumber.replace(/-/g, '');
+    // 숫자만 입력
+    businessNumber = businessNumber.replace(/\D/g, '');
+
+    // 형식화된 사업자번호 적용
+    let formattedNumber = '';
+    if (businessNumber.length > 2) {
+        formattedNumber += businessNumber.substr(0, 3) + '-';
+        if (businessNumber.length > 5) {
+            formattedNumber += businessNumber.substr(3, 2) + '-' + businessNumber.substr(5);
         } else {
-            formattedNumber += phoneNumber.substr(3);
+            formattedNumber += businessNumber.substr(3);
         }
     } else {
-        formattedNumber = phoneNumber;
+        formattedNumber = businessNumber;
     }
-    return formattedNumber;
-}
 
+    input.value = formattedNumber;
+}
 
 // 다음 주소 api
 function DaumPostcode() {

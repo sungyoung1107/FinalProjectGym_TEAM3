@@ -16,7 +16,7 @@ class SelectDayOneTest {
     @Test
     void contextLoads() {
         try {
-            Gym gym = new Gym(5,"2023-06-07");
+            Gym gym = new Gym(2,"2023-06-12");
             service.selecDayclass(gym);
         } catch (Exception e) {
             log.info("오류");

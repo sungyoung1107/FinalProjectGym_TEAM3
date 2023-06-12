@@ -41,8 +41,7 @@ public class Gym {
     private String gymImgdetailCk; // 디테일 이미지 여부 // 0: 디테일 X, 1: 디테일 ㅇ
 
     /* center 관련 운동종목 등록(Gymtype) */
-    private int typeNo; // 종목일련번호(시퀀스)
-    private String sportsType; // 운동종목구분
+    private String typeNo; // 운동종목구분
 
     private MultipartFile[] gymimg_notdetail; // 디테일 이미지 X
     private MultipartFile gymimg_isdetail; // 디테일 이미지 O

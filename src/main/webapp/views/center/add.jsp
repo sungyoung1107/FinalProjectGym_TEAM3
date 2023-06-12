@@ -26,10 +26,11 @@
                             <input type="hidden" name="gymMasterCk" id="gymMasterCk" value="${logingym.gymMasterCk}">
                             <input type="hidden" name="gymEmail" id="gymEmail" value="${logingym.gymEmail}">
                             <input type="hidden" name="gymPwd" id="gymPwd" value="${logingym.gymPwd}">
-                            <input type="hidden" name="gymContents" id="gymContents" value=""> <!-- 내용은 span 이기 때문에 input 값을 js에서 할당해서 보내기 -->
+                            <input type="hidden" name="gymContents" id="gymContents" value="">
+                            <!-- 내용은 span 이기 때문에 input 값을 js에서 할당해서 보내기 -->
                             <!-- 1. 센터 기본정보 확인 -->
                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
-                                 data-animation="FadeIn">
+                                 data-animation="FadeIn" id="section1">
                                 <h5 class="font-weight-bolder"> 1. 센터 기본정보 확인 </h5>
                                 <div class="multisteps-form__content">
                                     <div class="row mt-3">
@@ -103,7 +104,7 @@
                             </div>
                             <!--2. 센터 상세정보 등록-->
                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
-                                 data-animation="FadeIn">
+                                 data-animation="FadeIn" id="section2">
                                 <h5 class="font-weight-bolder">2. 센터 상세정보 등록</h5>
                                 <div class="multisteps-form__content">
                                     <div class="row mt-3">
@@ -126,23 +127,26 @@
                                                 (한글 60자 이내)
                                             </p>
                                             <div id="edit-deschiption-edit" class="h-50">
-                                                <textarea class="form-control" placeholder="센터 소개 내용을 입력해주세요">${logingym.gymContents}</textarea>
-<%--                                                <span id="gymContents_temp">${logingym.gymContents}</span>--%>
+                                                <textarea class="form-control"
+                                                          placeholder="센터 소개 내용을 입력해주세요">${logingym.gymContents}</textarea>
+                                                <%--                                                <span id="gymContents_temp">${logingym.gymContents}</span>--%>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
-                                        <label class="mt-4">센터 운동 종목</label>
-                                        <select class="form-control" name="sportsType" id="choices-tags-edit"
-                                                multiple>
-                                            <option value="1">헬스</option>
-                                            <option value="2">PT</option>
-                                            <option value="3">크로스핏</option>
-                                            <option value="4">요가</option>
-                                            <option value="5">필라테스</option>
-                                            <option value="6">골프</option>
-                                            <option value="7">수영</option>
-                                        </select>
+                                        <div class="col-12">
+                                            <label class="mt-4">센터 운동 종목</label>
+                                            <select class="form-control" name="typeNo" id="typeNo">
+                                                <option value=""> 선택</option>
+                                                <option value="1"> 헬스</option>
+                                                <option value="2"> PT</option>
+                                                <option value="3"> 크로스핏</option>
+                                                <option value="4"> 요가</option>
+                                                <option value="5"> 필라테스</option>
+                                                <option value="6"> 골프</option>
+                                                <option value="7"> 수영</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="button-row d-flex mt-4">
                                         <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button"
@@ -156,7 +160,7 @@
                             </div>
                             <!--3. 센터 이미지 등록-->
                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
-                                 data-animation="FadeIn">
+                                 data-animation="FadeIn" id="section3">
                                 <h5 class="font-weight-bolder">3. 센터 이미지 등록</h5>
                                 <div class="multisteps-form__content">
                                     <div class="row mt-3">
@@ -166,7 +170,8 @@
                                                 최대 10장 이내
                                             </p>
                                             <%--                                            <div action="/" class="form-control dropzone">--%>
-                                            <input type="file" class="form-control" id="gymimg_notdetail" name="gymimg_notdetail" multiple>
+                                            <input type="file" class="form-control" id="gymimg_notdetail"
+                                                   name="gymimg_notdetail" multiple>
                                             <%--                                            </div>--%>
                                         </div>
                                     </div>
@@ -177,7 +182,8 @@
                                                 최대 1장(헬쓱 양식으로 첨부할 것)
                                             </p>
                                             <%--                                            <div action="/" class="form-control dropzone">--%>
-                                            <input type="file" class="form-control" id="gymimg_isdetail" name="gymimg_isdetail">
+                                            <input type="file" class="form-control" id="gymimg_isdetail"
+                                                   name="gymimg_isdetail">
                                             <%--                                            </div>--%>
                                         </div>
                                     </div>
@@ -202,48 +208,25 @@
 <script>
     $(document).ready(function () {
 
-        let gymNo = $("#gymNo").val();
-        let gymEmail = $("#gymEmail").val();
-        let gymName = $("#gymName").val();
-        let gymZipcode = $("#gymZipcode").val();
-        let gymAddress1 = $("#gymAddress1").val();
-        let gymAddress2 = $("#gymAddress2").val();
-        let gymAddress3 = $("#gymAddress3").val();
-        let gymPhone =  $("#gymPhone").val();
-        let gymReginumber = $("#gymReginumber").val();
-
         let gymTitle = $("#gymTitle").val();
         // <span> 태그의 값을 가져옴
-        let parser = new DOMParser();
         let gymContents_temp_html = document.getElementById('edit-deschiption-edit').innerHTML;
-        // let gymContents_temp_doc = parser.parseFromString(gymContents_temp_html, "text/html");
-        // let gymContents_temp_text = gymContents_temp_doc.querySelector("p").innerText;
         let gymContents_temp_text = $(".ql-editor > p").html();
-
-        // 운동종목은 나중에
-        // 이미지
-
-        let gymPwd = $("#gymPwd").val();
-
-        console.log("센터 식별번호 " + gymNo);
-        console.log("센터 이메일 " + gymEmail);
-        console.log("센터 이름 " + gymName);
-        console.log("센터 우편번호 " + gymZipcode);
-        console.log("센터 도로명또는지번주소 " + gymAddress1);
-        console.log("센터 상세주소 " + gymAddress2);
-        console.log("센터 참고항목 " + gymAddress3);
-        console.log("대표자 연락처 " + gymPhone);
-        console.log("센터 사업자 번호 " + gymReginumber);
 
         console.log("센터 제목 " + gymTitle);
         console.log("센터 소개 내용 전체: " + gymContents_temp_html);
         console.log("센터 소개 내용 파싱: " + gymContents_temp_text);
-        console.log("셋할 비밀번호" + gymPwd)
 
         // 가져온 값으로 숨겨진 <input> 태그에 할당
-
         $("#gymContents").val(gymContents_temp_text);
 
+        // 운동종목
+        var typeNo = ${logingym.typeNo};
+        var selectElement = document.getElementById("typeNo");
+        // sportsType 값을 기반으로 선택된 옵션 설정
+        if (typeNo) {
+            selectElement.value = typeNo;
+        }
         center_form.init();
     });
 
@@ -252,7 +235,10 @@
             $('#center_register_btn').click(function () {
                 gymContents_temp_text = $(".ql-editor > p").html(); // 변경된 값 추출
                 $("#gymContents").val(gymContents_temp_text); // 폼 필드 업데이트
-                center_form.send();
+                // 검증이 모두 TRUE일 때만 제출 가능
+                if (validate_Title_Contents() && validateImg()) {
+                    center_form.send(); // 이미지가 등록되었을 경우에만 init 함수 호출
+                }
             });
         },
         send: function () {
@@ -264,5 +250,42 @@
             $('#center_form').submit();
         }
     };
+
+    // 폼 제출시 제목, 내용 길이 검증
+    function validate_Title_Contents() {
+        let gymTitle = $("#gymTitle").val();
+        let gymContents_temp_text = $(".ql-editor > p").html();
+
+        if (gymTitle.length >15) {
+            alert("제목은 15자 이내로 입력하세요.");
+            window.location.href = "/center/add";
+            // document.getElementById("section2").scrollIntoView({ behavior: "smooth" });
+            return false;
+        }
+        if (gymContents_temp_text.length >60) {
+            alert("내용은 60자 이내로 입력하세요.");
+            window.location.href = "/center/add";
+            // document.getElementById("section2").scrollIntoView({ behavior: "smooth" });
+            return false;
+        }
+
+        return true;
+    }
+
+    // 폼 제출 시 이미지가 등록되었는지 확인하는 함수
+    function validateImg() {
+        var notdetailInput = document.getElementById("gymimg_notdetail");
+        var isdetailInput = document.getElementById("gymimg_isdetail");
+
+        if (notdetailInput.files.length === 0 && !isdetailInput.files[0]) {
+            alert("이미지를 등록해주세요.");
+            window.location.href = "/center/add";
+            // setTimeout(function () {
+            //     document.getElementById("section3").scrollIntoView({ behavior: "smooth" });
+            // }, 300);
+            return false;
+        }
+        return true;
+    }
 
 </script>

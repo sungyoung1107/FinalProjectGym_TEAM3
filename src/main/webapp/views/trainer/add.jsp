@@ -32,7 +32,7 @@
                         <form id="trainer_form"  class="multisteps-form__form mb-8">
                             <!-- 1번 정보 -->
                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
-                                <h5 class="font-weight-bolder"> 정보 </h5>
+                                <h5 class="font-weight-bolder">1. 강사 정보</h5>
                                 <div class="multisteps-form__content">
                                     <input type="hidden" name="gymNo" class="form-control" id="gymNo" value="${logingym.gymNo}" placeholder="${logingym.gymNo}" readonly>
                                     <input type="hidden" name="gymMasterCk" class="form-control" id="gymMasterCk" value="${logingym.gymMasterCk}" placeholder="${logingym.gymMasterCk}" readonly>
@@ -84,7 +84,7 @@
                             <!-- 1번 정보 끝 -->
                             <!-- 사진 정보  -->
                             <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
-                                <h5 class="font-weight-bolder">사진 등록</h5>
+                                <h5 class="font-weight-bolder">2. 사진 정보</h5>
                                 <div class="multisteps-form__content">
                                     <div class="row mt-3">
                                         <div class="col-12">
@@ -95,7 +95,7 @@
                                     <!-- 제출 버튼  -->
                                     <div class="button-row d-flex mt-4">
                                         <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">이전</button>
-                                        <button id="trainer_register_btn" class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">제출하기</button>
+                                        <button id="trainer_register_btn" class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">등록</button>
                                     </div>
                                 </div>
                             </div>

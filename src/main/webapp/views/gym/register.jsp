@@ -123,9 +123,9 @@
                                     <input type="text" class="form-control" placeholder="Reference Address"
                                            aria-label="gymAddress3" name="gymAddress3" id="gymAddress3" readonly>
                                 </div>
-                                <label>대표자 연락처</label>
+                                <label>대표 연락처</label>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="- 제외하고 숫자만 입력"
+                                    <input type="text" class="form-control" placeholder="- 포함하여 대표 연락처를 입력해주세요"
                                            aria-label="gymPhone" name="gymPhone" id="gymPhone">
                                 </div>
                                 <label>사업자등록증</label>
@@ -137,12 +137,27 @@
                                 <label>사업자번호</label>
                                 <div class="mb-3 same-height">
                                     <input type="text" class="form-control" placeholder="OOO-OO-OOOOO"
-                                           aria-label="gymReginumber" name="gymReginumber" id="gymReginumber">
+                                           aria-label="gymReginumber" name="gymReginumber" id="gymReginumber"
+                                           onkeyup = "formatBusinessNumber(event)">
                                     <!-- Button trigger modal -->
-                                    <button class="btn btn-outline-primary mb-0" type="button" id="reginum_btn" data-bs-toggle="modal">
-<%--                                        data-bs-target="#registernumCheckModal">--%>
+                                    <button class="btn btn-outline-primary mb-0" type="button" id="reginum_btn"
+                                            data-bs-toggle="modal">
+                                        <%--                                        data-bs-target="#registernumCheckModal">--%>
                                         휴폐업 조회
                                     </button>
+                                </div>
+                                <label>운동 종목</label>
+                                <div class="mb-3">
+                                    <select class="form-control" name="typeNo" id="typeNo">
+                                        <option value=""> 선택</option>
+                                        <option value="1"> 헬스</option>
+                                        <option value="2"> PT</option>
+                                        <option value="3"> 크로스핏</option>
+                                        <option value="4"> 요가</option>
+                                        <option value="5"> 필라테스</option>
+                                        <option value="6"> 골프</option>
+                                        <option value="7"> 수영</option>
+                                    </select>
                                 </div>
                                 <div class="badge badge-danger" id="register_info"
                                      style="display: none; width: 100%;">
@@ -183,7 +198,8 @@
 </main>
 
 <!-- Modal -->
-<div class="modal fade" id="registernumCheckModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="registernumCheckModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -197,7 +213,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">닫기</button>
-                <button type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal" id="reginumConfirm">인증 완료</button>
+                <button type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal" id="reginumConfirm">인증
+                    완료
+                </button>
             </div>
         </div>
     </div>

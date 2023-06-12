@@ -29,9 +29,12 @@ public class Class {
 
     private String url;
 
-    public Class(Integer gymNo, Integer trainerNo, String className, String classDate, String classStarttime, String classEndtime, Integer classMaximum, String sportsType, String sportsClassType) {
+    private String trainerName;
+
+    public Class(Integer gymNo, Integer trainerNo, Integer classNo, String className, String classDate, String classStarttime, String classEndtime, Integer classMaximum, String sportsType, String sportsClassType) {
         this.gymNo = gymNo;
         this.trainerNo = trainerNo;
+        this.classNo = classNo;
         this.className = className;
         this.classDate = classDate;
         this.classStarttime = classStarttime;
@@ -45,5 +48,20 @@ public class Class {
     public Class(Integer gymNo, String classDate) {
         this.gymNo = gymNo;
         this.classDate = classDate;
+    }
+
+    // update
+
+    public Class(Integer classNo, Integer trainerNo, String className, String classDate, String classStarttime, String classEndtime, Integer classMaximum, Integer classJoin, String classFullbooked, String sportsClassType) {
+        this.classNo = classNo;
+        this.trainerNo = trainerNo;
+        this.className = className;
+        this.classDate = classDate;
+        this.classStarttime = classStarttime;
+        this.classEndtime = classEndtime;
+        this.classMaximum = classMaximum;
+        this.classJoin = classJoin;
+        this.classFullbooked = classFullbooked;
+        this.sportsClassType = sportsClassType;
     }
 }

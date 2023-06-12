@@ -133,7 +133,7 @@
                                             <input class="form-control" type="time" placeholder="시작시간" id="classStarttime" name="classStarttime" data-input>
                                         </div>
                                         <div class="col-6">
-                                            <label class="form-label">시작시간</label>
+                                            <label class="form-label">종료시간</label>
                                             <input class="form-control" type="time" placeholder="종료시간" id="classEndtime" name="classEndtime" data-input>
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@
                                             title="Prev">Prev
                                     </button>
                                     <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"
-                                            id="class_register_btn">등록(변경)
+                                            id="class_register_btn">등록
                                     </button>
                                 </div>
                             </div>

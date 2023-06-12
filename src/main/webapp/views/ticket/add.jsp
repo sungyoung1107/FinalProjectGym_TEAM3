@@ -59,7 +59,7 @@
                             <form id="ticket_form"  class="multisteps-form__form mb-8">
                                 <!--single form panel-->
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder"> 정보 </h5>
+                                    <h5 class="font-weight-bolder">1. 이용권 정보</h5>
                                     <div class="multisteps-form__content">
                                         <input type="hidden" name="gymNo" class="form-control" id="gymNo" value="${logingym.gymNo}" placeholder="${logingym.gymNo}" readonly>
                                         <input type="hidden" name="gymMasterCk" class="form-control" id="gymMasterCk" value="${logingym.gymMasterCk}" placeholder="${logingym.gymMasterCk}" readonly>
@@ -137,7 +137,7 @@
                                 </div>
                                 <!--single form panel-->
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder">사진 등록</h5>
+                                    <h5 class="font-weight-bolder">2. 사진 정보</h5>
                                     <div class="multisteps-form__content">
                                         <div class="row mt-3">
                                             <div class="col-12">
@@ -158,7 +158,7 @@
 
                                 <!--single form panel-->
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white h-100" data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder">가격 정보</h5>
+                                    <h5 class="font-weight-bolder">3. 가격 정보</h5>
                                     <div class="multisteps-form__content mt-3">
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">

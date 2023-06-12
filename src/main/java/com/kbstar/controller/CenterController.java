@@ -52,6 +52,9 @@ public class CenterController {
 
         gymService.modify(gym);
 
+        // 이미지 첨부 전 기존 이미지 삭제
+        gymService.deleteImg(gym);
+
         // 센터 이미지 첨부
         MultipartFile[] mf_arr = gym.getGymimg_notdetail();
         if(mf_arr != null) {

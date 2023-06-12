@@ -71,6 +71,9 @@ public class GymService implements KBService<Integer, Gym> {
         return mapper.getmyemail(gymEmail);
     }
 
+    public void deleteImg(Gym gym) {
+        mapper.deleteimg(gym);
+    }
     public void insertImg(Gym gym) {
         mapper.insertimg(gym);
     }
