@@ -25,6 +25,7 @@ public class TicketController {
 
     @Autowired
     TicketService ticketService;
+
     @Autowired
     GymService gymService;
     String dir = "ticket/";
