@@ -15,7 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +62,13 @@ public class ClassController {
     @RequestMapping("/updateimpl")
     public String updateimpl(Model model, Class aclass) throws Exception {
         log.info("=== 클래스 업데이트 진입 ===");
-        classService.modify(aclass);
+        log.info("date를 찍어보자 " + aclass.getClassDate());
+
+        try {
+            classService.modify(aclass);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         return "redirect:/class/all";
     }

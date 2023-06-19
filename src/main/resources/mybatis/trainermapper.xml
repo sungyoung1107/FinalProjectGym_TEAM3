@@ -20,7 +20,7 @@
     </select>
 
     <!-- 운동센터별 트레이너 조회 -->
-    <select id="getmytrainer" resultType="trainer">
+    <select id="getmytrainer" resultType="trainer" parameterType="Integer">
         SELECT * FROM trainer WHERE gymNo=#{gymNo}
     </select>
 

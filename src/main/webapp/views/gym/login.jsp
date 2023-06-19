@@ -47,7 +47,7 @@
               <div class="card-footer text-center pt-0 px-lg-2 px-1">
                 <p class="mb-4 text-sm mx-auto">
                   헬쓱 사장님이 아니시라면?
-                  <a href="/gym/register" class="text-primary text-gradient font-weight-bold">가입하러 가기</a>
+                  <a href="/gym/register_regiimg" class="text-primary text-gradient font-weight-bold">가입하러 가기</a>
                 </p>
               </div>
             </div>
