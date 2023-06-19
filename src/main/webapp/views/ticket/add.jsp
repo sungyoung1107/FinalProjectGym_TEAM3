@@ -94,7 +94,7 @@
                                             </div>
                                             <div class="col-12 col-sm-6">
                                                 <label>모집 인원(총 판매할 개수)</label>
-                                                <input name="ticketTotal" class="multisteps-form__input form-control" type="text" placeholder="숫자로 입력 / eg. 10, 20, 100" />
+                                                <input name="ticketTotal" class="multisteps-form__input form-control" type="number" placeholder="숫자로 입력 / eg. 10, 20, 100" />
                                             </div>
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                 <label>횟수</label>
@@ -176,7 +176,7 @@
                                         </div>
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button" title="Prev">이전</button>
-                                            <button id="ticket_register_btn" class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">제출하기</button>
+                                            <button id="ticket_register_btn" class="btn bg-gradient-dark ms-auto mb-0" type="button" title="Send">등록하기</button>
 <%--                                            <button id="register_btn" type="button" class="btn btn-info">Register</button>--%>
                                         </div>
                                     </div>
