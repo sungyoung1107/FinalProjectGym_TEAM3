@@ -77,8 +77,8 @@
                                                 <label>조인 가능 여부</label>
                                                 <select class="form-control" name="ticketJoin" id="ticketJoin">
                                                     <option value="" selected=""> 선택 </option>
-                                                    <option value="1">1: 가능</option>
-                                                    <option value="0">0: 불가능</option>
+                                                    <option value="1">가능</option>
+                                                    <option value="0">불가능</option>
                                                 </select>
                                             </div>
 
@@ -110,22 +110,22 @@
                                                 <label>운동 종목</label>
                                                 <select class="form-control" name="sportsType" id="sportsType">
                                                     <option value="" selected="" > 선택 </option>
-                                                    <option value="1" >1. 헬스 </option>
-                                                    <option value="2">2. PT</option>
-                                                    <option value="3">3. 크로스핏</option>
-                                                    <option value="4">4. 요가</option>
-                                                    <option value="5">5. 필라테스</option>
-                                                    <option value="6">6. 골프</option>
-                                                    <option value="7">7. 수영</option>
+                                                    <option value="1" >헬스 </option>
+                                                    <option value="2">PT</option>
+                                                    <option value="3">크로스핏</option>
+                                                    <option value="4">요가</option>
+                                                    <option value="5">필라테스</option>
+                                                    <option value="6">골프</option>
+                                                    <option value="7">수영</option>
                                                 </select>
                                             </div>
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                 <label>수업 형태</label>
                                                 <select class="form-control" name="sportsClasstype" id="sportsClasstype">
                                                     <option value="" selected=""> 선택 </option>
-                                                    <option value="1" >1. 1:1 수업</option>
-                                                    <option value="2">2. 그룹 수업</option>
-                                                    <option value="3">3. 자유 </option>
+                                                    <option value="1" >1:1수업</option>
+                                                    <option value="2">그룹수업</option>
+                                                    <option value="3">자유수업</option>
                                                 </select>
                                             </div>
                                         </div>

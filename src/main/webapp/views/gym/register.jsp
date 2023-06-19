@@ -43,6 +43,20 @@
                             </div>
                             <br>
                             <form role="form" id="register_form">
+                                <input type="hidden" name="gymRegiimgname" value="${gymRegiimgname}">
+                                <label>사업자번호</label>
+                                <div class="mb-3 same-height">
+                                    <input type="text" class="form-control" placeholder="OOO-OO-OOOOO"
+                                           aria-label="gymReginumber" name="gymReginumber" id="gymReginumber"
+                                           value="${result.gymReginumber}"
+                                           onkeyup = "formatBusinessNumber(event)">
+                                    <!-- Button trigger modal -->
+                                    <button class="btn btn-outline-primary mb-0" type="button" id="reginum_btn"
+                                            data-bs-toggle="modal">
+                                        <%--                                        data-bs-target="#registernumCheckModal">--%>
+                                        휴폐업 조회
+                                    </button>
+                                </div>
                                 <label>이메일</label>
                                 <div class="input-group mb-3 same-height">
                                     <input type="email" class="form-control" placeholder="Email"
@@ -96,7 +110,7 @@
                                 <div class="mb-3">
                                     <input type="text" class="form-control" placeholder="Center Name"
                                            aria-label="gymName"
-                                           name="gymName" id="gymName">
+                                           name="gymName" id="gymName" value="${result.gymName}">
                                 </div>
                                 <label>우편 번호</label>
                                 <div class="input-group mb-3 same-height">
@@ -127,24 +141,6 @@
                                 <div class="mb-3">
                                     <input type="text" class="form-control" placeholder="- 포함하여 대표 연락처를 입력해주세요"
                                            aria-label="gymPhone" name="gymPhone" id="gymPhone">
-                                </div>
-                                <label>사업자등록증</label>
-                                <div class="mb-3">
-                                    <input type="file" class="form-control" placeholder="사업자등록증 첨부"
-                                           aria-label="gymRegimg"
-                                           name="gymRegimg" id="gymRegimg">
-                                </div>
-                                <label>사업자번호</label>
-                                <div class="mb-3 same-height">
-                                    <input type="text" class="form-control" placeholder="OOO-OO-OOOOO"
-                                           aria-label="gymReginumber" name="gymReginumber" id="gymReginumber"
-                                           onkeyup = "formatBusinessNumber(event)">
-                                    <!-- Button trigger modal -->
-                                    <button class="btn btn-outline-primary mb-0" type="button" id="reginum_btn"
-                                            data-bs-toggle="modal">
-                                        <%--                                        data-bs-target="#registernumCheckModal">--%>
-                                        휴폐업 조회
-                                    </button>
                                 </div>
                                 <label>운동 종목</label>
                                 <div class="mb-3">

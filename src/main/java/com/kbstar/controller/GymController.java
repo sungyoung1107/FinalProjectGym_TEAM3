@@ -3,7 +3,9 @@ package com.kbstar.controller;
 import com.kbstar.dto.Gym;
 import com.kbstar.service.GymService;
 import com.kbstar.util.FileUploadUtil;
+import com.kbstar.util.OCRUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 import java.util.Random;
 
 @Slf4j
@@ -93,6 +96,36 @@ public class GymController {
         return "redirect:/";
     }
 
+    @RequestMapping("/register_regiimg")
+    public String register_regiimg(Model model){
+        model.addAttribute("page", "Register");
+        model.addAttribute("center", dir+"register_regiimg");
+        return "index";
+    }
+
+    @RequestMapping("/register_regiimg_impl")
+    public String register_regiimg_impl(Model model, Gym gym){
+        log.info("============= 진입하였습니다 =============");
+        // 화면에서 이미지를 서버로 올린다.
+        // 이미지를 저장한다. (가입 최종적으로 안되더라도 이미지 올린다. 검증해야지 !!!)
+        FileUploadUtil.saveFile(gym.getGymRegimg(), imgdir);
+        log.info("============== " + gym.getGymRegimg());
+
+        String imgname = gym.getGymRegimg().getOriginalFilename();
+        log.info("============== " + gym.getGymRegimg().getOriginalFilename()); // ============== biz2.jpg
+
+        JSONObject jo = (JSONObject) OCRUtil.getResult(imgdir, imgname);
+        Map result = OCRUtil.getData(jo);
+
+        log.info("=========결과는" + result);
+
+        model.addAttribute("gymRegiimgname", imgname);
+        model.addAttribute("result", result);
+        model.addAttribute("center", dir+"register");
+
+        return "index";
+    }
+
     @RequestMapping("/register")
     public String register(Model model){
         model.addAttribute("page", "Register");
@@ -158,17 +191,13 @@ public class GymController {
     public String registerimpl(Model model, Gym gym, HttpSession session) throws Exception {
 
         try {
-            MultipartFile mf = gym.getGymRegimg(); // gymRegimg
-            String imgname = mf.getOriginalFilename();
-            log.info("===================이미지명은 " + imgname + "=====================");
-            gym.setGymRegiimgname(imgname); // gymRegiimgname 사업자등록증 이미지명(DB 정보)
-            gym.setGymPwd((encoder.encode(gym.getGymPwd())));
+            log.info("===================이미지명은 " + gym.getGymRegiimgname() + "=====================");
+            gym.setGymPwd((encoder.encode(gym.getGymPwd()))); // 비밀번호 set
             // DB 가입
             gymService.register(gym);
             session.setAttribute("logingym", gym);
             session.setAttribute("logingymno",gym.getGymNo()); // 추가
-            // file 저장
-            FileUploadUtil.saveFile(mf, imgdir);
+
         } catch(Exception e){
             throw new Exception("가입오류");
         }

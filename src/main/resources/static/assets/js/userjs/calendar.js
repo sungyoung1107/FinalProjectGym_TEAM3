@@ -98,6 +98,9 @@ function set_time(item) {
     $('#className').val(itemObject.className); // 수업명
     $("#trainerNo").val(itemObject.trainerNo); // 트레이너
     $("#trainerNo option[value='" + itemObject.trainerNo + "']").text(itemObject.trainerName); // 트레이너
+
+    // $("#classDate").val(itemObject.classDate).trigger("change");
+
     $("#classDate").val(itemObject.classDate); // 수업일시
     console.log("====" + itemObject.sportsClasstype + "====" + typeof itemObject.sportsClasstype);
     if (itemObject.sportsClasstype.replace(" ","") === "1") {
@@ -174,6 +177,7 @@ var calendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
     /************************ 추가 지정 *************************/
     eventColor : 'green',
     themeSystem: 'materia',
+
     eventClick : function (info) {
         var eventObj = info.event;
         console.log("로그" + eventObj.title);
