@@ -32,7 +32,14 @@ public class Chart {
     private String gymName;
 
     private Integer total; // 일자별 합계, 월별 합계 등  -----
-    int month; // 월  -----
+    private Integer month; // 월  -----
+    private Integer count;
+    private Integer count_last_month;
+    private Integer count_this_month;
+    private Integer trainerNo;
+    private String trainerName;
+    private String trainerImgname;
+    private Integer rank;
 
 
 
@@ -48,5 +55,35 @@ public class Chart {
         this.gymNo = gymNo;
         this.total = total;
         this.month = month;
+    }
+
+
+    // 트레이너별 지난달 수업 건수
+
+
+    public Chart(Integer gymNo, Integer count, Integer trainerNo, String trainerName) {
+        this.gymNo = gymNo;
+        this.count = count;
+        this.trainerNo = trainerNo;
+        this.trainerName = trainerName;
+    }
+
+    public Chart(Integer gymNo, Integer count_last_month, Integer count_this_month, Integer trainerNo, String trainerName, Integer rank) {
+        this.gymNo = gymNo;
+        this.count_last_month = count_last_month;
+        this.count_this_month = count_this_month;
+        this.trainerNo = trainerNo;
+        this.trainerName = trainerName;
+        this.rank = rank;
+    }
+
+    public Chart(Integer gymNo, Integer count_last_month, Integer count_this_month, Integer trainerNo, String trainerName, String trainerImgname, Integer rank) {
+        this.gymNo = gymNo;
+        this.count_last_month = count_last_month;
+        this.count_this_month = count_this_month;
+        this.trainerNo = trainerNo;
+        this.trainerName = trainerName;
+        this.trainerImgname = trainerImgname;
+        this.rank = rank;
     }
 }
