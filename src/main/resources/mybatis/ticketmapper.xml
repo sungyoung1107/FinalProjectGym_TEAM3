@@ -15,9 +15,12 @@
         INSERT INTO ticket VALUES (ticket_seq.NextVAL, #{gymNo}, #{gymMasterCk}, #{ticketType},
                                    #{ticketMonth}, #{ticketNumber}, #{ticketJoin}, #{ticketTotal},
                                    #{ticketSales}, #{ticketCost}, #{ticketDiscount},
-                                   #{ticketCost} * (1-#{ticketDiscount} / 100), #{ticketImgname}, #{sportsType}, #{sportsClasstype})
+                                   #{ticketCost} * (1 - #{ticketDiscount} / 100), #{ticketImgname},
+                                   #{sportsType}, #{sportsClasstype},
+                                   CASE WHEN #{ticketType} = '1' THEN '기간권 ' || #{ticketMonth} || '개월'
+                                        WHEN #{ticketType} = '2' THEN '횟수권 ' || #{ticketNumber} || '회'
+                                        ELSE '기타' END)
     </insert>
-
 
     <select id="select" parameterType="Integer" resultType="ticket">
         SELECT * FROM ticket WHERE ticketNo=#{ticketNo}
