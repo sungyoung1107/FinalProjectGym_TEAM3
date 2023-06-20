@@ -118,7 +118,7 @@
                             </div>
                             <div class="col-lg-4 mb-lg-0 mb-4">
                                 <div class="card">
-                                    <img src="../assets/img/헬스사진.jpeg" class="w-100 border-radius-lg shadow-sm">
+                                    <img src="../assets/img/health.jpeg" class="w-100 border-radius-lg shadow-sm">
                                 </div>
                             </div>
                         </div>
