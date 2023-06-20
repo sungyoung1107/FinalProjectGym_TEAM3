@@ -31,10 +31,20 @@
     </insert>
     <!-- 수업번호로 업데이트 -->
     <update id="update" parameterType="class">
-        UPDATE class SET className=#{className}, trainerNo=#{trainerNo}, classDate=TO_DATE(#{classDate},'YYYY-MM-DD'), sportsClasstype=#{sportsClasstype},
-                         classStarttime=#{classStarttime}, classEndtime=#{classEndtime}, classMaximum=#{classMaximum},
-                         classJoin=#{classJoin}, classFullbooked=#{classFullbooked}
-                       WHERE classNo=#{classNo}
+        UPDATE class SET
+                         className = #{className},
+                         trainerNo = #{trainerNo},
+                         classDate = TO_DATE(#{classDate},'YYYY-MM-DD'),
+                         sportsClasstype = #{sportsClasstype},
+                         classStarttime = #{classStarttime},
+                         classEndtime = #{classEndtime},
+                         classMaximum = #{classMaximum},
+                         classJoin = #{classJoin},
+                         classFullbooked = CASE
+                                               WHEN #{classJoin} >= #{classMaximum} THEN '1'
+                                               ELSE '0'
+                             END
+        WHERE classNo = #{classNo}
     </update>
     <!-- 수업번호로 삭제 -->
     <delete id="delete" parameterType="class">

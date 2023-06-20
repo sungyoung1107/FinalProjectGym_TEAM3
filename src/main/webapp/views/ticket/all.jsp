@@ -31,7 +31,7 @@
                     <div class="table-responsive">
                         <table class="table table-flush" id="products-list">
                             <thead class="thead-light">
-                            <tr style = "text-align: center">
+                            <tr style="text-align: center">
                                 <%--                                <th>이용권 번호</th>--%>
                                 <th>이용권 종류</th>
                                 <th>개월 수</th>
@@ -44,7 +44,7 @@
                                 <th>판매 가격</th>
                                 <th>운동 종목</th>
                                 <th>수업 형태</th>
-                                <th>수정 및 삭제</th>
+                                <th>삭제</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -53,7 +53,7 @@
                                     <!-- logingym 정보를 기준으로 데이터를 필터링하여 표시 -->
                                     <c:if test="${obj.gymNo == sessionScope.logingym.gymNo}">
                                         <tr style="text-align: center">
-                                                <%--                                            <td>${obj.ticketNo}</td>--%>
+                                            <input type="hidden" value="${obj.ticketNo}" name="ticketNo">
                                             <td>
                                                 <c:choose>
                                                     <c:when test="${obj.ticketType == '1'}">
@@ -145,49 +145,24 @@
                                                     </c:otherwise>
                                                 </c:choose>
                                             </td>
-                                            <td class="d-sm-flex">
-                                                <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip"
-                                                   data-bs-original-title="Edit product">
-                                                    <i class="fas fa-user-edit text-secondary"></i>
-                                                </a>
-                                                <a href="javascript:;" data-bs-toggle="tooltip"
-                                                   data-bs-original-title="Delete product">
-                                                    <i class="fas fa-trash text-secondary"></i>
-                                                </a>
+                                            <td class="text-center">
+                                                <div class="d-flex justify-content-center">
+                                                        <%--                                                <a href="javascript:;" class="mx-3" data-bs-toggle="tooltip"--%>
+                                                        <%--                                                   data-bs-original-title="Edit product">--%>
+                                                        <%--                                                    <i class="fas fa-user-edit text-secondary"></i>--%>
+                                                        <%--                                                </a>--%>
+                                                    <a href="javascript:;" class="deleteButton"
+                                                       data-ticket-no="${obj.ticketNo}" data-toggle="tooltip"
+                                                       data-bs-original-title="이용권 삭제">
+                                                        <i class="fas fa-trash text-secondary"></i>
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     </c:if>
                                 </c:forEach>
                             </c:if>
                             </tbody>
-
-                            <%--                            <c:forEach var ="obj" items="${clist}">--%>
-                            <%--                                <tr>--%>
-                            <%--                                    <td>--%>
-                            <%--                                        <a href="#" data-toggle="modal" data-target="#target${obj.product_id}">--%>
-                            <%--                                            <img id="product_img" src="/uimg/${obj.product_imgname}">--%>
-                            <%--                                        </a>--%>
-                            <%--                                    </td>--%>
-                            <%--                                    <td><a href="/product/detail?id=${obj.product_id}">${obj.product_id}</a></td>--%>
-                            <%--                                    <td>${obj.product_name}</td>--%>
-                            <%--                                    <td><fmt:formatNumber value="${obj.product_price}" type="number" pattern="###,###원"/></td>--%>
-                            <%--                                    <td><fmt:formatDate value="${obj.product_regdate}" pattern="yyyy-MM-dd:hh-mm-ss" /></td>--%>
-                            <%--                                    <td>${obj.category_id}</td>--%>
-                            <%--                                    <td>${obj.category_sub_id}</td>--%>
-                            <%--                                </tr>--%>
-                            <%--                            </c:forEach>--%>
-
-                            <%--                            <tfoot>--%>
-                            <%--                            <tr>--%>
-                            <%--                                <th>Product</th>--%>
-                            <%--                                <th>Category</th>--%>
-                            <%--                                <th>Price</th>--%>
-                            <%--                                <th>SKU</th>--%>
-                            <%--                                <th>Quantity</th>--%>
-                            <%--                                <th>Status</th>--%>
-                            <%--                                <th>Action</th>--%>
-                            <%--                            </tr>--%>
-                            <%--                            </tfoot>--%>
                         </table>
                     </div>
                 </div>
@@ -196,3 +171,28 @@
     </div>
 
 </div>
+
+<script>
+    $(document).on('click', '.deleteButton', function () {
+        var ticketNo = $(this).data('ticket-no');
+        console.log("============" + ticketNo + "==========");
+
+        var confirmation = confirm('티켓을 삭제하시겠습니까?');
+
+        if (confirmation) {
+            $.ajax({
+                url    : '/ticket/deleteimpl',
+                method : 'post',
+                data   : {
+                    ticketNo: ticketNo
+                },
+                success: function (response) {
+                    alert('티켓 삭제 완료');
+                },
+                error  : function () {
+                    alert('티켓 삭제 실패');
+                }
+            });
+        }
+    });
+</script>

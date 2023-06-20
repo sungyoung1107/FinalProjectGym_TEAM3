@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kbstar.mapper.MyScheduleMapper">
+
+    <!-- 수업 수강생들 추출 -->
+    <select id = "getMembers" parameterType="Integer" resultType="mySchedule">
+        select m.*, c.custEmail, c.custName, c.custPhone from myschedule m
+                 left join cust c on m.custNo = c.custNo
+        where classNo = #{classNo}
+    </select>
+
+    <!-- 수업취소(delete 안하고 취소여부만 '1'로 변경 -->
+    <update id="cancelClass" parameterType="mySchedule">
+        update myschedule
+        set
+            SHEDULECANCELED = '1'
+        where classNo=#{classNo}
+    </update>
+
+    <!-- 수업취소하면 고객 예약에서 운동 취소여부를 '여'로 바꿔줌 -->
+    <update id="cancel_update_sheduleCanceled" parameterType="mySchedule">
+        UPDATE mySchedule
+        SET
+            sheduleCanceled = '1'
+        where custNo=#{custNo} and classNo=#{classNo}
+    </update>
+
+    <!-- 수업취소하면 수업정보에 참가인원을 -1 해줌 -->
+    <update id="cancel_update_classJoin" parameterType="mySchedule">
+        UPDATE class
+        SET
+            classJoin = classJoin - 1,
+            classFullbooked = CASE WHEN classJoin - 1 >= classMaximum THEN '1' ELSE '0'
+            END
+        WHERE classNo = #{classNo}
+    </update>
+
+    <!-- 수업취소하면 구매 이용권에 사용횟수를 -1 해줌 -->
+    <update id="cancel_update_usedCnt" parameterType="mySchedule">
+        UPDATE purchase
+        SET
+            usedCnt = usedCnt - 1,
+            ticketEx = CASE WHEN ticketEx - 1 >= ticketNumber THEN '1' ELSE '0'
+                END
+        WHERE purchaseNo = #{purchaseNo}
+    </update>
+
+    <!-- 운동완료 '1'로 업데이트 -->
+    <update id="update_completed_1" parameterType="Integer">
+        UPDATE mySchedule
+        SET schedulecompleted = '1'
+        WHERE myscheduleNo = #{myscheduleNo}
+    </update>
+
+    <!-- 운동완료 '0'로 업데이트 -->
+    <update id="update_completed_0" parameterType="Integer">
+        UPDATE mySchedule
+        SET schedulecompleted = '0'
+        WHERE myscheduleNo = #{myscheduleNo}
+    </update>
+
+
+</mapper>
