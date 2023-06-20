@@ -15,7 +15,7 @@
 <!--    ORDER BY 1;-->
 
 <!--    센터별 일자별 매출 합계    -->
-    <select id="selectDailyTotal" resultType="purchase">
+    <select id="selectDailyTotal" resultType="chart">
         SELECT gymno,
                purchasedate,
                SUM(purchaseprice) AS total
@@ -26,7 +26,8 @@
 
 <!--    센터별 월별 매출 합계    -->
 
-    <select id="selectMonthlyTotal" resultType="purchase">
+    <!--    센터별 월별 이용권 구매 금액 총합-->
+    <select id="selectMonthlyTotal" resultType="chart">
         SELECT gymno,
                TO_CHAR(purchasedate, 'MM') As month,
                SUM(purchaseprice) AS total
@@ -35,5 +36,122 @@
         ORDER BY 1
     </select>
 
+    <!--    센터별 어제 이용권 구매 금액 총합-->
+    <select id="selectSumYesterday" parameterType="Integer" resultType="Integer">
+        SELECT SUM(purchaseprice) AS total
+        FROM purchase
+        WHERE TO_CHAR(purchasedate, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 3, 'YYYY-MM-DD') AND gymNo = #{gymNo}
+    </select>
+
+    <!--    센터별 오늘 이용권 구매 금액 총합-->
+    <select id="selectSumToday" parameterType="Integer" resultType="Integer">
+        SELECT SUM(purchaseprice) AS total
+        FROM purchase
+        WHERE TO_CHAR(purchasedate, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD') AND gymNo = #{gymNo}
+    </select>
+
+    <!--    센터별 전일 방문 고객 수-->
+    <select id="selectCSumYesterday" parameterType="Integer" resultType="Integer">
+        SELECT COUNT(m.custNo) AS count
+        FROM myschedule m
+            LEFT JOIN class c ON m.classNo = c.classNo
+        WHERE c.gymNo = #{gymNo} AND TO_CHAR(c.classDate, 'YYYY-MM-DD') = TO_CHAR(SYSDATE-1, 'YYYY-MM-DD')
+    </select>
+
+    <!--    센터별 당일 방문 고객 수(오늘 수업 예약한 사람 수)-->
+    <select id="selectCSumToday" parameterType="Integer" resultType="Integer">
+        SELECT COUNT(m.custNo) AS count
+        FROM myschedule m
+        LEFT JOIN class c ON m.classNo = c.classNo
+        WHERE c.gymNo = #{gymNo} AND TO_CHAR(c.classDate, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+    </select>
+
+    <!--  트레이너별 지난달, 이번달 수업 건수-->
+    <select id="selectSumTrainer" parameterType="Integer" resultType="chart">
+        SELECT
+            RANK() OVER (ORDER BY COUNT(c.trainerNo) DESC) AS rank,
+            c.trainerNo,
+            c.gymNo,
+            t.trainerName,
+            t.trainerImgname,
+            COUNT(CASE WHEN TO_CHAR(c.classDate, 'YYYY-MM') = TO_CHAR(ADD_MONTHS(SYSDATE, 0), 'YYYY-MM') THEN c.trainerNo END) AS count_this_month,
+            (
+                SELECT COUNT(c2.trainerNo)
+                FROM class c2
+                WHERE c2.trainerNo = c.trainerNo
+                  AND TO_CHAR(c2.classDate, 'YYYY-MM') = TO_CHAR(ADD_MONTHS(SYSDATE, -1), 'YYYY-MM')
+            ) AS count_last_month
+        FROM
+            class c
+                LEFT JOIN trainer t ON c.trainerNo = t.trainerNo
+        WHERE
+            c.trainerNo = c.trainerNo
+            AND c.gymNo = #{gymNo}
+            AND (TO_CHAR(c.classDate, 'YYYY-MM') = TO_CHAR(ADD_MONTHS(SYSDATE, 0), 'YYYY-MM')
+            OR TO_CHAR(c.classDate, 'YYYY-MM') = TO_CHAR(ADD_MONTHS(SYSDATE, -1), 'YYYY-MM'))
+        GROUP BY
+            c.trainerNo,
+            c.gymNo,
+            t.trainerName,
+            t.trainerImgname
+        ORDER BY
+            rank
+    </select>
+
+
+
+
+
+
+
+<!--    월별 센터 매출 합계 -->
+    <select id="getMonthlyTotal" parameterType="Integer" resultType="chart">
+        SELECT TO_NUMBER(TO_CHAR(purchaseDate, 'MM')) AS month,
+                SUM(purchaseprice) AS total
+        FROM
+
+    </select>
+
+<!--    SELECT gymno,-->
+<!--    TO_CHAR(purchasedate, 'MM') As month,-->
+<!--    SUM(purchaseprice) AS total-->
+<!--    FROM purchase-->
+<!--    GROUP BY gymno, TO_CHAR(purchasedate, 'MM')-->
+<!--    ORDER BY 1-->
+
+<!--    <select id="getMonthlyTotal" resultType="chart">-->
+<!--        <![CDATA[-->
+<!--        SELECT TO_NUMBER(TO_CHAR(rdate, 'MM')) AS month,-->
+<!--                gender,-->
+<!--                SUM(price) AS total-->
+<!--        FROM sales-->
+<!--        GROUP BY TO_CHAR(rdate, 'MM'), gender-->
+<!--        ORDER BY 1-->
+<!--        ]]>-->
+<!--    </select>-->
 
 </mapper>
+
+
+        <!--  트레이너별 지난달 수업 건수-->
+        <!--    <select id="selectSumTrainer" parameterType="Integer" resultType="Integer">-->
+<!--                SELECT COUNT(c.trainerNo) AS count-->
+<!--                FROM class c-->
+<!--                WHERE c.trainerNo = #{trainerNo} AND TO_CHAR(c.classDate, 'YYYY-MM') = TO_CHAR(ADD_MONTHS(SYSDATE, -1), 'YYYY-MM')-->
+        <!--    </select>-->
+        <!--    <select id="selectSumTrainer" resultType="chart">-->
+        <!--        SELECT RANK() OVER (ORDER BY COUNT(c.trainerNo) DESC) AS rank, c.trainerNo, c.gymNo, t.trainerName, COUNT(c.trainerNo) AS count-->
+        <!--        FROM myschedule m-->
+        <!--            LEFT JOIN class c ON m.classNo = c.classNo-->
+        <!--            LEFT JOIN trainer t ON c.trainerNo = t.trainerNo-->
+        <!--        WHERE TO_CHAR(c.classDate, 'YYYY-MM') = TO_CHAR(SYSDATE, 'YYYY-MM')-->
+        <!--        GROUP BY c.trainerNo, c.gymNo, t.trainerName-->
+        <!--        ORDER BY RANK-->
+        <!--    </select>-->
+        <!--  트레이너별 이번달 예약 건수(myschedule 테이블과 조인해서 가져옴) -->
+        <!--    <select id="selectSumTrainerM" parameterType="Integer" resultType="Integer">-->
+        <!--        SELECT COUNT(c.trainerNo) AS count-->
+        <!--        FROM myschedule m-->
+        <!--            LEFT JOIN class c ON m.classNo = c.classNo-->
+        <!--        WHERE c.trainerNo = #{trainerNo} AND TO_CHAR(c.classDate, 'YYYY-MM') = TO_CHAR(SYSDATE, 'YYYY-MM')-->
+        <!--    </select>-->

@@ -13,4 +13,18 @@ public interface ChartMapper {
     List<Chart> selectDailyTotal();
     List<Chart> selectMonthlyTotal();
 
+    Integer selectSumYesterday(Integer gymNo);
+
+    Integer selectSumToday(Integer gymNo);
+
+    Integer selectCSumYesterday(Integer gymNo);
+
+    Integer selectCSumToday(Integer gymNo);
+
+    List<Chart> selectSumTrainer(Integer gymNo);
+
+    Integer selectSumTrainerM(Integer trainerNo);
+
+
+
 }
