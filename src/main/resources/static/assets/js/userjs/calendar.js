@@ -103,10 +103,10 @@ function set_time(item) {
 
     $("#classDate").val(itemObject.classDate); // 수업일시
     console.log("====" + itemObject.sportsClasstype + "====" + typeof itemObject.sportsClasstype);
-    if (itemObject.sportsClasstype.replace(" ","") === "1") {
+    if (itemObject.sportsClasstype.replace(" ", "") === "1") {
         $("#sportsClasstype").val("1");
         $("#sportsClasstype option[value='1']").text("1:1수업");
-    } else if (itemObject.sportsClasstype.replace(" ","")  === "2") {
+    } else if (itemObject.sportsClasstype.replace(" ", "") === "2") {
         $("#sportsClasstype").val("2");
         $("#sportsClasstype option[value='2']").text("그룹수업");
     } else {
@@ -121,7 +121,203 @@ function set_time(item) {
 
     // classNo set
     $("#classNo").val(itemObject.classNo); // classNo
+
+    let classNo = itemObject.classNo;
+
+    // classNo를 보내서 수강생을 가져온다.
+    loadStudents(classNo);
+
 }
+
+// Ajax 요청을 보내고 수강생 정보를 받아온 후 처리하는 함수
+function loadStudents(classNo) {
+    $.ajax({
+        url     : '/class/getMembers', // 수강생 정보를 반환하는 엔드포인트 URL을 입력하세요
+        method  : 'GET',
+        dataType: 'json',
+        data    : {
+            classNo: classNo
+        },
+        success : function (response) {
+            console.log(response);
+
+            // 서버로부터 수강생 정보를 성공적으로 받아왔을 때 처리하는 로직
+            var students = response;
+
+            // 테이블의 tbody 선택자를 사용하여 수강생 정보를 추가
+            var tbody = $('#datatable-search tbody');
+            tbody.empty(); // 기존 데이터를 삭제
+
+            // 각 수강생 정보를 순회하면서 테이블에 추가합니다.
+            for (var i = 0; i < students.length; i++) {
+                var student = students[i];
+
+                // 테이블 행을 생성합니다.
+                var row = $('<tr>');
+
+                // 이메일 열을 생성하고 데이터를 추가합니다.
+                var emailColumn = $('<td>');
+                var emailDiv = $('<div>').addClass('d-flex align-items-center');
+                var emailCheckbox = $('<input>')
+                    .addClass('form-check-input')
+                    .attr('type', 'checkbox')
+                    .attr('id', 'customCk')
+                    .attr('name', 'customCk');
+                var emailText = $('<p>')
+                    .addClass('text-xs font-weight-bold ms-2 mb-0')
+                    .attr('id', 'custEmail')
+                    .attr('name', 'custEmail')
+                    .text(student.custEmail);
+                emailDiv.append(emailCheckbox, emailText);
+                emailColumn.append(emailDiv);
+                row.append(emailColumn);
+
+                // 이름 열을 생성하고 데이터를 추가합니다.
+                var nameColumn = $('<td>').addClass('text-xs font-weight-bold');
+                var nameDiv = $('<div>').addClass('d-flex align-items-center');
+                var nameText = $('<span>')
+                    .attr('id', 'custName')
+                    .attr('name', 'custName')
+                    .text(student.custName);
+                nameDiv.append(nameText);
+                nameColumn.append(nameDiv);
+                row.append(nameColumn);
+
+                // 휴대폰번호 열을 생성하고 데이터를 추가합니다.
+                var phoneColumn = $('<td>').addClass('text-xs font-weight-bold');
+                var phoneDiv = $('<div>').addClass('d-flex align-items-center');
+                var phoneText = $('<span>')
+                    .attr('id', 'custPhone')
+                    .attr('name', 'custPhone')
+                    .text(student.custPhone);
+                phoneDiv.append(phoneText);
+                phoneColumn.append(phoneDiv);
+                row.append(phoneColumn);
+
+                // 운동완료여부 열을 생성하고 데이터를 추가합니다.
+                var statusColumn = $('<td>').addClass('text-xs font-weight-bold')
+                    .css('display', 'flex')
+                    .css('justify-content', 'space-between')
+                    .css('align-items', 'center');
+                var statusDiv1 = $('<div>').css('display', 'flex')
+                    .css('justify-content', 'flex-start')
+                    .css('align-items', 'center');
+                var statusText = $('<span>')
+                    .attr('id', 'sportsCk')
+                    .attr('name', 'sportsCk')
+                    .text(student.scheduleCompleted === '0' ? '부' : '여');
+                // var successButton = $('<button>')
+                //     .attr('type', 'button')
+                //     .addClass('btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center')
+                    // .html('<i class="fas fa-check" aria-hidden="true"></i>');
+                // statusDiv1.append(statusText, successButton);
+                statusDiv1.append(statusText);
+
+                var statusDiv2 = $('<div>').css('display', 'flex')
+                    .css('justify-content', 'flex-start')
+                    .css('align-items', 'center');
+                var completeButton = $('<button>')
+                    .attr('type', 'button')
+                    .addClass('btn btn-outline-success btn-sm completeButton')
+                    .text('완료')
+                    .css('margin-right', '8px');
+                var cancelButton = $('<button>')
+                    .attr('type', 'button')
+                    .addClass('btn btn-outline-dark btn-sm cancelButton')
+                    .text('취소');
+                statusDiv2.append(completeButton, cancelButton);
+
+                statusColumn.append(statusDiv1, statusDiv2);
+                row.append(statusColumn);
+
+                // 예약취소내역 열을 생성하고 데이터를 추가합니다.
+                var cancelColumn = $('<td>').addClass('text-xs font-weight-bold');
+                var cancelDiv = $('<div>').css('display', 'flex')
+                    .css('justify-content', 'space-between');
+                var cancelText = $('<span>')
+                    .addClass('my-2 text-xs')
+                    .attr('id', 'cancelCk')
+                    .attr('name', 'cancelCk')
+                    .css('margin-right', 'auto')
+                    .text(student.sheduleCanceled === '0' ? '부' : '여');
+                // var cancelButton2 = $('<button>')
+                //     .attr('type', 'button')
+                //     .addClass('btn btn-outline-danger btn-sm')
+                //     .text('예약취소');
+                // cancelDiv.append(cancelText, cancelButton2);
+                cancelDiv.append(cancelText);
+                cancelColumn.append(cancelDiv);
+                row.append(cancelColumn);
+
+                // myscheduleNo hidden으로 추가
+                var myscheduleNoInput = $('<input>')
+                    .attr('type', 'hidden')
+                    .attr('name', 'myscheduleNo')
+                    .val(student.myscheduleNo);
+                row.append(myscheduleNoInput);
+
+                // 테이블에 행을 추가합니다.
+                tbody.append(row);
+            }
+        },
+        error   : function () {
+            // Ajax 요청이 실패한 경우 처리하는 로직
+            console.log('실패');
+        }
+    });
+}
+
+// 운동완료 버튼 클릭
+$(document).on('click', '.completeButton', function() {
+    console.log("운동 완료 버튼이 클릭되었습니다");
+    var row = $(this).closest('tr');
+    var myscheduleNo = row.find('input[name="myscheduleNo"]').val();
+
+    $.ajax({
+        url: '/class/update_completed_1',
+        method: 'get',
+        data: {
+            myscheduleNo: myscheduleNo
+        },
+        success: function(response) {
+            if (response === "success") {
+                alert('운동 완료 업데이트 성공');
+                window.location.href = '/class/all';
+            } else {
+                alert('운동 완료 업데이트 실패');
+            }
+        },
+        error: function() {
+            alert('운동 완료 업데이트 실패');
+        }
+    });
+});
+
+// 운동완료취소 버튼 클릭
+$(document).on('click', '.cancelButton', function() {
+    console.log("운동 완료 취소 버튼이 클릭되었습니다");
+    var row = $(this).closest('tr');
+    var myscheduleNo = row.find('input[name="myscheduleNo"]').val();
+
+    $.ajax({
+        url: '/class/update_completed_0',
+        method: 'get',
+        data: {
+            myscheduleNo: myscheduleNo
+        },
+        success: function(response) {
+            if (response === "success") {
+                alert('운동 완료 취소 업데이트 성공');
+                window.location.href = '/class/all';
+            } else {
+                alert('운동 완료 취소 업데이트 실패');
+            }
+        },
+        error: function() {
+            alert('운동 완료 취소 업데이트 실패');
+        }
+    });
+});
 
 // 스크롤 안됨. 나중에 해결하기 //
 // var classDetailDiv = $("#class_detail");
@@ -193,7 +389,7 @@ var calendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
             info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
         } else {
             // alert('Clicked ' + eventObj.title);
-            alert("["+eventObj.title+"]"+" 날짜를 선택하고 오른쪽 수업 일정표에서 수업시간을 선택해주세요")
+            alert("[" + eventObj.title + "]" + " 날짜를 선택하고 오른쪽 수업 일정표에서 수업시간을 선택해주세요")
         }
     },
     eventAdd   : function (obj) { // 이벤트가 추가되면 발생하는 이벤트
@@ -228,7 +424,7 @@ var calendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
             let arr = data;
             let html = '';
 
-            $(arr).each(function(index, item) {
+            $(arr).each(function (index, item) {
                 console.log(item);
                 var itemString = JSON.stringify(item); // 직렬화
                 console.log("json 문자열 확인: " + itemString); // 직렬화 확인

@@ -56,6 +56,12 @@ public class TicketController {
         return "redirect:/";
     }
 
+    @RequestMapping("/deleteimpl")
+    public String addimpl(Model model, Integer ticketNo) throws Exception {
+        ticketService.remove(ticketNo);
+        return "redirect:/ticket/all";
+    }
+
 
     @RequestMapping("/all")
     public String all(Model model, HttpSession session) throws Exception {

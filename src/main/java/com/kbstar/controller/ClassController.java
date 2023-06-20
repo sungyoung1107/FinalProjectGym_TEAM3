@@ -1,9 +1,11 @@
 package com.kbstar.controller;
 
 import com.kbstar.dto.Gym;
+import com.kbstar.dto.MySchedule;
 import com.kbstar.dto.Trainer;
 import com.kbstar.dto.Class;
 import com.kbstar.service.ClassService;
+import com.kbstar.service.MyScheduleService;
 import com.kbstar.service.TrainerService;
 import com.kbstar.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -33,22 +35,23 @@ public class ClassController {
     TrainerService trainerService;
     @Autowired
     ClassService classService;
+    @Autowired
+    MyScheduleService myScheduleService;
 
     @RequestMapping("/add")
-    public String add(Model model){
+    public String add(Model model) {
         model.addAttribute("page", "Class Register");
-        model.addAttribute("center", dir+"add");
+        model.addAttribute("center", dir + "add");
         return "index";
     }
 
     @RequestMapping("/gettrainer")
     @ResponseBody
-    public List<Trainer>  gettrainer(Model model, Integer gymNo) throws Exception {
+    public List<Trainer> gettrainer(Model model, Integer gymNo) throws Exception {
         List<Trainer> trainerlist = null;
         trainerlist = trainerService.getMytrainer(gymNo);
         return trainerlist;
     }
-
 
 
     @RequestMapping("/addimpl")
@@ -66,7 +69,7 @@ public class ClassController {
 
         try {
             classService.modify(aclass);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -82,9 +85,9 @@ public class ClassController {
     }
 
     @RequestMapping("/all")
-    public String all(Model model){
+    public String all(Model model) {
         model.addAttribute("page", "Class Calender"); // 캘린더
-        model.addAttribute("center", dir+"all"); // 캘린더
+        model.addAttribute("center", dir + "all"); // 캘린더
         return "index";
     }
 
@@ -127,7 +130,7 @@ public class ClassController {
                 jo.put("classDate", obj.getClassDate());
                 jo.put("classStarttime", obj.getClassStarttime());
                 jo.put("classEndtime", obj.getClassEndtime());
-                jo.put("classTime", obj.getClassStarttime()+"~"+obj.getClassEndtime());
+                jo.put("classTime", obj.getClassStarttime() + "~" + obj.getClassEndtime());
                 jo.put("classMaximum", obj.getClassMaximum());
                 jo.put("classJoin", obj.getClassJoin());
                 jo.put("classFullbooked", obj.getClassFullbooked());
@@ -161,23 +164,74 @@ public class ClassController {
             // Java Object ---> JSON
             // JSON(JavaScript Object Notation)
             // [{},{},{},...]
-            for(Class obj:list){
+            for (Class obj : list) {
                 JSONObject jo = new JSONObject();
 
-                jo.put("title",obj.getClassName());
+                jo.put("title", obj.getClassName());
                 jo.put("start", DateUtil.getDateStr(obj.getClassDate()) + "T" + DateUtil.getTimeStr(obj.getClassStarttime()));
                 jo.put("end", DateUtil.getDateStr(obj.getClassDate()) + "T" + DateUtil.getTimeStr(obj.getClassEndtime()));
 
-                if(obj.getClassFullbooked().equals("1")){ // 수업 마감시 빨간색
-                    jo.put("className","bg-gradient-danger");
-                }else {
-                    jo.put("className","bg-gradient-success"); // 마감 안되었으면 초록색
+                if (obj.getClassFullbooked().equals("1")) { // 수업 마감시 빨간색
+                    jo.put("className", "bg-gradient-danger");
+                } else {
+                    jo.put("className", "bg-gradient-success"); // 마감 안되었으면 초록색
                 }
 //                jo.put("url",obj.getUrl());
                 ja.add(jo);
             }
         }
         return ja;
+    }
+
+    @RequestMapping("/getMembers")
+    @ResponseBody
+    public Object getMembers(Model model, Integer classNo) throws Exception {
+
+        List<MySchedule> myClassmembers = null;
+        JSONArray ja = new JSONArray();
+
+        myClassmembers = myScheduleService.getMembers(classNo);
+
+        for (MySchedule mySchedule : myClassmembers){
+            JSONObject jo = new JSONObject();
+            jo.put("myscheduleNo", mySchedule.getMyscheduleNo());
+            jo.put("classNo", mySchedule.getClassNo());
+            jo.put("scheduleCompleted", mySchedule.getScheduleCompleted());
+            jo.put("sheduleCanceled", mySchedule.getSheduleCanceled());
+            jo.put("custNo", mySchedule.getCustNo());
+            jo.put("custEmail", mySchedule.getCustEmail());
+            jo.put("custName", mySchedule.getCustName());
+            jo.put("custPhone", mySchedule.getCustPhone());
+            ja.add(jo);
+        }
+
+        return ja;
+    }
+
+    // 운동완료여부 여로
+    @RequestMapping("/update_completed_1")
+    @ResponseBody
+    public String update_completed_1(Model model, Integer myscheduleNo) throws Exception {
+
+        try {
+            myScheduleService.update_completed_1(myscheduleNo);
+            return "success"; // Return "success" if the update is successful
+        } catch (Exception e) {
+            return "fail"; // Handle error if the update fails
+        }
+    }
+
+    // 운동완료여부 부로
+    @RequestMapping("/update_completed_0")
+    @ResponseBody
+    public String update_completed_0(Model model, Integer myscheduleNo) throws Exception {
+
+        try {
+            myScheduleService.update_completed_0(myscheduleNo);
+            return "success"; // Return "success" if the update is successful
+        } catch (Exception e) {
+            return "fail"; // Handle error if the update fails
+        }
     }
 
 }
