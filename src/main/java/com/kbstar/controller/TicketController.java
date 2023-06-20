@@ -77,7 +77,7 @@ public class TicketController {
 
         Gym gym = (Gym) session.getAttribute("logingym");
         list = ticketService.get();
-        model.addAttribute("clist", list);
+        model.addAttribute("tlist", list);
         session.setAttribute("logingym", gym);
         model.addAttribute("page", "Ticket");
         model.addAttribute("center", dir+"all");
