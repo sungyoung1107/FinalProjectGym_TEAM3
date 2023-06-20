@@ -4,8 +4,23 @@
 <script>
   // assets > js > userjs > login.js
   $(document).ready(function () {
-    login_form.init();
+    login_admin_form.init();
   });
+
+  let login_admin_form = {
+    init: function () {
+      $('#login_admin_btn').click(function () {
+        login_admin_form.send();
+      });
+    },
+    send: function () {
+      $('#login_admin_form').attr({
+        'action': '/admin/loginimpl',
+        'method': 'post'
+      });
+      $('#login_admin_form').submit();
+    }
+  }
 </script>
 
 <main class="main-content  mt-0">
@@ -16,42 +31,23 @@
           <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
             <div class="card card-plain">
               <div class="card-header pb-0 text-start">
-                <h4 class="font-weight-bolder">로그인</h4>
-                <p class="mb-0">헬쓱 사장님 환영합니다.</p>
+                <h4 class="font-weight-bolder">관리자 로그인</h4>
+                <p class="mb-0">헬쓱 사장님은 일반 로그인 화면을 이용해주세요</p>
               </div>
               <div class="card-body">
-                <form role="form" id="login_form">
+                <form role="form" id="login_admin_form">
                   <div class="mb-3">
-                    <input type="email" class="form-control form-control-lg" placeholder="Email" aria-label="gymEmail"
-                           name="gymEmail" id="gymEmail">
+                    <input type="text" class="form-control form-control-lg" placeholder="adminId" aria-label="adminId"
+                           name="adminId" id="adminId">
                   </div>
                   <div class="mb-3">
-                    <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="gymPwd"
-                           name="gymPwd" id="gymPwd">
-                  </div>
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="rememberMe">
-                    <label class="form-check-label" for="rememberMe">기억하기</label>
-                  </div>
-                  <div>
-                    <p class="text-sm mx-auto text-right">
-                      비밀번호를 잊어버리셨다면?
-                      <a href="/gym/forgotPwd" class="text-dark text-gradient font-weight-bold">비밀번호 찾기</a>
-                    </p>
+                    <input type="password" class="form-control form-control-lg" placeholder="adminPwd" aria-label="adminPwd"
+                           name="adminPwd" id="adminPwd">
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-0 mb-0" id="login_btn">로그인</button>
+                    <button type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-0 mb-0" id="login_admin_btn">로그인</button>
                   </div>
                 </form>
-              </div>
-              <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                <p class="mb-4 text-sm mx-auto">
-                  헬쓱 사장님이 아니시라면?
-                  <a href="/gym/register_regiimg" class="text-primary text-gradient font-weight-bold">가입하러 가기</a>
-                </p>
-              </div>
-              <div style="text-align: right;">
-                <a href="/admin/login" class="me-0 text-sm mx-auto">관리자 로그인</a>
               </div>
             </div>
           </div>
