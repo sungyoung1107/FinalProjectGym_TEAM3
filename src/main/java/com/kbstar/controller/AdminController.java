@@ -32,7 +32,7 @@ public class AdminController {
         return "index";
     }
 
-    @RequestMapping("/loginimpl")
+    @RequestMapping("/loginimpl") ///
     public String loginimpl(Model model, String adminId, String adminPwd,
                             HttpSession session, String redirectURL) throws Exception {
         Admin admin = null;
