@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kbstar.mapper.CouponMapper">
+
+    <!-- 유효기간 1년으로 하고 나중에 2개월로 바꿀거임 -->
+    <!-- couponUsed, custNo -->
+    <select id="insert" parameterType="Coupon">
+        INSERT INTO coupon (
+            couponNo, adminId, couponRate, couponIsdate,
+            couponExdate, couponName
+        )
+        VALUES (
+                   coupon_seq.NextVAL,, #{couponRate}, sysdate,
+                   sysdate + 365,
+                   #{couponName} #{adminId}
+               )
+    </select>
+
+    <select id="selectall" resultType="coupon">
+        SELECT * FROM coupon
+    </select>
+
+    <!-- 월급날 운동 완료된 custNo 중 당일 coupon 발송 내역이 없는 고객 추출 -->
+    <select id="getCouponcust" resultType="coupon">
+        select t.custNo, cu.custName
+        from ( SELECT DISTINCT m.custNo
+        FROM mySchedule m
+                 JOIN class c ON m.classNo = c.classNo
+                 LEFT JOIN coupon cp ON m.custNo = cp.custNo
+        WHERE m.sheduleCanceled = '0' AND m.scheduleCompleted = '1'
+          AND (EXTRACT(DAY FROM c.classDate) = 21
+            OR EXTRACT(DAY FROM c.classDate) = 25
+            OR EXTRACT(DAY FROM c.classDate) = 10)
+          AND (cp.sendDate IS NULL)) t
+        LEFT JOIN cust cu on t.custNo = cu.custNo
+    </select>
+
+    <!-- , m.myscheduleNo, m.classNo, m.purchaseNo, m.scheduleCompleted, m.sheduleCanceled -->
+    <!-- , c.classDate, c.classStarttime, c.classEndtime, cp.couponNo, cp.couponName -->
+    <!-- , cp.couponRate, cp.couponIsdate, cp.couponExdate, cp.couponused, cp.sendDate -->
+
+    <!-- 쿠폰이 발송되면 쿠폰 발송일자로부터 만료일자가 재계산 -->
+    <select id="update" parameterType="coupon">
+        UPDATE coupon
+        SET sendDate = SYSDATE,
+            custNo = #{custNo},
+            couponExdate = ADD_MONTHS(SYSDATE, 2)
+        WHERE couponNo = (
+            SELECT couponNo
+            FROM (
+                     SELECT couponNo
+                     FROM coupon
+                     WHERE sendDate IS NULL
+                     ORDER BY couponNo ASC
+                 )
+            WHERE ROWNUM = 1
+        )
+    </select>
+</mapper>

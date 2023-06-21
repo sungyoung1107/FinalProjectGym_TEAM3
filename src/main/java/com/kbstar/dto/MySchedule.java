@@ -45,4 +45,16 @@ public class MySchedule {
     private String custEmail;
     private String custName;
     private String custPhone;
+
+    // 쿠폰 발송 위해
+    private Integer couponNo;
+    private String adminId;
+    private Double couponRate;
+    private String couponIsdate;
+    private String couponExdate;
+    private String couponUsed;
+//    private Integer custNo;
+    private String couponName;
+    private Integer couponAmount; // db는 없음 for문 돌리기 위함
+    private String sendDate;
 }

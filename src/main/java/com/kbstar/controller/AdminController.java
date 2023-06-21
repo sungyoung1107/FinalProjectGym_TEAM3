@@ -60,4 +60,12 @@ public class AdminController {
     }
 
 
+    @RequestMapping("/logoutimpl")
+    public String logoutimpl(HttpSession session){
+        if(session != null){
+            session.invalidate();
+        }
+        return "redirect:/";
+    }
+
 }
