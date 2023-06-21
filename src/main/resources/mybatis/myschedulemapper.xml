@@ -62,5 +62,4 @@
         WHERE myscheduleNo = #{myscheduleNo}
     </update>
 
-
 </mapper>

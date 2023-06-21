@@ -18,8 +18,9 @@ public class Coupon {
     private String couponUsed;
     private Integer custNo;
     private String couponName;
-
-    private Integer couponAmount;
+    private Integer couponAmount; // db는 없음 for문 돌리기 위함
     private String sendDate;
+
+    private String custName;
 
 }

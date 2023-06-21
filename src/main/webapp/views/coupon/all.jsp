@@ -36,7 +36,7 @@
                                 <th>발송일자</th>
                                 <th>발송고객번호</th>
                                 <th>사용여부</th>
-                                <th>개별발송</th>
+<%--                                <th>개별발송</th>--%>
                             </tr>
                             </thead>
                             <tbody>
@@ -72,9 +72,7 @@
                                             ${obj.sendDate}
                                     </td>
                                     <td class="text-sm">
-                                    <td class="text-sm">
-                                        <input type="number" value="${obj.custNo}" placeholder="" name="custNo" id="custNo" class="form-control">
-                                    </td>
+                                        ${obj.custNo}
                                     </td>
                                     <td class="text-sm">
                                         <c:choose>
@@ -86,15 +84,15 @@
                                             </c:otherwise>
                                         </c:choose>
                                     </td>
-                                    <td class="text-center">
-                                        <div class="d-flex justify-content-center">
-                                            <a href="javascript:;" class="sendButton"
-                                               data-coupon-no="${obj.couponNo}" data-toggle="tooltip"
-                                               data-bs-original-title="발송">
-                                                <i class="ni ni-send"></i>
-                                            </a>
-                                        </div>
-                                    </td>
+<%--                                    <td class="text-center">--%>
+<%--                                        <div class="d-flex justify-content-center">--%>
+<%--                                            <a href="javascript:;" class="sendButton"--%>
+<%--                                               data-coupon-no="${obj.couponNo}" data-toggle="tooltip"--%>
+<%--                                               data-bs-original-title="발송">--%>
+<%--                                                <i class="ni ni-send"></i>--%>
+<%--                                            </a>--%>
+<%--                                        </div>--%>
+<%--                                    </td>--%>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -107,30 +105,30 @@
 
 </div>
 
-<script>
-    $(document).on('click', '.sendButton', function () {
-        var couponNo = $(this).data('coupon-no');
-        var custNo = $(this).closest('tr').find('#custNo').val(); // Get the custNo value from the input field
-        console.log("============" + couponNo + "==========");
-        console.log("============" + custNo + "==========");
+<%--<script>--%>
+<%--    $(document).on('click', '.sendButton', function () {--%>
+<%--        var couponNo = $(this).data('coupon-no');--%>
+<%--        var custNo = $(this).closest('tr').find('#custNo').val(); // Get the custNo value from the input field--%>
+<%--        console.log("============" + couponNo + "==========");--%>
+<%--        console.log("============" + custNo + "==========");--%>
 
-        var confirmation = confirm('쿠폰을 전송하시겠습니까?');
+<%--        var confirmation = confirm('쿠폰을 전송하시겠습니까?');--%>
 
-        if (confirmation) {
-            $.ajax({
-                url    : '/coupon/sendimpl',
-                method : 'post',
-                data   : {
-                    couponNo: couponNo,
-                    custNo: custNo
-                },
-                success: function (response) {
-                    alert('티켓 전송 완료');
-                },
-                error  : function () {
-                    alert('티켓 전송 실패');
-                }
-            });
-        }
-    });
-</script>
+<%--        if (confirmation) {--%>
+<%--            $.ajax({--%>
+<%--                url    : '/coupon/sendimpl',--%>
+<%--                method : 'post',--%>
+<%--                data   : {--%>
+<%--                    couponNo: couponNo,--%>
+<%--                    custNo: custNo--%>
+<%--                },--%>
+<%--                success: function (response) {--%>
+<%--                    alert('티켓 전송 완료');--%>
+<%--                },--%>
+<%--                error  : function () {--%>
+<%--                    alert('티켓 전송 실패');--%>
+<%--                }--%>
+<%--            });--%>
+<%--        }--%>
+<%--    });--%>
+<%--</script>--%>

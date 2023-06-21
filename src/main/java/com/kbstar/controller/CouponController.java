@@ -5,6 +5,7 @@ import com.kbstar.dto.Coupon;
 import com.kbstar.dto.Gym;
 import com.kbstar.dto.Ticket;
 import com.kbstar.service.CouponService;
+import com.kbstar.util.PushNotificationUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,9 @@ public class CouponController {
 
     @Autowired
     CouponService couponService;
+
+    @Autowired
+    private PushNotificationUtil pushNotificationUtil;
     @RequestMapping("/add")
     public String add(Model model) {
         model.addAttribute("page", "Coupon Register");
@@ -58,12 +62,16 @@ public class CouponController {
         return "index";
     }
 
-    @RequestMapping("/sendimpl")
-    public String sendimpl(Model model, Integer couponNo, Integer custNo) throws Exception {
-        log.info("쿠폰 전송 시작");
-
-        return "index";
-    }
+//    @RequestMapping("/sendimpl")
+//    public String sendimpl(Model model, Integer couponNo, Integer custNo) throws Exception {
+//
+//        log.info("쿠폰 전송 시작");
+//        log.info("쿠폰 넘버" + couponNo);
+//        log.info("고객 넘버" + custNo);
+//
+//        pushNotificationUtil.sendCommonMessage("헬쓱 쿠폰 도착!", "헬쓱이를 위한 쿠폰이 도착했어요!!", "/coupon/show");
+//        return "index";
+//    }
 
 
 }

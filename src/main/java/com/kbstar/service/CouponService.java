@@ -32,7 +32,7 @@ public class CouponService implements KBService<Integer, Coupon> {
 
     @Override
     public void modify(Coupon coupon) throws Exception {
-
+        mapper.update(coupon);
     }
 
     @Override
@@ -43,5 +43,9 @@ public class CouponService implements KBService<Integer, Coupon> {
     @Override
     public List<Coupon> get() throws Exception {
         return mapper.selectall();
+    }
+
+    public List<Coupon> getCouponcust() throws Exception {
+        return mapper.getCouponcust();
     }
 }

@@ -23,7 +23,7 @@
                                 <select class="form-control" name="couponName" id="couponName">
                                     <option value="쿠폰이름"> 쿠폰 이름</option>
                                     <option value="스타벅스"> 스타벅스</option>
-                                    <option value="비타민"> 비타민</option>
+                                    <option value="신세계"> 신세계상품권</option>
                                     <option value="할인권"> 할인권</option>
                                 </select>
                             </div>
