@@ -39,13 +39,6 @@ public class CenterController {
         return "index";
     }
 
-    @RequestMapping("/centerinfo")
-    public String centerinfo(Model model){
-        model.addAttribute("page", "Center Information");
-        model.addAttribute("center", dir+"centerinfo");
-        return "index";
-    }
-
     @RequestMapping("/updateimpl")
     public String updateimpl(Model model, Gym gym, HttpSession session) throws Exception {
         log.info("센터 업데이트 화면 진입");
@@ -82,6 +75,24 @@ public class CenterController {
         }
 
         return "redirect:/"; // 추후 수정
+    }
+
+    @RequestMapping("/centerinfo")
+    public String centerinfo(Model model){
+        model.addAttribute("page", "Center Information");
+        model.addAttribute("center", dir+"centerinfo");
+        return "index";
+    }
+
+    @RequestMapping("/chat")
+    public String chat(Model model, HttpSession session) throws Exception {
+
+        Gym gym = (Gym) session.getAttribute("logingym");
+
+        session.setAttribute("logingym", gym);
+//        model.addAttribute("adminserver", adminserver);
+        model.addAttribute("center", dir+"chat");
+        return "index";
     }
 
 }

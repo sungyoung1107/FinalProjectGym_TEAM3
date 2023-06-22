@@ -6,6 +6,7 @@ import com.kbstar.mapper.ChartMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -41,12 +42,24 @@ public class ChartService {
 
     public Integer getTrainerTotalM(Integer integer) throws Exception {
         return chartMapper.selectSumTrainerM(integer);
+
     }
 
     public List<Chart> getTrainerTotal(Integer integer) throws Exception {
         return chartMapper.selectSumTrainer(integer);
     }
 
+//    public List<Chart> getAllMonthlyTotal() throws Exception {
+//        return chartMapper.selectAllMonthlyTotal();
+//    }
+//
+//    public List<Chart> getCenterMonthlyTotal(Integer integer) throws Exception {
+//        return chartMapper.selectCenterMonthlyTotal(integer);
+//    }
+
+    public ArrayList<Integer> getAllMonthlyTotal() {
+        return chartMapper.selectAllMonthlyTotal();
+    }
 
 
 }

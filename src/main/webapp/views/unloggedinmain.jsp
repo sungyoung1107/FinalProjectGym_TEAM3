@@ -13,7 +13,7 @@
                                                     <span class="font-weight-bolder"><span class="middle">$ </span><span id="state1" countTo="23980"></span></span> 명의 고객을 맞이하세요!
                                                     <br/>
                                                     헬쓱에 가입하고
-                                                    <span class="font-weight-bolder"><span id="state2" countTo="1500000"></span><span class="middle"> 원 </span></span> 의 매출을 달성하세요!
+                                                    <span class="font-weight-bolder"><span id="state2" countTo="157425000"></span><span class="middle"> 원 </span></span> 의 매출을 달성하세요!
                             </h5>
                         </div>
                     </div>
@@ -98,9 +98,8 @@
                                             </div>
                                         </div>
                                         <a href="/gym/login" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
-                                            <br/>
-                                            로그인 하기
-                                            <i class="fas fa-arrow-right ms-1"></i> <br/> &nbsp;
+                                            대표 계정 로그인 하기
+                                            <i class="fas fa-arrow-right ms-1"></i> &nbsp;
                                         </a>
 
                                         <div class="d-flex justify-content-lg-start justify-content-center p-2">
@@ -108,17 +107,24 @@
                                         </div>
 
                                         <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                                            <p class="ps-3"> 가입 정보를 잊으셨다면? &nbsp; &nbsp; </p>
-                                            <a href="/gym/login">
-                                                아이디/비밀번호 찾기
-                                            </a>
+                                            <div class="icon icon-shape icon-xs rounded-circle bg-gradient-success shadow text-center">
+                                                <i class="fas fa-plus opacity-10"></i>
+                                            </div>
+                                            <div>
+                                                <span class="font-weight-bold mt-2 ps-3"> 서브 계정 로그인 <br/> </span>
+                                            </div>
                                         </div>
+                                        <a href="/gym/login" class="btn btn-icon bg-gradient-primary d-lg-block mt-3 mb-0">
+                                            서브 계정 로그인 하기
+                                            <i class="fas fa-arrow-right ms-1"></i> &nbsp;
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 mb-lg-0 mb-4">
                                 <div class="card">
-                                    <img src="../assets/img/health.jpeg" class="w-100 border-radius-lg shadow-sm">
+                                    <img src="../assets/img/health.jpeg" class="w-100 border-radius-lg shadow-sm" style="height: 550px;">
                                 </div>
                             </div>
                         </div>
@@ -130,7 +136,7 @@
                 <div class="row mt-8">
                     <div class="col-md-6 mx-auto text-center">
                         <h2> 자주 하는 질문 </h2>
-                        <p>A lot of people don&#39;t appreciate the moment until it’s passed. I&#39;m not trying my hardest, and I&#39;m not trying to do </p>
+                        <p> 가장 궁금해하시는 질문들만 모았어요! </p>
                     </div>
                 </div>
                 <div class="row">
@@ -139,77 +145,76 @@
                             <div class="accordion-item mb-3">
                                 <h5 class="accordion-header" id="headingOne">
                                     <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        How do I order?
+                                        카카오 간편로그인은 어떻게 하나요?
                                         <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
                                         <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
                                     </button>
                                 </h5>
                                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionRental">
                                     <div class="accordion-body text-sm opacity-8">
-                                        We’re not always in the position that we want to be at. We’re constantly growing. We’re constantly making mistakes. We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game
-                                        of life you need to appreciate every moment. A lot of people don’t appreciate the moment until it’s passed.
+                                        헬쓱 회원 계정 보유 시 로그인 화면에서 카카오 로그인 가능합니다. <br/>
+                                        카카오계정 정보와 일치하는 헬쓱 회원 계정이 없을 경우, 회원가입 후 카카오 로그인 사용 가능합니다.
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item mb-3">
                                 <h5 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        How can i make the payment?
+                                        제가 보유한 쿠폰은 어디서 확인이 가능한가요?
                                         <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
                                         <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
                                     </button>
                                 </h5>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionRental">
                                     <div class="accordion-body text-sm opacity-8">
-                                        It really matters and then like it really doesn’t matter. What matters is the people who are sparked by it. And the people who are like offended by it, it doesn’t matter. Because it&#39;s about motivating the doers. Because I’m here to follow my dreams and inspire other people to follow their dreams, too.
-                                        <br>
-                                        We’re not always in the position that we want to be at. We’re constantly growing. We’re constantly making mistakes. We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game of life you need to appreciate every moment. A lot of people don’t appreciate the moment until it’s passed.
+                                        메인페이지 상단 마이페이지 > 쿠폰에서 본인이 보유한 쿠폰을 확인할 수 있습니다.
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item mb-3">
                                 <h5 class="accordion-header" id="headingThree">
                                     <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        How much time does it take to receive the order?
+                                        ID 변경이 가능한가요?
                                         <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
                                         <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
                                     </button>
                                 </h5>
                                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionRental">
                                     <div class="accordion-body text-sm opacity-8">
-                                        The time is now for it to be okay to be great. People in this world shun people for being great. For being a bright color. For standing out. But the time is now to be okay to be the greatest you. Would you believe in what you believe in, if you were the only one who believed it?
-                                        If everything I did failed - which it doesn&#39;t, it actually succeeds - just the fact that I&#39;m willing to fail is an inspiration. People are so scared to lose that they don&#39;t even try. Like, one thing people can&#39;t say is that I&#39;m not trying, and I&#39;m not trying my hardest, and I&#39;m not trying to do the best way I know how.
+                                        회원 ID의 경우 회원 정책에 따라 변경이 불가합니다.<br/>
+                                        단, 비밀번호는 변경 가능합니다.
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item mb-3">
                                 <h5 class="accordion-header" id="headingFour">
                                     <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        Can I resell the products?
+                                        인터넷안전결제(ISP) 서비스가 무엇인가요?
                                         <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
                                         <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
                                     </button>
                                 </h5>
                                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionRental">
                                     <div class="accordion-body text-sm opacity-8">
-                                        I always felt like I could do anything. That’s the main thing people are controlled by! Thoughts- their perception of themselves! They&#39;re slowed down by their perception of themselves. If you&#39;re taught you can’t do anything, you won’t do anything. I was taught I could do everything.
-                                        <br><br>
-                                        If everything I did failed - which it doesn&#39;t, it actually succeeds - just the fact that I&#39;m willing to fail is an inspiration. People are so scared to lose that they don&#39;t even try. Like, one thing people can&#39;t say is that I&#39;m not trying, and I&#39;m not trying my hardest, and I&#39;m not trying to do the best way I know how.
+                                        인터넷안전결제(ISP)란,
+                                        ISP 서비스가 적용되는 카드로 결제 시<br/>
+                                        카드번호를 직접 입력하지 않고 카드사에서 발급하는 가상의 인터넷안전결제(ISP) 비밀번호만으로 안전한 전자상거래를 할 수 있는 서비스입니다.<br/>
+                                        ※ 거래금액이 30만원 이상일 때는 공인인증 과정을 거치셔야 합니다.<br/>
+                                        ※ ISP 적용 카드: 국민/BC/우리/우체국/제주은행/전북은행/광주은행/수협/KDB산업/MG새마을금고/저축은행/신협/현대증권
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item mb-3">
                                 <h5 class="accordion-header" id="headingFifth">
                                     <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFifth" aria-expanded="false" aria-controls="collapseFifth">
-                                        Where do I find the shipping details?
+                                        구매한 영수증을 발급 받고 싶어요
                                         <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
                                         <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
                                     </button>
                                 </h5>
                                 <div id="collapseFifth" class="accordion-collapse collapse" aria-labelledby="headingFifth" data-bs-parent="#accordionRental">
                                     <div class="accordion-body text-sm opacity-8">
-                                        There’s nothing I really wanted to do in life that I wasn’t able to get good at. That’s my skill. I’m not really specifically talented at anything except for the ability to learn. That’s what I do. That’s what I’m here for. Don’t be afraid to be wrong because you can’t learn anything from a compliment.
-                                        I always felt like I could do anything. That’s the main thing people are controlled by! Thoughts- their perception of themselves! They&#39;re slowed down by their perception of themselves. If you&#39;re taught you can’t do anything, you won’t do anything. I was taught I could do everything.
+                                        영수증은 결제 시 입력하신 이메일 주소로 발송됩니다.
                                     </div>
                                 </div>
                             </div>

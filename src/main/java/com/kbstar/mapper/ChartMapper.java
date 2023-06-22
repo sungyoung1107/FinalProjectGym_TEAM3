@@ -4,6 +4,7 @@ import com.kbstar.dto.Chart;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -24,6 +25,13 @@ public interface ChartMapper {
     List<Chart> selectSumTrainer(Integer gymNo);
 
     Integer selectSumTrainerM(Integer trainerNo);
+
+//    List<Chart> selectAllMonthlyTotal();
+//
+//    List<Chart> selectCenterMonthlyTotal(Integer gymNo);
+
+     ArrayList<Integer> selectAllMonthlyTotal();
+
 
 
 

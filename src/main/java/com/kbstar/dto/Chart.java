@@ -86,4 +86,22 @@ public class Chart {
         this.trainerImgname = trainerImgname;
         this.rank = rank;
     }
+
+
+
+    // 월별 통계 차트
+    public Chart(Integer total, Integer month) {
+        this.total = total;
+        this.month = month;
+    }
+
+    public Chart(Integer gymNo, Integer total, Integer month) {
+        this.gymNo = gymNo;
+        this.total = total;
+        this.month = month;
+    }
+
+    public Chart(Integer total) {
+        this.total = total;
+    }
 }
