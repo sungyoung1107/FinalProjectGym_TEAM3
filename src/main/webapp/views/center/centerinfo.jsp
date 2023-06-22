@@ -51,7 +51,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab"
+                            <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="/center/chat" role="tab"
                                aria-selected="false">
                                 <svg class="text-dark" width="16px" height="16px" viewBox="0 0 46 42" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -166,7 +166,7 @@
                                 <h6 class="mb-0 text-sm">이성영</h6>
                                 <p class="mb-0 text-xs">뭉치 강사님 멋쪄요!!</p>
                             </div>
-                            <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                            <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="/center/chat">Reply</a>
                         </li>
                         <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                             <div class="avatar me-3">
