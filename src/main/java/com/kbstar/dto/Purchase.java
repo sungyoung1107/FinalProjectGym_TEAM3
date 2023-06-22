@@ -32,6 +32,8 @@ public class Purchase {
 
     private String gymName;
 
+    private String reviewIs; // 리뷰여부
+
     // gymName 제외한 constructor
     public Purchase(Integer purchaseNo, Integer custNo, Integer ticketNo, Integer gymNo, String sportsType, String sportsClasstype, String ticketType, Integer ticketMonth, Integer ticketNumber, String ticketJoin, String ticketImgname, Date purchaseDate, Integer purchasePrice, Integer usedCnt, String ticketEx, Date exDate) {
         this.purchaseNo = purchaseNo;
