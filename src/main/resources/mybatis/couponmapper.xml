@@ -31,7 +31,7 @@
                  JOIN class c ON m.classNo = c.classNo
                  LEFT JOIN coupon cp ON m.custNo = cp.custNo
         WHERE m.sheduleCanceled = '0' AND m.scheduleCompleted = '1'
-          AND (EXTRACT(DAY FROM c.classDate) = 21
+          AND (EXTRACT(DAY FROM c.classDate) = 22
             OR EXTRACT(DAY FROM c.classDate) = 25
             OR EXTRACT(DAY FROM c.classDate) = 10)
           AND (cp.sendDate IS NULL)) t
