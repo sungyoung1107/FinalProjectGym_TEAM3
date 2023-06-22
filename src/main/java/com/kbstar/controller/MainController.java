@@ -2,9 +2,7 @@ package com.kbstar.controller;
 
 import com.kbstar.dto.Chart;
 import com.kbstar.dto.Gym;
-import com.kbstar.dto.Ticket;
 import com.kbstar.service.ChartService;
-import com.kbstar.service.TicketService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -31,13 +30,11 @@ public class MainController {
         Integer todayCTotal = null;
 
         List<Chart> trainerTotalList = null;
-        //Integer trainerTotalM = null;
+
+        ArrayList<Integer> allArrList = new ArrayList<>();
+        ArrayList<Integer> centerArrList = new ArrayList<>();
 
         Gym gym = (Gym) session.getAttribute("logingym");
-
-//        log.info("_--------------------------------------------test---------------");
-//        log.info(String.valueOf(gym));
-
 
         if (gym == null) {
             return "redirect:/unloggedinmain";
@@ -51,14 +48,6 @@ public class MainController {
 
         trainerTotalList = chartService.getTrainerTotal(gym.getGymNo());
 
-        log.info("_--------------------------------------------test---------------");
-        log.info(String.valueOf(gym.getGymNo()));
-        log.info(String.valueOf(trainerTotalList));
-
-//        log.info("_--------------------------------------------test---------------");
-//        log.info(String.valueOf(yesterdayTotal));
-
-
         model.addAttribute("page", "Main");
         session.setAttribute("logingym", gym);
         model.addAttribute("yesterdayTotal", yesterdayTotal);
@@ -66,6 +55,7 @@ public class MainController {
         model.addAttribute("yesterdayCTotal", yesterdayCTotal);
         model.addAttribute("todayCTotal", todayCTotal);
         model.addAttribute("totalList", trainerTotalList);
+        model.addAttribute("allArrList", allArrList);
         return "index";
     }
 

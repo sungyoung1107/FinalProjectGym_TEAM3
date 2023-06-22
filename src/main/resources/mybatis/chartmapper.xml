@@ -101,34 +101,37 @@
 
 
 
-
-
-
 <!--    월별 센터 매출 합계 -->
-    <select id="getMonthlyTotal" parameterType="Integer" resultType="chart">
-        SELECT TO_NUMBER(TO_CHAR(purchaseDate, 'MM')) AS month,
-                SUM(purchaseprice) AS total
-        FROM
-
+    <select id="selectAllMonthlyTotal" resultType="java.util.ArrayList">
+        <![CDATA[
+            SELECT
+                    NVL(SUM(purchase.purchaseprice) / NULLIF(COUNT(DISTINCT purchase.gymNo), 0) / 10000, 0) AS total
+            FROM
+                (SELECT TO_DATE('2022-10', 'YYYY-MM') + (LEVEL - 1) AS month
+                FROM DUAL
+                CONNECT BY TO_DATE('2022-10', 'YYYY-MM') + (LEVEL - 1) <= TO_DATE('2023-06', 'YYYY-MM')) months
+                LEFT JOIN purchase ON TO_CHAR(purchase.purchaseDate, 'YYYY-MM') = TO_CHAR(months.month, 'YYYY-MM')
+            GROUP BY REPLACE(TO_CHAR(months.month, 'YYYY-MM'), '-', '')
+            ORDER BY REPLACE(TO_CHAR(months.month, 'YYYY-MM'), '-', '')
+        ]]>
     </select>
 
-<!--    SELECT gymno,-->
-<!--    TO_CHAR(purchasedate, 'MM') As month,-->
-<!--    SUM(purchaseprice) AS total-->
-<!--    FROM purchase-->
-<!--    GROUP BY gymno, TO_CHAR(purchasedate, 'MM')-->
-<!--    ORDER BY 1-->
 
-<!--    <select id="getMonthlyTotal" resultType="chart">-->
-<!--        <![CDATA[-->
-<!--        SELECT TO_NUMBER(TO_CHAR(rdate, 'MM')) AS month,-->
-<!--                gender,-->
-<!--                SUM(price) AS total-->
-<!--        FROM sales-->
-<!--        GROUP BY TO_CHAR(rdate, 'MM'), gender-->
-<!--        ORDER BY 1-->
-<!--        ]]>-->
-<!--    </select>-->
+    <select id="selectCenterMonthlyTotal" parameterType="Integer"  resultType="java.util.ArrayList">
+        <![CDATA[
+            SELECT
+            NVL(SUM(purchase.purchaseprice) / 10000, 0) AS total
+            FROM
+            (SELECT TO_DATE('2022-10', 'YYYY-MM') + (LEVEL - 1) AS month
+            FROM DUAL
+            CONNECT BY TO_DATE('2022-10', 'YYYY-MM') + (LEVEL - 1) <= TO_DATE('2023-06', 'YYYY-MM')) months
+            LEFT JOIN purchase ON TO_CHAR(purchase.purchaseDate, 'YYYY-MM') = TO_CHAR(months.month, 'YYYY-MM')
+            AND purchase.gymNo = #{gymNo}
+            GROUP BY REPLACE(TO_CHAR(months.month, 'YYYY-MM'), '-', '')
+            ORDER BY REPLACE(TO_CHAR(months.month, 'YYYY-MM'), '-', '')
+        ]]>
+    </select>
+
 
 </mapper>
 
