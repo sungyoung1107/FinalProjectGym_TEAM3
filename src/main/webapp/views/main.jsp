@@ -353,7 +353,7 @@
                 borderColor: "#cb0c9f",
                 borderWidth: 3,
                 backgroundColor: gradientStroke1,
-                data: [10, 20, 30, 40, 50, 60, 70, 80, 90],
+                data: [31, 29, 62, 70, 68, 82, 90, 86, 95],
                 maxBarThickness: 6
             },
                 {
@@ -365,7 +365,7 @@
                     borderColor: "#17c1e8",
                     borderWidth: 3,
                     backgroundColor: gradientStroke2,
-                    data: [90, 80, 70, 60, 50, 40, 30, 20, 10],
+                    data: [55, 64, 78, 59, 54, 65, 89, 67, 55],
                     maxBarThickness: 6
                 },
             ],

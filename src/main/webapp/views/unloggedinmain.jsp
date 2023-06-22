@@ -9,11 +9,18 @@
                     <div class="row">
                         <div class="col-md-8 mx-auto text-center">
                             <h2 class="text-white">헬쓱에 가입하세요!</h2>
-                            <h5 class="text-white">헬쓱에 가입하고
-                                                    <span class="font-weight-bolder"><span class="middle">$ </span><span id="state1" countTo="23980"></span></span> 명의 고객을 맞이하세요!
-                                                    <br/>
-                                                    헬쓱에 가입하고
-                                                    <span class="font-weight-bolder"><span id="state2" countTo="157425000"></span><span class="middle"> 원 </span></span> 의 매출을 달성하세요!
+                            <h5 class="text-white">
+                                헬쓱에 가입하고
+                                <span class="font-weight-bolder">
+                                    <span id="state1" countTo="23980"></span>
+                                    <span class="middle">명</span></span>
+                                의 고객을 맞이하세요!
+                                <br/>
+                                헬쓱에 가입하고
+                                <span class="font-weight-bolder">
+                                    <span id="state2" countTo="157425000"></span>
+                                    <span class="middle">원</span></span>
+                                의 매출을 달성하세요!
                             </h5>
                         </div>
                     </div>
