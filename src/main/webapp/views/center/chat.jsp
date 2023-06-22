@@ -190,22 +190,15 @@
         <div class="col-8">
             <div class="card blur shadow-blur max-height-vh-70">
                 <div class="card-body overflow-auto overflow-x-hidden">
-                    <div class="row justify-content-start mb-4">
-                        <div class="col-auto">
-                            <div class="card ">
-                                <div class="card-body py-2 px-3">
-                                    <p class="mb-1">
-                                        It contains a lot of good lessons about effective practices
-                                    </p>
-                                    <div class="d-flex align-items-center text-sm opacity-6">
-                                        <i class="ni ni-check-bold text-sm me-1"></i>
-                                        <small>3:14am</small>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12 text-center">
+                            <span class="badge text-dark">Wed, 3:27pm</span>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <span> &nbsp; <br/> </span>
                         </div>
                     </div>
-                    <div class="row justify-content-end text-right mb-4">
+                    <div class="row justify-content-start text-right mb-4">
                         <div class="col-auto">
                             <div class="card bg-gray-200">
                                 <div class="card-body py-2 px-3">
@@ -220,109 +213,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4">
-                        <div class="col-md-12 text-center">
-                            <span class="badge text-dark">Wed, 3:27pm</span>
-                        </div>
-                    </div>
-                    <div class="row justify-content-start mb-4">
+                    <div class="row justify-content-end mb-4">
                         <div class="col-auto">
                             <div class="card ">
                                 <div class="card-body py-2 px-3">
                                     <p class="mb-1">
-                                        Yeah! Responsive Design is geared towards those trying to build web apps
+                                        It contains a lot of good lessons about effective practices
                                     </p>
                                     <div class="d-flex align-items-center text-sm opacity-6">
                                         <i class="ni ni-check-bold text-sm me-1"></i>
-                                        <small>4:31pm</small>
+                                        <small>3:14am</small>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end text-right mb-4">
-                        <div class="col-auto">
-                            <div class="card bg-gray-200">
-                                <div class="card-body py-2 px-3">
-                                    <p class="mb-1">
-                                        Excellent, I want it now !
-                                    </p>
-                                    <div class="d-flex align-items-center justify-content-end text-sm opacity-6">
-                                        <i class="ni ni-check-bold text-sm me-1"></i>
-                                        <small>4:42pm</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-start mb-4">
-                        <div class="col-auto">
-                            <div class="card ">
-                                <div class="card-body py-2 px-3">
-                                    <p class="mb-1">
-                                        You can easily get it; The content here is all free
-                                    </p>
-                                    <div class="d-flex align-items-center text-sm opacity-6">
-                                        <i class="ni ni-check-bold text-sm me-1"></i>
-                                        <small>4:42pm</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end text-right mb-4">
-                        <div class="col-auto">
-                            <div class="card bg-gray-200">
-                                <div class="card-body py-2 px-3">
-                                    <p class="mb-1">
-                                        Awesome, blog is important source material for anyone who creates apps? <br>
-                                        Beacuse these blogs offer a lot of information about website development.
-                                    </p>
-                                    <div class="d-flex align-items-center justify-content-end text-sm opacity-6">
-                                        <i class="ni ni-check-bold text-sm me-1"></i>
-                                        <small>4:42pm</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-start mb-4">
-                        <div class="col-5">
-                            <div class="card ">
-                                <div class="card-body p-2">
-                                    <div class="col-12 p-0">
-                                        <img src="https://images.unsplash.com/photo-1602142946018-34606aa83259?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1762&q=80" alt="Rounded image" class="img-fluid mb-2 border-radius-lg">
-                                    </div>
-                                    <div class="d-flex align-items-center text-sm opacity-6">
-                                        <i class="ni ni-check-bold text-sm me-1"></i>
-                                        <small>4:47pm</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end text-right mb-4">
-                        <div class="col-auto">
-                            <div class="card bg-gray-200">
-                                <div class="card-body py-2 px-3">
-                                    <p class="mb-0">
-                                        At the end of the day … the native dev apps is where users are
-                                    </p>
-                                    <div class="d-flex align-items-center justify-content-end text-sm opacity-6">
-                                        <i class="ni ni-check-bold text-sm me-1"></i>
-                                        <small>4:42pm</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-start">
-                        <div class="col-auto">
-                            <div class="card ">
-                                <div class="card-body py-2 px-3">
-                                    <p class="mb-0">
-                                        Charlie is Typing...
-                                    </p>
                                 </div>
                             </div>
                         </div>
