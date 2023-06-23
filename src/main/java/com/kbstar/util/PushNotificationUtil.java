@@ -23,7 +23,7 @@ public class PushNotificationUtil {
     private static final String PROJECT_ID = "kbstar2023-4ae6c";
     public static final String firebaseConfig = "fcm_admin.json";
     // 바꾸기
-    public static final String clientToken ="cE9QJidIQDe1Kd6kZY1NEO:APA91bFAcSFXk_HEz28x_hGZIUHexea75zuHk-88EcespLwo32Gge8i2bf2Qi-T9-y_de1mr4usEyrPtQvRAVZP8XOu2GxWgN-CjT5BEcQlkgOBkkGEpo1yOWJauE5JqL3fDxUWfGU1x";
+    public static final String clientToken ="fmD5KC8iRoynQbLbtgigDd:APA91bHFbcqQ8aceo5e20sUVJrC3Fg3hRv_Z7OomoGt1elnZb4Vm7LOOF1TKkIenB5pBnnAEry6yt0fsxbE2yfb7N5a2sy8f50NCv4uHKBjyPI57sXN83oUbV5SCFPDI8a-fpgIC0EqK";
     public static final String imgUrl = "https://github.com/leejeani/admin/blob/master/src/main/resources/static/img/a.jpg";
     // Modification Field ---------------------------------------
 
