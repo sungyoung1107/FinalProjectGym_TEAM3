@@ -2,26 +2,39 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<%--<style>--%>
+<%--    #to {--%>
+<%--        width: 400px;--%>
+<%--        height: 200px;--%>
+<%--        overflow: auto;--%>
+<%--        border: 2px solid green;--%>
+<%--    }--%>
+<%--</style>--%>
+
 <script>
-    let websocket = {
+    let callcenter = {
         id:null,
         stompClient:null,
         init:function(){
             this.id = $('#adm_id').text();
-            $("#connect").click(function() {
-                websocket.connect();
-            });
+
+            // 접속하면 바로 연결
+            callcenter.connect();
+
             $("#disconnect").click(function() {
-                websocket.disconnect();
+                callcenter.disconnect();
             });
+
             $("#sendall").click(function() {
-                websocket.sendAll();
+                callcenter.sendAll();
             });
+
             $("#sendme").click(function() {
-                websocket.sendMe();
+                callcenter.sendMe();
             });
+
             $("#sendto").click(function() {
-                websocket.sendTo();
+                callcenter.sendTo();
             });
         },
         connect:function(){
@@ -30,24 +43,24 @@
             this.stompClient = Stomp.over(socket);
 
             this.stompClient.connect({}, function(frame) {
-                websocket.setConnected(true);
+                callcenter.setConnected(true);
                 console.log('Connected: ' + frame);
-                this.subscribe('/send', function(msg) {
-                    $("#all").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1
-                        + "</h4>");
-                });
-                this.subscribe('/send/'+sid, function(msg) {
-                    $("#me").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1+ "</h4>");
-                });
+
                 this.subscribe('/send/to/'+sid, function(msg) {
-                    $("#to").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1
-                        + "</h4>");
+                    // $("#to").prepend(
+                    //     "<h4>" + JSON.parse(msg.body).sendid +":"+
+                    //     JSON.parse(msg.body).content1
+                    //     + "</h4>");
+                    //var col = $('<div class="card blur shadow-blur max-height-vh-70">').appendTo('.col-8');
+                    //var cardtop = $('<div class="card-body overflow-auto overflow-x-hidden">').appendTo(col);
+                    var chatBubble = $('<div class="row justify-content-start text-right mb-4">').appendTo('.col-7');
+                    var colAuto = $('<div class="col-auto">').appendTo(chatBubble);
+                    var card = $('<div class="card bg-gray-200">').appendTo(colAuto);
+                    var cardBody = $('<div class="card-body py-2 px-3">').appendTo(card);
+                    var mb1 = $('<p class="mb-1">').text(JSON.parse(msg.body).content1).appendTo(cardBody);
+                    // var timeContainer = $('<div class="d-flex align-items-center text-sm opacity-6">').appendTo(cardBody);
+                    // $('<i class="ni ni-check-bold text-sm me-1"></i>').appendTo(timeContainer);
+                    // $('<small>').text(time).appendTo(timeContainer);
                 });
             });
         },
@@ -55,7 +68,7 @@
             if (this.stompClient !== null) {
                 this.stompClient.disconnect();
             }
-            websocket.setConnected(false);
+            callcenter.setConnected(false);
             console.log("Disconnected");
         },
         setConnected:function(connected){
@@ -89,7 +102,7 @@
         }
     };
     $(function(){
-        websocket.init();
+        callcenter.init();
     })
 
 </script>
@@ -112,6 +125,8 @@
                     <h5 class="mb-1">
                         ${logingym.gymName}
                     </h5>
+                    <h1 id="adm_id" style="display:none;">${logingym.gymNo}</h1>
+                    <input type="hidden" id="target" value="10">
                 </div>
             </div>
             <%--    상단 불투명한 흰색 바 오른쪽 버튼 3개 --%>
@@ -200,7 +215,7 @@
                                     <h6 class="text-white mb-0"> 채팅 요청한 고객명
                                         <span class="badge badge-success"></span>
                                     </h6>
-                                    <p class="text-white mb-0 text-sm"> 연결 됐는지 여기에 표시 </p>
+                                    <p class="text-white mb-0 text-sm" id="status">Status</p>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +223,6 @@
                     <div class="card mb-3 mt-lg-0 mt-4">
                         <div class="card-body pb-0">
                             <div class="row align-items-center mb-3">
-
                                 <div class="col-9">
                                     <div class="col-3 text-end">
                                         <span>   &nbsp;   </span>
@@ -283,60 +297,59 @@
         <div class="col-8">
             <div class="card blur shadow-blur max-height-vh-70">
                 <div class="card-body overflow-auto overflow-x-hidden">
-<%--                    <div class="row mt-4">--%>
-<%--                        <div class="col-md-12 text-center">--%>
-<%--                            <span class="badge text-dark">Wed, 3:27pm</span>--%>
-<%--                        </div>--%>
-<%--                        <div class="col-md-12 text-center">--%>
-<%--                            <span> &nbsp;<br/> </span>--%>
+                    <div class="col-7">
+
+                    </div>
+                    <!--채팅창 오른쪽 대화풍선-->
+<%--                    <div class="rowr justify-content-start text-right mb-4">--%>
+<%--                        <div class="col-auto">--%>
+<%--                            <div class="cardr bg-gray-200">--%>
+<%--                                <div class="card-body py-2 px-3">--%>
+<%--                                    <p class="mb-1">--%>
+<%--                                        Can it generate daily design links that include essays and data visualizations ?<br>--%>
+<%--                                    </p>--%>
+<%--                                    <div class="d-flex align-items-center justify-content-end text-sm opacity-6">--%>
+<%--                                        <i class="ni ni-check-bold text-sm me-1"></i>--%>
+<%--                                        <small>4:42pm</small>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 <%--                        </div>--%>
 <%--                    </div>--%>
                     <!--채팅창 오른쪽 대화풍선-->
-                    <div class="row justify-content-start text-right mb-4">
-                        <div class="col-auto">
-                            <div class="card bg-gray-200">
-                                <div class="card-body py-2 px-3">
-                                    <p class="mb-1">
-                                        Can it generate daily design links that include essays and data visualizations ?<br>
-                                    </p>
-                                    <div class="d-flex align-items-center justify-content-end text-sm opacity-6">
-                                        <i class="ni ni-check-bold text-sm me-1"></i>
-                                        <small>4:42pm</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--채팅창 오른쪽 대화풍선-->
                     <!--채팅창 왼쪽 대화풍선-->
-                    <div class="row justify-content-end mb-4">
-                        <div class="col-auto">
-                            <div class="card ">
-                                <div class="card-body py-2 px-3">
-                                    <p class="mb-1">
-                                        It contains a lot of good lessons about effective practices
-                                    </p>
-                                    <div class="d-flex align-items-center text-sm opacity-6">
-                                        <i class="ni ni-check-bold text-sm me-1"></i>
-                                        <small>3:14am</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<%--                    <div class="rowl justify-content-end mb-4">--%>
+<%--                        <div class="col-auto">--%>
+<%--                            <div class="cardl">--%>
+<%--                                <div class="card-body py-2 px-3">--%>
+<%--                                    <p class="mb-1">--%>
+<%--                                        It contains a lot of good lessons about effective practices--%>
+<%--                                    </p>--%>
+<%--                                    <div class="d-flex align-items-center text-sm opacity-6">--%>
+<%--                                        <i class="ni ni-check-bold text-sm me-1"></i>--%>
+<%--                                        <small>3:14am</small>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                     <!--채팅창 왼쪽 대화풍선-->
                 </div>
+<%--                    <input type="text" id="totext">
+                        <button id="sendto">Send</button>--%>
+<%--                    <div id="to"></div>--%>
+
                 <div class="card-footer d-block">
-                    <form class="align-items-center">
+<%--                    <form class="align-items-center">--%>
                         <div class="d-flex">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Type here" aria-label="Message example input">
+                                <input type="text" id="totext" class="form-control" placeholder="Type here" aria-label="Message example input">
                             </div>
-                            <button class="btn bg-gradient-primary mb-0 ms-2">
+                            <button id="sendto" class="btn bg-gradient-primary mb-0 ms-2">
                                 <i class="ni ni-send"></i>
                             </button>
                         </div>
-                    </form>
+<%--                    </form>--%>
                 </div>
             </div>
         </div>

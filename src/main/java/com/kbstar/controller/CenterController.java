@@ -22,6 +22,10 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/center")
 public class CenterController {
+
+    @Value("${adminserver}")
+    String adminserver;
+
     String dir = "center/";
 
     @Autowired
@@ -90,7 +94,7 @@ public class CenterController {
         Gym gym = (Gym) session.getAttribute("logingym");
 
         session.setAttribute("logingym", gym);
-//        model.addAttribute("adminserver", adminserver);
+        model.addAttribute("adminserver", adminserver);
         model.addAttribute("center", dir+"chat");
         return "index";
     }
