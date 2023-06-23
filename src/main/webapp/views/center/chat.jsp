@@ -1,5 +1,98 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<script>
+    let websocket = {
+        id:null,
+        stompClient:null,
+        init:function(){
+            this.id = $('#adm_id').text();
+            $("#connect").click(function() {
+                websocket.connect();
+            });
+            $("#disconnect").click(function() {
+                websocket.disconnect();
+            });
+            $("#sendall").click(function() {
+                websocket.sendAll();
+            });
+            $("#sendme").click(function() {
+                websocket.sendMe();
+            });
+            $("#sendto").click(function() {
+                websocket.sendTo();
+            });
+        },
+        connect:function(){
+            var sid = this.id;
+            var socket = new SockJS('http://127.0.0.1:8088/ws');
+            this.stompClient = Stomp.over(socket);
+
+            this.stompClient.connect({}, function(frame) {
+                websocket.setConnected(true);
+                console.log('Connected: ' + frame);
+                this.subscribe('/send', function(msg) {
+                    $("#all").prepend(
+                        "<h4>" + JSON.parse(msg.body).sendid +":"+
+                        JSON.parse(msg.body).content1
+                        + "</h4>");
+                });
+                this.subscribe('/send/'+sid, function(msg) {
+                    $("#me").prepend(
+                        "<h4>" + JSON.parse(msg.body).sendid +":"+
+                        JSON.parse(msg.body).content1+ "</h4>");
+                });
+                this.subscribe('/send/to/'+sid, function(msg) {
+                    $("#to").prepend(
+                        "<h4>" + JSON.parse(msg.body).sendid +":"+
+                        JSON.parse(msg.body).content1
+                        + "</h4>");
+                });
+            });
+        },
+        disconnect:function(){
+            if (this.stompClient !== null) {
+                this.stompClient.disconnect();
+            }
+            websocket.setConnected(false);
+            console.log("Disconnected");
+        },
+        setConnected:function(connected){
+            if (connected) {
+                $("#status").text("Connected");
+            } else {
+                $("#status").text("Disconnected");
+            }
+        },
+        sendAll:function(){
+            var msg = JSON.stringify({
+                'sendid' : this.id,
+                'content1' : $("#alltext").val()
+            });
+            this.stompClient.send("/receiveall", {}, msg);
+        },
+        sendTo:function(){
+            var msg = JSON.stringify({
+                'sendid' : this.id,
+                'receiveid' : $('#target').val(),
+                'content1' : $('#totext').val()
+            });
+            this.stompClient.send('/receiveto', {}, msg);
+        },
+        sendMe:function(){
+            var msg = JSON.stringify({
+                'sendid' : this.id,
+                'content1' : $('#metext').val()
+            });
+            this.stompClient.send("/receiveme", {}, msg);
+        }
+    };
+    $(function(){
+        websocket.init();
+    })
+
+</script>
 
 <div class="container-fluid">
     <div class="page-header min-height-300 border-radius-xl mt-4"
@@ -190,14 +283,15 @@
         <div class="col-8">
             <div class="card blur shadow-blur max-height-vh-70">
                 <div class="card-body overflow-auto overflow-x-hidden">
-                    <div class="row mt-4">
-                        <div class="col-md-12 text-center">
-                            <span class="badge text-dark">Wed, 3:27pm</span>
-                        </div>
-                        <div class="col-md-12 text-center">
-                            <span> &nbsp; <br/> </span>
-                        </div>
-                    </div>
+<%--                    <div class="row mt-4">--%>
+<%--                        <div class="col-md-12 text-center">--%>
+<%--                            <span class="badge text-dark">Wed, 3:27pm</span>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-md-12 text-center">--%>
+<%--                            <span> &nbsp;<br/> </span>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+                    <!--채팅창 오른쪽 대화풍선-->
                     <div class="row justify-content-start text-right mb-4">
                         <div class="col-auto">
                             <div class="card bg-gray-200">
@@ -213,6 +307,8 @@
                             </div>
                         </div>
                     </div>
+                    <!--채팅창 오른쪽 대화풍선-->
+                    <!--채팅창 왼쪽 대화풍선-->
                     <div class="row justify-content-end mb-4">
                         <div class="col-auto">
                             <div class="card ">
@@ -228,6 +324,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--채팅창 왼쪽 대화풍선-->
                 </div>
                 <div class="card-footer d-block">
                     <form class="align-items-center">

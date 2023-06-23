@@ -849,6 +849,10 @@
 <script src="/assets/js/plugins/quill.min.js"></script>
 <script src="/assets/js/plugins/multistep-form.js"></script>
 <script src="/assets/js/plugins/dropzone.min.js"></script>
+<!-- Websocket library 추가 -->
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
 <script>
     if (document.getElementById('edit-deschiption')) {
         var quill = new Quill('#edit-deschiption', {

@@ -343,26 +343,26 @@
     new Chart(ctx1, {
         type: "line",
         data: {
-            labels: ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+            labels: ["10월", "11월", "12월", "1월", "2월", "3월", "4월", "5월", "6월"],
             datasets: [{
-                label: "Organic Search",
+                label: "우리 센터",
                 tension: 0.4,
                 borderWidth: 0,
-                pointRadius: 2,
-                pointBackgroundColor: "#cb0c9f",
-                borderColor: "#cb0c9f",
+                pointRadius: 4,
+                pointBackgroundColor: "#0d0c0d",
+                borderColor: "#9711e5",
                 borderWidth: 3,
                 backgroundColor: gradientStroke1,
                 data: [31, 29, 62, 70, 68, 82, 90, 86, 95],
-                maxBarThickness: 6
+                maxBarThickness: 8
             },
                 {
-                    label: "Referral",
+                    label: "전체 센터",
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 2,
-                    pointBackgroundColor: "#17c1e8",
-                    borderColor: "#17c1e8",
+                    pointBackgroundColor: "rgb(199,194,199)",
+                    borderColor: "rgb(202,236,247)",
                     borderWidth: 3,
                     backgroundColor: gradientStroke2,
                     data: [55, 64, 78, 59, 54, 65, 89, 67, 55],

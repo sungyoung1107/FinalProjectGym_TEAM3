@@ -49,7 +49,7 @@
                             </thead>
                             <tbody>
                             <c:if test="${not empty sessionScope.logingym}">
-                                <c:forEach var="obj" items="${clist}">
+                                <c:forEach var="obj" items="${tlist}">
                                     <!-- logingym 정보를 기준으로 데이터를 필터링하여 표시 -->
                                     <c:if test="${obj.gymNo == sessionScope.logingym.gymNo}">
                                         <tr style="text-align: center">
