@@ -45,7 +45,11 @@ public class CouponService implements KBService<Integer, Coupon> {
         return mapper.selectall();
     }
 
-    public List<Coupon> getCouponcust() throws Exception {
-        return mapper.getCouponcust();
-    }
+//    public List<Coupon> getCouponcust_completed() throws Exception {
+//        return mapper.getCouponcust_completed();
+//    }
+//
+//    public void getCouponcust_update(Coupon cp) throws Exception {
+//        mapper.getCouponcust_update(cp);
+//    }
 }

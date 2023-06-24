@@ -23,4 +23,8 @@ public class Coupon {
 
     private String custName;
 
+    // 추가
+    private String couponCode;
+    private Integer groupboardNo;
+
 }
