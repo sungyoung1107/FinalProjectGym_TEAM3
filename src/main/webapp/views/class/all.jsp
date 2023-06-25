@@ -66,7 +66,8 @@
                                 <label class="form-label h6" for="classDate">수업일시</label>
                             </div>
                             <div class="col-4">
-                                <input class="form-control datetimepicker" type="text" id="classDate" name="classDate" value="" placeholder="클래스 날짜 지정" data-input>
+                                <input class="form-control datetimepicker" type="text" id="classDate" name="classDate"
+                                       value="" placeholder="클래스 날짜 지정" data-input>
                             </div>
                             <div class="col-2">
                                 <label for="sportsClasstype" class="h6">수업형태</label>
@@ -87,7 +88,8 @@
                             </div>
                             <div class="col-4">
                                 <input type="time" class="form-control d-inline" placeholder="시작시간"
-                                       aria-label="classStarttime" name="classStarttime" id="classStarttime" value="" data-input>
+                                       aria-label="classStarttime" name="classStarttime" id="classStarttime" value=""
+                                       data-input>
                             </div>
                             <div class="col-2">
                                 <label for="classEndtime" class="h6">종료시간</label>
@@ -117,19 +119,23 @@
                         </div>
                         <br>
                         <div class="row">
-<%--                            <div class="col-2">--%>
-<%--                                <label for="classFullbooked" class="h6">마감여부</label>--%>
-<%--                            </div>--%>
-<%--                            <div class="col-4">--%>
-<%--                                <input type="text" class="form-control d-inline" placeholder="마감여부"--%>
-<%--                                       aria-label="classFullbooked" name="classFullbooked" id="classFullbooked"--%>
-<%--                                       value="">--%>
-<%--                            </div>--%>
+                            <%--                            <div class="col-2">--%>
+                            <%--                                <label for="classFullbooked" class="h6">마감여부</label>--%>
+                            <%--                            </div>--%>
+                            <%--                            <div class="col-4">--%>
+                            <%--                                <input type="text" class="form-control d-inline" placeholder="마감여부"--%>
+                            <%--                                       aria-label="classFullbooked" name="classFullbooked" id="classFullbooked"--%>
+                            <%--                                       value="">--%>
+                            <%--                            </div>--%>
                             <div class="col-9">
                             </div>
                             <div class="col-3" style="justify-content: end">
-                                <button type="button" class="btn btn-outline-success" name="class_update_btn" id="class_update_btn">수정</button>
-                                <button type="button" class="btn btn-outline-danger" name="class_delete_btn" id="class_delete_btn">삭제</button>
+                                <button type="button" class="btn btn-outline-success" name="class_update_btn"
+                                        id="class_update_btn">수정
+                                </button>
+                                <button type="button" class="btn btn-outline-danger" name="class_delete_btn"
+                                        id="class_delete_btn">삭제
+                                </button>
                             </div>
                         </div>
                         <br>
@@ -155,49 +161,49 @@
                                     <th>예약취소내역</th>
                                 </tr>
                                 </thead>
-<%--                                <tbody>--%>
-<%--                                <tr>--%>
-<%--                                    <td>--%>
-<%--                                        <div class="d-flex align-items-center">--%>
-<%--                                            <div class="form-check">--%>
-<%--                                                <input class="form-check-input" type="checkbox" id="customCk"--%>
-<%--                                                       name="customCk">--%>
-<%--                                            </div>--%>
-<%--                                            <p class="text-xs font-weight-bold ms-2 mb-0" id="custEmail"--%>
-<%--                                               name="custEmail">esy1107@naver.com</p>--%>
-<%--                                        </div>--%>
-<%--                                    </td>--%>
-<%--                                    <td class="text-xs font-weight-bold">--%>
-<%--                                        <div class="d-flex align-items-center">--%>
-<%--                                            <span id="custName" name="custName">이뭉치</span>--%>
-<%--                                        </div>--%>
-<%--                                    </td>--%>
-<%--                                    <td class="text-xs font-weight-bold">--%>
-<%--                                        <div class="d-flex align-items-center">--%>
-<%--                                            <span id="custPhone" name="custPhone">010-1234-5678</span>--%>
-<%--                                        </div>--%>
-<%--                                    </td>--%>
-<%--                                    <td class="text-xs font-weight-bold"--%>
-<%--                                        style="display: flex; justify-content: space-between; align-items: center;">--%>
-<%--                                        <div style="display: flex; justify-content: flex-start; align-items: center;">--%>
-<%--                                            <span id="sportsCk" name="sportsCk">완료</span>&nbsp;&nbsp;--%>
-<%--                                            <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center">--%>
-<%--                                                <i class="fas fa-check" aria-hidden="true"></i></button>--%>
-<%--                                        </div>--%>
-<%--                                        <div style="display: flex; justify-content: flex-start; align-items: center;">--%>
-<%--                                            <button type="button" class="btn btn-outline-success btn-sm">완료</button>&nbsp;--%>
-<%--                                            <button type="button" class="btn btn-outline-dark btn-sm">취소</button>--%>
-<%--                                        </div>--%>
-<%--                                    </td>--%>
-<%--                                    <td class="text-xs font-weight-bold">--%>
-<%--                                        <div style="display: flex; justify-content: space-between;">--%>
-<%--                                            <span class="my-2 text-xs" id=cancelCk" name="cancelCk"--%>
-<%--                                                  style="margin-right: auto;">해당무</span>--%>
-<%--                                            <button type="button" class="btn btn-outline-danger btn-sm">예약취소</button>--%>
-<%--                                        </div>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
-<%--                                </tbody>--%>
+                                <%--                                <tbody>--%>
+                                <%--                                <tr>--%>
+                                <%--                                    <td>--%>
+                                <%--                                        <div class="d-flex align-items-center">--%>
+                                <%--                                            <div class="form-check">--%>
+                                <%--                                                <input class="form-check-input" type="checkbox" id="customCk"--%>
+                                <%--                                                       name="customCk">--%>
+                                <%--                                            </div>--%>
+                                <%--                                            <p class="text-xs font-weight-bold ms-2 mb-0" id="custEmail"--%>
+                                <%--                                               name="custEmail">esy1107@naver.com</p>--%>
+                                <%--                                        </div>--%>
+                                <%--                                    </td>--%>
+                                <%--                                    <td class="text-xs font-weight-bold">--%>
+                                <%--                                        <div class="d-flex align-items-center">--%>
+                                <%--                                            <span id="custName" name="custName">이뭉치</span>--%>
+                                <%--                                        </div>--%>
+                                <%--                                    </td>--%>
+                                <%--                                    <td class="text-xs font-weight-bold">--%>
+                                <%--                                        <div class="d-flex align-items-center">--%>
+                                <%--                                            <span id="custPhone" name="custPhone">010-1234-5678</span>--%>
+                                <%--                                        </div>--%>
+                                <%--                                    </td>--%>
+                                <%--                                    <td class="text-xs font-weight-bold"--%>
+                                <%--                                        style="display: flex; justify-content: space-between; align-items: center;">--%>
+                                <%--                                        <div style="display: flex; justify-content: flex-start; align-items: center;">--%>
+                                <%--                                            <span id="sportsCk" name="sportsCk">완료</span>&nbsp;&nbsp;--%>
+                                <%--                                            <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center">--%>
+                                <%--                                                <i class="fas fa-check" aria-hidden="true"></i></button>--%>
+                                <%--                                        </div>--%>
+                                <%--                                        <div style="display: flex; justify-content: flex-start; align-items: center;">--%>
+                                <%--                                            <button type="button" class="btn btn-outline-success btn-sm">완료</button>&nbsp;--%>
+                                <%--                                            <button type="button" class="btn btn-outline-dark btn-sm">취소</button>--%>
+                                <%--                                        </div>--%>
+                                <%--                                    </td>--%>
+                                <%--                                    <td class="text-xs font-weight-bold">--%>
+                                <%--                                        <div style="display: flex; justify-content: space-between;">--%>
+                                <%--                                            <span class="my-2 text-xs" id=cancelCk" name="cancelCk"--%>
+                                <%--                                                  style="margin-right: auto;">해당무</span>--%>
+                                <%--                                            <button type="button" class="btn btn-outline-danger btn-sm">예약취소</button>--%>
+                                <%--                                        </div>--%>
+                                <%--                                    </td>--%>
+                                <%--                                </tr>--%>
+                                <%--                                </tbody>--%>
                             </table>
                         </div>
                     </div>
@@ -238,17 +244,20 @@
             });
             // 업데이트 버튼을 눌렀을 때
             $('#class_update_btn').click(function () {
-                calendar_form.update();
+                let c = confirm("수업 내용 변경은 수강생에게 알림이 갑니다. 변경하시겠습니까?")
+                if (c == true) {
+                    calendar_form.update();
+                }
             });
             // 삭제 버튼을 눌렀을 때
             $('#class_delete_btn').click(function () {
-                let c = confirm("삭제하시겠습니까?")
-                if(c == true){
+                let c = confirm("수업 수강생에게 자동으로 알림이 갑니다. 삭제하시겠습니까?")
+                if (c == true) {
                     calendar_form.delete();
                 }
             });
         },
-        update   : function () {
+        update : function () {
             $('#calendar_form').attr({
                 method: 'post',
                 action: '/class/updateimpl'

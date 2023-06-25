@@ -11,9 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 @Component
@@ -22,13 +20,6 @@ public class PushNotificationUtil {
     // Modification Field ---------------------------------------
     private static final String PROJECT_ID = "kbstar2023-4ae6c";
     public static final String firebaseConfig = "fcm_admin.json";
-    // 바꾸기 e9ofDL7CSTu7_TfF0p3DaR:APA91bHuXvnrpfJst1krSsaflIZy1-B--iyx06KmY4nCLnqhvehoIQVMZtp2JRXB9mz0Pb0r3Y6JE-nIfPU998bHer0l0Y7odg_mpxhf_TF7b8-AycCpv0fH0RpSFh9wD0Fo25zO-KUl
-//    public static final String clientToken ="fmD5KC8iRoynQbLbtgigDd:APA91bHFbcqQ8aceo5e20sUVJrC3Fg3hRv_Z7OomoGt1elnZb4Vm7LOOF1TKkIenB5pBnnAEry6yt0fsxbE2yfb7N5a2sy8f50NCv4uHKBjyPI57sXN83oUbV5SCFPDI8a-fpgIC0EqK";
-
-//    public static final String clientToken =
-//            "e9ofDL7CSTu7_TfF0p3DaR:APA91bHuXvnrpfJst1krSsaflIZy1-B--iyx06KmY4nCLnqhvehoIQVMZtp2JRXB9mz0Pb0r3Y6JE-nIfPU998bHer0l0Y7odg_mpxhf_TF7b8-AycCpv0fH0RpSFh9wD0Fo25zO-KUl";
-//    public static final String clientToken =
-//    "dys-IAeRSTy5rpI-LvbtaK:APA91bHDqnIlht7vWPw6ExvDSzYNyydHuQpUz7gUNIiteGd8LDh0lACUDH0c3xA8a799JyTT5ygmV_x5h0sS7FUMCgxQlMD4c6QNuReWzomyzAr0aUTFtziVCJcDxi4oSu_rp8WRdHZ_";
 
     public static final String clientToken =
             "ffAHvA4qTLmfIVlLzzAf0H:APA91bGKsUKTlpgfSvSDo0szhMvI9heeGA21T0V-iyowKYFRUtymdVLmLROzqysLkly0Fr72OnK4YMZNz5XN9Uw_D_5cP8pH5qGalGTKnKRI_YaSH0rqhR-n90jk9HnPpdQp1CTCv-Iw";
@@ -39,10 +30,8 @@ public class PushNotificationUtil {
     private static final String BASE_URL = "https://fcm.googleapis.com";
     private static final String FCM_SEND_ENDPOINT = "/v1/projects/" + PROJECT_ID + "/messages:send";
     private static final String MESSAGING_SCOPE = "https://www.googleapis.com/auth/firebase.messaging";
-    private static final String[] SCOPES = { MESSAGING_SCOPE };
+    private static final String[] SCOPES = {MESSAGING_SCOPE};
     public static final String MESSAGE_KEY = "message";
-
-
 
 
     private static HttpURLConnection getConnection() throws IOException {
@@ -115,15 +104,17 @@ public class PushNotificationUtil {
             3. condition -> multiple topic
          */
         //jMessage.addProperty("topic", "news");
-        jMessage.addProperty("token",clientToken);
+        jMessage.addProperty("token", clientToken);
 
         JsonObject jFcm = new JsonObject();
         jFcm.add(MESSAGE_KEY, jMessage);
 
         return jFcm;
     }
-    public static void sendCommonMessage(String title, String body, String next) throws IOException {
+    // 토큰을 가진자에게 보내기.
+    public static void sendCommonMessage(String title, String body, String next, String clientToken) throws IOException {
         JsonObject notificationMessage = buildNotificationMessage(title, body, next);
+        notificationMessage.getAsJsonObject(MESSAGE_KEY).addProperty("token", clientToken);
         sendMessage(notificationMessage);
     }
 

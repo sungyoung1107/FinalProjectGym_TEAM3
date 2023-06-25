@@ -50,4 +50,13 @@
     <delete id="delete" parameterType="class">
         DELETE FROM class WHERE classNo=#{classNo}
     </delete>
+    <!--수업번호에 예약한 cust 정보 추출 -->
+    <select id="selectStudents" parameterType="Integer" resultType="class">
+        SELECT ca.*, c.custNo, c.custName, c.custToken, g.gymName, g.gymPhone
+        FROM class ca
+                 join MYSCHEDULE m on ca.classNo = m.classNo
+                 join cust c on m.custno = c.custno
+                 join gym g on ca.gymNo = g.gymNo and g.gymMasterCk = '1'
+        where ca.classNo=#{classNo}
+    </select>
 </mapper>

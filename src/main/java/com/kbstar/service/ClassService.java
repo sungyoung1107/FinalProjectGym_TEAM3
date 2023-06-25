@@ -49,4 +49,9 @@ public class ClassService implements KBService<Integer, Class> {
     public List<Class> selecDayclass(Gym gym) throws Exception {
         return mapper.selectdayclass(gym);
     }
+
+    // 수업번호에 예약한 cust 정보 추출
+    public List<Class> selectStudents(Integer classNo) throws Exception {
+        return mapper.selectStudents(classNo);
+    }
 }
