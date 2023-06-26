@@ -77,4 +77,6 @@ public class GymService implements KBService<Integer, Gym> {
     public void insertImg(Gym gym) {
         mapper.insertimg(gym);
     }
+
+    public void approveGym(Gym gym) {mapper.approveGym(gym);}
 }

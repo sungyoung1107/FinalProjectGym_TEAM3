@@ -341,17 +341,17 @@
                         <div class="collapse" id="dashboardsExamples">
                             <ul class="nav ms-4 ps-3">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/">
+                                    <a class="nav-link" href="/gym/approve">
                                         <span class="sidenav-mini-icon"> S </span>
                                         <span class="sidenav-normal"> 가입승인 </span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="/">
-                                        <span class="sidenav-mini-icon"> C </span>
-                                        <span class="sidenav-normal"> 서브계정 생성 </span>
-                                    </a>
-                                </li>
+<%--                                <li class="nav-item">--%>
+<%--                                    <a class="nav-link " href="/">--%>
+<%--                                        <span class="sidenav-mini-icon"> C </span>--%>
+<%--                                        <span class="sidenav-normal"> 서브계정 생성 </span>--%>
+<%--                                    </a>--%>
+<%--                                </li>--%>
                             </ul>
                         </div>
                     </li>
@@ -452,7 +452,15 @@
                                 <a href="/admin/logoutimpl" class="nav-link text-body font-weight-bold px-0">
                                     <span class="d-sm-inline d-none">로그아웃</span>
                                 </a>
-                            </li>
+                            </li>&nbsp;&nbsp;
+                            <li class="nav-item d-flex align-items-center">
+                                <a href="/" class="nav-link text-body font-weight-bold px-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5ZM9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8Zm1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Zm-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5ZM7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"/>
+                                </svg>
+                                <span class="d-sm-inline d-none">${logingym != null ? (logingym.status == '2' ? "승인완료" : "가입완료") : "관리자"}</span>
+                                </a>
+                            </li> &nbsp;&nbsp;
                         </ul>
                     </c:when>
                     <c:otherwise>

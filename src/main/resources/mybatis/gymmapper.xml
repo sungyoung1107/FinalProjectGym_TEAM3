@@ -42,4 +42,11 @@
         INSERT INTO gymimg (gymImgNo, gymNo, gymMasterCk, gymImgname, gymImgdetailCk)
         VALUES (GymImg_seq.NEXTVAL, #{gymNo}, #{gymMasterCk}, #{gymImgname}, #{gymImgdetailCk})
     </insert>
+    <!-- 승인완료로 -->
+    <update id="approveGym" parameterType="gym">
+        UPDATE gym SET gymMarketing=#{gymMarketing},
+                       Status='2',
+                       approvedAdmID='admin'
+        WHERE gymNo=#{gymNo}
+    </update>
 </mapper>

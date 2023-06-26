@@ -30,7 +30,7 @@ public class Gym {
     private String gymTitle; // 센터소개제목
     private String gymContents; // 센터소개내용
     private String gymMarketing; // 센터광고여부 (0: 미사용, 1:사용)
-    private String gymStatus; // 계정상태
+    private String status; // 계정상태
     private String approvedAdmID; // 승인관리자아이디
 
     private MultipartFile gymRegimg;
@@ -81,11 +81,5 @@ public class Gym {
         this.gymMasterCk = gymMasterCk;
         this.gymImgname = gymImgname;
         this.gymImgdetailCk = gymImgdetailCk;
-    }
-
-    // 수업 추출을 위해 추가 등록
-    public Gym(Integer gymNo, String classDate) {
-        this.gymNo = gymNo;
-        this.classDate = classDate;
     }
 }

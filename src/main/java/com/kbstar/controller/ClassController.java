@@ -4,6 +4,7 @@ import com.kbstar.dto.*;
 import com.kbstar.dto.Class;
 import com.kbstar.service.ClassService;
 import com.kbstar.service.MyScheduleService;
+import com.kbstar.service.NotificationService;
 import com.kbstar.service.TrainerService;
 import com.kbstar.util.DateUtil;
 import com.kbstar.util.PushNotificationUtil;
@@ -38,6 +39,8 @@ public class ClassController {
     MyScheduleService myScheduleService;
     @Autowired
     private PushNotificationUtil pushNotificationUtil;
+    @Autowired
+    private NotificationService notificationService;
 
     @RequestMapping("/add")
     public String add(Model model) {
@@ -83,6 +86,15 @@ public class ClassController {
                 log.info("=== 쿠폰 대상 번호는 === " + item.getCustNo() + "=====");
                 log.info("=== 쿠폰 대상 이름은 === " + item.getCustName() + "====="); // null 확인하기
                 log.info("=== 쿠폰 대상 토큰은 === " + clientToken + "=====");
+
+                Notification noti = new Notification();
+                noti.setCustNo(item.getCustNo()); //custNo
+                noti.setGymNo(aclass.getGymNo()); // gymNo
+                noti.setTicketNo(999999); // ticketNo(가상)
+                noti.setNotiTitle("수업변경");
+                noti.setNotiMessage("수업에 변동사항이 있어요");
+                noti.setNotiType("5");
+                notificationService.register(noti);
 
                 // 알림을 보내자
                 pushNotificationUtil.sendCommonMessage(

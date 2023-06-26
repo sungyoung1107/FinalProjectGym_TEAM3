@@ -10,6 +10,11 @@
     .fc-day-sat a {
         color: blue;
     }
+
+    .table > thead > tr {
+        font-size: 30px; /* 원하는 크기로 설정하세요 */
+    }
+
 </style>
 
 <div class="container-fluid py-4" style="overflow: auto;">
