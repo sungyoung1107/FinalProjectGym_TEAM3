@@ -14,25 +14,25 @@
                    #{notiTitle}, #{notiMessage}, SYSDATE, #{notiType}, '0'
                )
     </select>
-    <!-- 특정 고객 1명의 type별 알림내역 조회 -->  <!-- JOIN -> LEFT JOIN으로 성영 변경 -->
-    <select id="selectNotiType" resultType="Notification">
-        SELECT no.notiNo, no.custNo, no.gymNo, no.ticketNo, no.notiTitle, no.notiMessage, no.notiDate,
-               no.notiType, no.notiCheck, gm.gymName, tk.ticketName,
-               cl.className, cl.classStarttime, cl.classEndtime, cl.classDate, cl.classStarttime, cl.classEndtime
-        FROM Notification no
-            LEFT JOIN Gym gm ON no.gymNo = gm.gymNo
-            LEFT JOIN Class cl ON no.classNo = cl.classNo
-        WHERE no.custNo = #{custNo}
-          AND no.notiType= #{notiType}
-    </select>
+<!--    &lt;!&ndash; 특정 고객 1명의 type별 알림내역 조회 &ndash;&gt;  &lt;!&ndash; JOIN -> LEFT JOIN으로 성영 변경 &ndash;&gt;-->
+<!--    <select id="selectNotiType" resultType="Notification">-->
+<!--        SELECT no.notiNo, no.custNo, no.gymNo, no.ticketNo, no.notiTitle, no.notiMessage, no.notiDate,-->
+<!--               no.notiType, no.notiCheck, gm.gymName, tk.ticketName,-->
+<!--               cl.className, cl.classStarttime, cl.classEndtime, cl.classDate, cl.classStarttime, cl.classEndtime-->
+<!--        FROM Notification no-->
+<!--            LEFT JOIN Gym gm ON no.gymNo = gm.gymNo-->
+<!--            LEFT JOIN Class cl ON no.classNo = cl.classNo-->
+<!--        WHERE no.custNo = #{custNo}-->
+<!--          AND no.notiType= #{notiType}-->
+<!--    </select>-->
     <!-- 특정 고객 1명이 가지고 있는 모든 알림내역 조회 --> <!-- JOIN -> LEFT JOIN으로 성영 변경 -->
     <select id="getMyNoti" parameterType="Integer" resultType="Notification">
         SELECT no.notiNo, no.custNo, no.gymNo, no.ticketNo, no.notiTitle, no.notiMessage, no.notiDate,
                no.notiType, no.notiCheck, gm.gymName, tk.ticketName,
                cl.className, cl.classStarttime, cl.classEndtime, cl.classDate, cl.classStarttime, cl.classEndtime
         FROM Notification no
-        LEFT JOIN Class cl ON cl.gymNo = no.gymNo
-            LEFT JOIN Gym gm ON gm.gymNo = no.gymNo
+        LEFT JOIN Class cl ON cl.classNo = no.classNo
+            LEFT JOIN Gym gm ON gm.gymNo = cl.gymNo
             LEFT JOIN Ticket tk ON no.ticketNo = tk.ticketNo
         WHERE no.custNo = #{custNo}
     </select>

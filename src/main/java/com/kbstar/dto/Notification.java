@@ -15,6 +15,7 @@ public class Notification {
     private int custNo;
     private int gymNo;
     private int ticketNo;
+    private int classNo;
     private String notiTitle; // 알림제목(수업관련 알림은 되도록 짧게.)
     private String notiMessage; // 알림내용(주로 마케팅 알림의 경우만 길게하거나 이미지 첨부)
     private Date notiDate; // 발송일자

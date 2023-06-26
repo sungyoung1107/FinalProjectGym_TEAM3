@@ -91,6 +91,7 @@ public class ClassController {
                 noti.setCustNo(item.getCustNo()); //custNo
                 noti.setGymNo(aclass.getGymNo()); // gymNo
                 noti.setTicketNo(999999); // ticketNo(가상)
+                noti.setClassNo(aclass.getClassNo());
                 noti.setNotiTitle("수업변경");
                 noti.setNotiMessage("수업에 변동사항이 있어요");
                 noti.setNotiType("5");
