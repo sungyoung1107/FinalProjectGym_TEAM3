@@ -12,6 +12,7 @@ import java.util.List;
 @Mapper
 public interface CouponMapper extends KBMapper<Integer, Coupon> {
 
-    public List<Coupon> getCouponcust() throws Exception;
+//    public List<Coupon> getCouponcust_completed() throws Exception;
+//    public void getCouponcust_update(Coupon cp) throws Exception;
 
 }

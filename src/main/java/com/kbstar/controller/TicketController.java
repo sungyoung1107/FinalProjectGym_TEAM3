@@ -53,7 +53,7 @@ public class TicketController {
         ticket.setTicketImgname(imgname);
         ticketService.register(ticket);
         FileUploadUtil.saveFile(mf,imgdir);
-        return "redirect:/";
+        return "redirect:/ticket/all";
     }
 
     @RequestMapping("/deleteimpl")

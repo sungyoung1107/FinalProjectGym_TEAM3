@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbstar.mapper.NotificationMapper">
+    <!-- 참고 : insert 와 update는 서비스화면에 필요 없음 -->
+    <select id="insert" parameterType="Notification">
+        INSERT INTO notification (
+            notiNo, custNo, gymNo, ticketNo,
+            notiTitle, notiMessage, notiDate, notiType, notiCheck
+        )
+        VALUES (
+                   coupon_seq.NextVAL, #{custNo}, #{gymNo}, #{ticketNo},
+                   #{notiTitle}, #{notiMessage}, SYSDATE, #{notiType}, '0'
+               )
+    </select>
+    <!-- 특정 고객 1명의 type별 알림내역 조회 -->  <!-- JOIN -> LEFT JOIN으로 성영 변경 -->
+    <select id="selectNotiType" resultType="Notification">
+        SELECT no.notiNo, no.custNo, no.gymNo, no.ticketNo, no.notiTitle, no.notiMessage, no.notiDate,
+               no.notiType, no.notiCheck, gm.gymName, tk.ticketName,
+               cl.className, cl.classStarttime, cl.classEndtime, cl.classDate, cl.classStarttime, cl.classEndtime
+        FROM Notification no
+            LEFT JOIN Gym gm ON no.gymNo = gm.gymNo
+            LEFT JOIN Class cl ON no.classNo = cl.classNo
+        WHERE no.custNo = #{custNo}
+          AND no.notiType= #{notiType}
+    </select>
+    <!-- 특정 고객 1명이 가지고 있는 모든 알림내역 조회 --> <!-- JOIN -> LEFT JOIN으로 성영 변경 -->
+    <select id="getMyNoti" parameterType="Integer" resultType="Notification">
+        SELECT no.notiNo, no.custNo, no.gymNo, no.ticketNo, no.notiTitle, no.notiMessage, no.notiDate,
+               no.notiType, no.notiCheck, gm.gymName, tk.ticketName,
+               cl.className, cl.classStarttime, cl.classEndtime, cl.classDate, cl.classStarttime, cl.classEndtime
+        FROM Notification no
+        LEFT JOIN Class cl ON cl.gymNo = no.gymNo
+            LEFT JOIN Gym gm ON gm.gymNo = no.gymNo
+            LEFT JOIN Ticket tk ON no.ticketNo = tk.ticketNo
+        WHERE no.custNo = #{custNo}
+    </select>
+    <!-- 특정 알림 1건 조회 -->
+    <select id="select" parameterType="Integer" resultType="Notification">
+        SELECT * FROM Notification WHERE Notification=#{Notification}
+    </select>
+    <!-- 모든 알림내역 조회하기 -->
+    <select id="selectall" resultType="Notification">
+        SELECT *
+        from Notification
+    </select>
+    <!-- 알림 단 건 삭제 -->
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM Notification WHERE notificationNo=#{notificationNo}
+    </delete>
+</mapper>

@@ -26,10 +26,16 @@ public class Class {
     private String classFullbooked; // 수업마감여부
     private String sportsType; // 운동종목구분 ㅇ
     private String sportsClasstype; // 운동수업형태 ㅇ
-
     private String url;
 
     private String trainerName;
+
+    private Integer custNo;
+    private String custName;
+    private String custToken;
+
+    private String gymName; // 운동센터 이름
+    private String gymPhone; // 대표 전화번호
 
     public Class(Integer gymNo, Integer trainerNo, String className, String classDate, String classStarttime, String classEndtime, Integer classMaximum, String sportsType, String sportsClasstype) {
         this.gymNo = gymNo;

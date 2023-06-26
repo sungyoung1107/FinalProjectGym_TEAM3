@@ -34,29 +34,28 @@ public class ScheduleController {
     }
 
 //     15초마다 db를 긁어오자
-    @Scheduled(cron = "*/15 * * * * *")
-    public void custCompletedUpdate() throws Exception {
-
-        List<Coupon> target_list = null;
-
-        // 쿠폰 발송 대상인 cust를 긁어온다. cust 1개만 나오게 할거얌.........
-        target_list = couponService.getCouponcust();
-
-        log.info("==상태를 봐야겠음==" + target_list);
-
-//        if (target_list != null && !target_list.isEmpty()) {
-        if (target_list != null) {
-            for (Coupon item : target_list) {
-                log.info("=== 쿠폰 대상 번호는 === " + item.getCustNo() + "=====");
-                log.info("=== 쿠폰 대상 이름은 === " + item.getCustName() + "=====");
-                couponService.modify(item);
-                // 푸쉬 알람은 그냥 1번만 보낼거야!!!!! -.-;; 기기의 토큰을 개별적으로 얻어와야 하는데 무리데쓰스
-                // 무조건 Coupon 1개만 나오게 할것임 for문 상관 없음
-                pushNotificationUtil.sendCommonMessage("Open Coupon Box", "Open Coupon Box", "/coupon/show");
-            }
-        }
-    }
-
+//    @Scheduled(cron = "*/15 * * * * *")
+//    public void custCompletedUpdate() throws Exception {
+//
+//        List<Coupon> target_list = null;
+//
+//        // 쿠폰 발송 대상인 cust를 긁어온다. cust 1개만 나오게 할거얌.........
+//        target_list = couponService.getCouponcust_completed();
+//
+//        log.info("==상태를 봐야겠음==" + target_list);
+//
+////        if (target_list != null && !target_list.isEmpty()) {
+//        if (target_list != null) {
+//            for (Coupon item : target_list) {
+//                log.info("=== 쿠폰 대상 번호는 === " + item.getCustNo() + "=====");
+//                log.info("=== 쿠폰 대상 이름은 === " + item.getCustName() + "=====");
+//                couponService.getCouponcust_update(item);
+//                // 푸쉬 알람은 그냥 1번만 보낼거야!!!!! -.-;; 기기의 토큰을 개별적으로 얻어와야 하는데 무리데쓰스
+//                // 무조건 Coupon 1개만 나오게 할것임 for문 상관 없음
+//                pushNotificationUtil.sendCommonMessage("Open Coupon Box", "Open Coupon Box", "/coupon/show");
+//            }
+//        }
+//    }
 
 }
 

@@ -1,13 +1,13 @@
 package com.kbstar.controller;
 
-import com.kbstar.dto.Gym;
-import com.kbstar.dto.MySchedule;
-import com.kbstar.dto.Trainer;
+import com.kbstar.dto.*;
 import com.kbstar.dto.Class;
 import com.kbstar.service.ClassService;
 import com.kbstar.service.MyScheduleService;
+import com.kbstar.service.NotificationService;
 import com.kbstar.service.TrainerService;
 import com.kbstar.util.DateUtil;
+import com.kbstar.util.PushNotificationUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -37,6 +37,10 @@ public class ClassController {
     ClassService classService;
     @Autowired
     MyScheduleService myScheduleService;
+    @Autowired
+    private PushNotificationUtil pushNotificationUtil;
+    @Autowired
+    private NotificationService notificationService;
 
     @RequestMapping("/add")
     public String add(Model model) {
@@ -73,6 +77,31 @@ public class ClassController {
             e.printStackTrace();
         }
 
+        List<Class> sclass = null;
+        sclass = classService.selectStudents(aclass.getClassNo()); // 예약자들(알람보낼사람들) 추출
+
+        if (sclass != null || !sclass.isEmpty()) {
+            for (Class item : sclass) {
+                String clientToken = item.getCustToken().replaceAll("\\s+", ""); // 토큰에서 공백 제거
+                log.info("=== 쿠폰 대상 번호는 === " + item.getCustNo() + "=====");
+                log.info("=== 쿠폰 대상 이름은 === " + item.getCustName() + "====="); // null 확인하기
+                log.info("=== 쿠폰 대상 토큰은 === " + clientToken + "=====");
+
+                Notification noti = new Notification();
+                noti.setCustNo(item.getCustNo()); //custNo
+                noti.setGymNo(aclass.getGymNo()); // gymNo
+                noti.setTicketNo(999999); // ticketNo(가상)
+                noti.setNotiTitle("수업변경");
+                noti.setNotiMessage("수업에 변동사항이 있어요");
+                noti.setNotiType("5");
+                notificationService.register(noti);
+
+                // 알림을 보내자
+                pushNotificationUtil.sendCommonMessage(
+                        "Change class information", "Change class information",
+                        "/class/classinfo?classNo=" + item.getClassNo() + "&status=update", clientToken);
+            }
+        }
         return "redirect:/class/all";
     }
 
@@ -192,7 +221,7 @@ public class ClassController {
 
         myClassmembers = myScheduleService.getMembers(classNo);
 
-        for (MySchedule mySchedule : myClassmembers){
+        for (MySchedule mySchedule : myClassmembers) {
             JSONObject jo = new JSONObject();
             jo.put("myscheduleNo", mySchedule.getMyscheduleNo());
             jo.put("classNo", mySchedule.getClassNo());

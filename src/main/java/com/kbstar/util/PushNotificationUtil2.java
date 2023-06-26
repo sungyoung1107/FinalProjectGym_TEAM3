@@ -15,23 +15,20 @@ import java.util.List;
 import java.util.Scanner;
 
 @Component
-public class PushNotificationUtil {
+public class PushNotificationUtil2 {
 
     // Modification Field ---------------------------------------
     private static final String PROJECT_ID = "kbstar2023-4ae6c";
     public static final String firebaseConfig = "fcm_admin.json";
-
-    public static final String clientToken =
-            "ffAHvA4qTLmfIVlLzzAf0H:APA91bGKsUKTlpgfSvSDo0szhMvI9heeGA21T0V-iyowKYFRUtymdVLmLROzqysLkly0Fr72OnK4YMZNz5XN9Uw_D_5cP8pH5qGalGTKnKRI_YaSH0rqhR-n90jk9HnPpdQp1CTCv-Iw";
-
-    public static final String imgUrl = "https://github.com/leejeani/admin/blob/master/src/main/resources/static/img/a.jpg";
     // Modification Field ---------------------------------------
 
     private static final String BASE_URL = "https://fcm.googleapis.com";
     private static final String FCM_SEND_ENDPOINT = "/v1/projects/" + PROJECT_ID + "/messages:send";
     private static final String MESSAGING_SCOPE = "https://www.googleapis.com/auth/firebase.messaging";
-    private static final String[] SCOPES = {MESSAGING_SCOPE};
+    private static final String[] SCOPES = { MESSAGING_SCOPE };
     public static final String MESSAGE_KEY = "message";
+
+
 
 
     private static HttpURLConnection getConnection() throws IOException {
@@ -82,7 +79,7 @@ public class PushNotificationUtil {
         }
     }
 
-    private static JsonObject buildNotificationMessage(String title, String body, String next) {
+    private static JsonObject buildNotificationMessage(String title, String body, String next, String imgUrl) {
         JsonObject jNotification = new JsonObject();
         jNotification.addProperty("title", title);
         jNotification.addProperty("body", body);
@@ -103,26 +100,51 @@ public class PushNotificationUtil {
             2. token
             3. condition -> multiple topic
          */
-        //jMessage.addProperty("topic", "news");
-        jMessage.addProperty("token", clientToken);
+        jMessage.addProperty("topic", "kb"); // kb 등록되어 있으면 다 가
 
         JsonObject jFcm = new JsonObject();
         jFcm.add(MESSAGE_KEY, jMessage);
 
         return jFcm;
     }
-    // 토큰을 가진자에게 보내기.
-    public static void sendCommonMessage(String title, String body, String next, String clientToken) throws IOException {
-        JsonObject notificationMessage = buildNotificationMessage(title, body, next);
-        notificationMessage.getAsJsonObject(MESSAGE_KEY).addProperty("token", clientToken);
+    private static JsonObject buildNotificationTargetMessage(String title, String body, String next, String token) {
+        JsonObject jNotification = new JsonObject();
+        jNotification.addProperty("title", title);
+        jNotification.addProperty("body", body);
+        jNotification.addProperty("image", "");
+
+
+        JsonObject jMessage = new JsonObject();
+        jMessage.add("notification", jNotification);
+
+
+        JsonObject jData = new JsonObject();
+        jData.addProperty("key1", next);
+        jMessage.add("data", jData);
+
+        /*
+            firebase
+            1. topic
+            2. token
+            3. condition -> multiple topic
+         */
+        //jMessage.addProperty("topic", "kbs");
+        jMessage.addProperty("token",token);
+
+        JsonObject jFcm = new JsonObject();
+        jFcm.add(MESSAGE_KEY, jMessage);
+
+        return jFcm;
+    }
+    // 전체 메세지
+    public static void sendCommonMessage(String title, String body, String next, String imgUrl) throws IOException {
+        JsonObject notificationMessage = buildNotificationMessage(title, body, next, imgUrl);
+        sendMessage(notificationMessage);
+    }
+    // 해당 타켓 메세지
+    public static void sendTargetMessage(String title, String body, String next, String token) throws IOException {
+        JsonObject notificationMessage = buildNotificationTargetMessage(title, body, next, token);
         sendMessage(notificationMessage);
     }
 
 }
-
-
-//    public void sendCommonMessage(String title, String body, String next, Integer couponNo) throws IOException {
-//        JsonObject notificationMessage = buildNotificationMessage(title, body, next+"?couponNo="+couponNo);
-//        sendMessage(notificationMessage);
-//
-//    }

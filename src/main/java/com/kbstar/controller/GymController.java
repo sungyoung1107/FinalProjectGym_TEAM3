@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -217,6 +218,38 @@ public class GymController {
     public String calendar(Model model){
         model.addAttribute("page", "Calendar");
         model.addAttribute("center", "calendar");
+        return "index";
+    }
+
+    @RequestMapping("/approve")
+    public String approve(Model model) throws Exception {
+
+        List<Gym> gym_list = gymService.get();
+
+        for(Gym gym : gym_list){
+            log.info("gym.getGymNo()" + gym.getGymNo());
+            log.info("gym.getStatus()" + gym.getStatus());
+            
+            if(gym.getStatus().trim().equals("1"))
+                gym.setStatus("가입완료");
+            else if(gym.getStatus().trim().equals("2"))
+                gym.setStatus("승인완료");
+            else gym.setStatus("탈퇴");
+        }
+
+        model.addAttribute("gym_list", gym_list);
+        model.addAttribute("page", "Approve");
+        model.addAttribute("center", dir+"approve");
+        return "index";
+    }
+
+    @RequestMapping("/approveimpl")
+    public String approveimpl(Model model, Gym gym) throws Exception {
+
+        gymService.approveGym(gym); // 업데이트
+
+        model.addAttribute("page", "Approve");
+        model.addAttribute("center", dir+"approve");
         return "index";
     }
 }

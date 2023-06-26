@@ -28,12 +28,12 @@
                             <tr style="text-align: center">
                                 <%--                                <th>이용권 번호</th>--%>
                                 <th>쿠폰번호</th>
-                                <th>관리자</th>
                                 <th>쿠폰이름</th>
                                 <th>할인율</th>
                                 <th>발행일자</th>
                                 <th>만료일자</th>
                                 <th>발송일자</th>
+                                <th>발송사유</th>
                                 <th>발송고객번호</th>
                                 <th>사용여부</th>
 <%--                                <th>개별발송</th>--%>
@@ -45,9 +45,6 @@
                                     <input type="hidden" value="${obj.couponNo}" name="couponNo">
                                     <td>
                                             ${obj.couponNo}
-                                    </td>
-                                    <td class="text-sm">
-                                            ${obj.adminId}
                                     </td>
                                     <td class="text-sm">
                                             ${obj.couponName}
@@ -70,6 +67,25 @@
                                     </td>
                                     <td class="text-sm">
                                             ${obj.sendDate}
+                                    </td>
+                                    <td class="text-sm">
+                                        <c:choose>
+                                            <c:when test="${obj.couponCode == '' or obj.couponCode == null}">
+                                                미발송
+                                            </c:when>
+                                            <c:when test="${obj.couponCode == '1'}">
+                                                운동완료
+                                            </c:when>
+                                            <c:when test="${obj.couponCode == '2'}">
+                                                이벤트
+                                            </c:when>
+                                            <c:when test="${obj.couponCode == '3'}">
+                                                조인완료
+                                            </c:when>
+                                            <c:otherwise>
+                                                기타
+                                            </c:otherwise>
+                                        </c:choose>
                                     </td>
                                     <td class="text-sm">
                                         ${obj.custNo}

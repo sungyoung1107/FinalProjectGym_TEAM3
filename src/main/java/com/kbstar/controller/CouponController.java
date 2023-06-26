@@ -46,7 +46,7 @@ public class CouponController {
             couponService.register(coupon);
         }
 
-        return "/coupon/all";
+        return "redirect:/coupon/all";
     }
 
     @RequestMapping("/all")
@@ -61,17 +61,5 @@ public class CouponController {
         model.addAttribute("center", dir+"all");
         return "index";
     }
-
-//    @RequestMapping("/sendimpl")
-//    public String sendimpl(Model model, Integer couponNo, Integer custNo) throws Exception {
-//
-//        log.info("쿠폰 전송 시작");
-//        log.info("쿠폰 넘버" + couponNo);
-//        log.info("고객 넘버" + custNo);
-//
-//        pushNotificationUtil.sendCommonMessage("헬쓱 쿠폰 도착!", "헬쓱이를 위한 쿠폰이 도착했어요!!", "/coupon/show");
-//        return "index";
-//    }
-
 
 }
