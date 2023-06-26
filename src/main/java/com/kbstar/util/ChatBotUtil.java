@@ -16,8 +16,8 @@ import java.util.Base64;
 import java.util.Date;
 
 public class ChatBotUtil {
-    private static String secretKey = "d2hzT0hXQ0xyS1ZOdFlZWE5Ka3FicHVqVndMS2VTclI=";
-    private static String apiUrl = "https://djs5uhrnzp.apigw.ntruss.com/custom/v1/10479/d0d5a580daf7068b33945093083febf80ea5c1c424e3914a92acf40b32b3d651";
+    private static String secretKey = "eURMdGdJdkh6cW1mZXhTS0ZtTVZNbnpQZ1JvcnBSSUk=";
+    private static String apiUrl = "https://90sh1ps231.apigw.ntruss.com/custom/v1/10897/663ef20d8f790fafc23cc580542c553135232b1cb0e71adc58b3af79147dd994";
 
     public static String chat(String txt) throws IOException {
         URL url = new URL(apiUrl);

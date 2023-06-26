@@ -160,6 +160,16 @@
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                             <div class="avatar me-3">
+                                <img src="/assets/img/team-4.jpg" alt="kal" class="border-radius-lg shadow">
+                            </div>
+                            <div class="d-flex align-items-start flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm">오지예</h6>
+                                <p class="mb-0 text-xs">문의드립니다.</p>
+                            </div>
+                            <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="/center/chat">Reply</a>
+                        </li>
+                        <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                            <div class="avatar me-3">
                                 <img src="/assets/img/kal-visuals-square.jpg" alt="kal" class="border-radius-lg shadow">
                             </div>
                             <div class="d-flex align-items-start flex-column justify-content-center">
@@ -185,26 +195,6 @@
                             <div class="d-flex align-items-start flex-column justify-content-center">
                                 <h6 class="mb-0 text-sm">정인보</h6>
                                 <p class="mb-0 text-xs">이용권 양도 문의 드려용!</p>
-                            </div>
-                            <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
-                        </li>
-                        <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                            <div class="avatar me-3">
-                                <img src="/assets/img/team-4.jpg" alt="kal" class="border-radius-lg shadow">
-                            </div>
-                            <div class="d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">오지예</h6>
-                                <p class="mb-0 text-xs">샤워 시설 있나요?</p>
-                            </div>
-                            <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
-                        </li>
-                        <li class="list-group-item border-0 d-flex align-items-center px-0">
-                            <div class="avatar me-3">
-                                <img src="/assets/img/team-3.jpg" alt="kal" class="border-radius-lg shadow">
-                            </div>
-                            <div class="d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">이진만</h6>
-                                <p class="mb-0 text-xs">운동 후 식사에 샐러드 넣어주시면 안될까요?</p>
                             </div>
                             <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
                         </li>

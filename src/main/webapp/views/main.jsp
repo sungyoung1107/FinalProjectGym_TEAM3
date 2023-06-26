@@ -219,40 +219,56 @@
                                                         <td>
                                                             <div class="d-flex px-2 py-1">
                                                                 <div>
-                                                                    <img src="../../assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-2" alt="logo_xd">
+<%--                                                                    <img src="../../assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-2" alt="logo_xd">--%>
+                                                                    <i class="ni ni-user-run me-sm-1"> &nbsp; </i>
                                                                 </div>
                                                                 <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm">Adobe</h6>
+                                                                    <h6 class="mb-0 text-sm">18:00</h6>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            <span class="text-xs font-weight-bold"> 25% </span>
+                                                            <span class="text-xs font-weight-bold"> 45% </span>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
                                                             <div class="d-flex px-2 py-1">
                                                                 <div>
-                                                                    <img src="../../assets/img/small-logos/logo-atlassian.svg" class="avatar avatar-sm me-2" alt="logo_atlassian">
+                                                                    <i class="ni ni-user-run me-sm-1"> &nbsp; </i>
                                                                 </div>
                                                                 <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm">Atlassian</h6>
+                                                                    <h6 class="mb-0 text-sm">19:00</h6>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            <span class="text-xs font-weight-bold"> 3% </span>
+                                                            <span class="text-xs font-weight-bold"> 20% </span>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
                                                             <div class="d-flex px-2 py-1">
                                                                 <div>
-                                                                    <img src="../../assets/img/small-logos/logo-slack.svg" class="avatar avatar-sm me-2" alt="logo_slack">
+                                                                    <i class="ni ni-user-run me-sm-1"> &nbsp; </i>
                                                                 </div>
                                                                 <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm">Slack</h6>
+                                                                    <h6 class="mb-0 text-sm"> 21:00 </h6>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span class="text-xs font-weight-bold"> 15% </span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex px-2 py-1">
+                                                                <div>
+                                                                    <i class="ni ni-user-run me-sm-1"> &nbsp; </i>
+                                                                </div>
+                                                                <div class="d-flex flex-column justify-content-center">
+                                                                    <h6 class="mb-0 text-sm"> 17:30 </h6>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -264,30 +280,15 @@
                                                         <td>
                                                             <div class="d-flex px-2 py-1">
                                                                 <div>
-                                                                    <img src="../../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm me-2" alt="logo_spotify">
+                                                                    <i class="ni ni-user-run me-sm-1"> &nbsp; </i>
                                                                 </div>
                                                                 <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm">Spotify</h6>
+                                                                    <h6 class="mb-0 text-sm"> 20:30 </h6>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td class="align-middle text-center text-sm">
-                                                            <span class="text-xs font-weight-bold"> 7% </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex px-2 py-1">
-                                                                <div>
-                                                                    <img src="../../assets/img/small-logos/logo-jira.svg" class="avatar avatar-sm me-2" alt="logo_jira">
-                                                                </div>
-                                                                <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm">Jira</h6>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="align-middle text-center text-sm">
-                                                            <span class="text-xs font-weight-bold"> 10% </span>
+                                                            <span class="text-xs font-weight-bold"> 8% </span>
                                                         </td>
                                                     </tr>
                                                     </tbody>
@@ -420,7 +421,7 @@
     new Chart(ctx2, {
         type: "doughnut",
         data: {
-            labels: ['Creative Tim', 'Github', 'Bootsnipp', 'Dev.to', 'Codeinwp'],
+            labels: ['18:00', '19:00', '17:30', '21:00', '20:30'],
             datasets: [{
                 label: "Projects",
                 weight: 9,
@@ -429,7 +430,7 @@
                 pointRadius: 2,
                 borderWidth: 2,
                 backgroundColor: ['#2152ff', '#3A416F', '#f53939', '#a8b8d8', '#cb0c9f'],
-                data: [15, 20, 12, 60, 20],
+                data: [45, 20, 12, 15, 8],
                 fill: false
             }],
         },
