@@ -6,11 +6,11 @@
     <!-- 참고 : insert 와 update는 서비스화면에 필요 없음 -->
     <select id="insert" parameterType="Notification">
         INSERT INTO notification (
-            notiNo, custNo, gymNo, ticketNo,
+            notiNo, custNo, gymNo, ticketNo, classNo,
             notiTitle, notiMessage, notiDate, notiType, notiCheck
         )
         VALUES (
-                   coupon_seq.NextVAL, #{custNo}, #{gymNo}, #{ticketNo},
+                   coupon_seq.NextVAL, #{custNo}, #{gymNo}, #{ticketNo}, #{classNo},
                    #{notiTitle}, #{notiMessage}, SYSDATE, #{notiType}, '0'
                )
     </select>
