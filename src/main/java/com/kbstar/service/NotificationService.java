@@ -45,9 +45,9 @@ public class NotificationService implements KBService<Integer, Notification> {
     public List<Notification> getMyNoti(Integer custNo) throws Exception {
         return notificationMapper.getMyNoti(custNo);
     }
-    // 특정 고객 1명의 type별 알림내역 조회
-    public List<Notification> selectNotiType() throws Exception {
-        return notificationMapper.selectNotiType();
-    }
+//    // 특정 고객 1명의 type별 알림내역 조회
+//    public List<Notification> selectNotiType() throws Exception {
+//        return notificationMapper.selectNotiType();
+//    }
 
 }

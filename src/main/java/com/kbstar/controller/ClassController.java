@@ -80,7 +80,9 @@ public class ClassController {
         List<Class> sclass = null;
         sclass = classService.selectStudents(aclass.getClassNo()); // 예약자들(알람보낼사람들) 추출
 
-        if (sclass != null || !sclass.isEmpty()) {
+        log.info("sclass" + sclass);
+
+        if (sclass != null && sclass.size()!=0) {
             for (Class item : sclass) {
                 String clientToken = item.getCustToken().replaceAll("\\s+", ""); // 토큰에서 공백 제거
                 log.info("=== 쿠폰 대상 번호는 === " + item.getCustNo() + "=====");
@@ -91,6 +93,7 @@ public class ClassController {
                 noti.setCustNo(item.getCustNo()); //custNo
                 noti.setGymNo(aclass.getGymNo()); // gymNo
                 noti.setTicketNo(999999); // ticketNo(가상)
+                noti.setClassNo(aclass.getClassNo());
                 noti.setNotiTitle("수업변경");
                 noti.setNotiMessage("수업에 변동사항이 있어요");
                 noti.setNotiType("5");
