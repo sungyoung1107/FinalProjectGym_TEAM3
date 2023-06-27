@@ -1,6 +1,8 @@
 package com.kbstar.controller;
 
+import com.kbstar.dto.Cust;
 import com.kbstar.dto.Gym;
+import com.kbstar.service.CustService;
 import com.kbstar.service.GymService;
 import com.kbstar.util.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -31,8 +33,8 @@ public class CenterController {
     @Autowired
     GymService gymService;
 
-//    @Autowired
-//    CustService custService;
+    @Autowired
+    CustService custService;
 
     @Value("${uploadimgdir}")
     String imgdir;
@@ -91,17 +93,17 @@ public class CenterController {
         return "index";
     }
 
-//    @RequestMapping("/chat")
-//    public String chat(Model model, HttpSession session) throws Exception {
-//
-//        Gym gym = (Gym) session.getAttribute("logingym");
-//        Cust cust = (Cust) custService.get("ttyg567@naver.com");
-//
-//        session.setAttribute("logingym", gym);
-//        model.addAttribute("adminserver", adminserver);
-//        model.addAttribute("sendcust", cust);
-//        model.addAttribute("center", dir+"chat");
-//        return "index";
-//    }
+    @RequestMapping("/chat")
+    public String chat(Model model, HttpSession session) throws Exception {
+
+        Gym gym = (Gym) session.getAttribute("logingym");
+        Cust cust = (Cust) custService.get("ttyg567@naver.com");
+
+        session.setAttribute("logingym", gym);
+        model.addAttribute("adminserver", adminserver);
+        model.addAttribute("sendcust", cust);
+        model.addAttribute("center", dir+"chat");
+        return "index";
+    }
 
 }
