@@ -84,11 +84,9 @@ public class ClassController {
 
         if (sclass != null && sclass.size()!=0) {
             for (Class item : sclass) {
-                String clientToken = item.getCustToken().replaceAll("\\s+", ""); // 토큰에서 공백 제거
-                log.info("=== 쿠폰 대상 번호는 === " + item.getCustNo() + "=====");
-                log.info("=== 쿠폰 대상 이름은 === " + item.getCustName() + "====="); // null 확인하기
-                log.info("=== 쿠폰 대상 토큰은 === " + clientToken + "=====");
+                log.info("수업변동 알림 진입");
 
+                // 앱 내 알람
                 Notification noti = new Notification();
                 noti.setCustNo(item.getCustNo()); //custNo
                 noti.setGymNo(aclass.getGymNo()); // gymNo
@@ -99,10 +97,20 @@ public class ClassController {
                 noti.setNotiType("5");
                 notificationService.register(noti);
 
-                // 알림을 보내자
-                pushNotificationUtil.sendCommonMessage(
-                        "Change class information", "Change class information",
-                        "/class/classinfo?classNo=" + item.getClassNo() + "&status=update", clientToken);
+                // firebase 알람
+                String clientToken = "";
+
+                // 토큰이 null이 아니면
+                if(item.getCustToken()!=null) {
+                    clientToken = item.getCustToken().replaceAll("\\s+", ""); // 토큰에서 공백 제거
+                    log.info("=== 수업 대상 번호는 === " + item.getCustNo() + "=====");
+                    log.info("=== 수업 대상 이름은 === " + item.getCustName() + "====="); // null 확인하기
+                    log.info("=== 수업 대상 토큰은 === " + clientToken + "=====");
+                    // 알림을 보내자
+                    pushNotificationUtil.sendCommonMessage(
+                            "Change class information", "Change class information",
+                            "/class/classinfo?classNo=" + item.getClassNo() + "&status=update", clientToken);
+                }
             }
         }
         return "redirect:/class/all";
