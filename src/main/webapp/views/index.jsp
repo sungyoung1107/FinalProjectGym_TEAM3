@@ -344,12 +344,12 @@
                                         <span class="sidenav-normal"> 가입승인 </span>
                                     </a>
                                 </li>
-<%--                                <li class="nav-item">--%>
-<%--                                    <a class="nav-link " href="/">--%>
-<%--                                        <span class="sidenav-mini-icon"> C </span>--%>
-<%--                                        <span class="sidenav-normal"> 서브계정 생성 </span>--%>
-<%--                                    </a>--%>
-<%--                                </li>--%>
+                                    <%--                                <li class="nav-item">--%>
+                                    <%--                                    <a class="nav-link " href="/">--%>
+                                    <%--                                        <span class="sidenav-mini-icon"> C </span>--%>
+                                    <%--                                        <span class="sidenav-normal"> 서브계정 생성 </span>--%>
+                                    <%--                                    </a>--%>
+                                    <%--                                </li>--%>
                             </ul>
                         </div>
                     </li>
@@ -358,7 +358,8 @@
                            aria-controls="pagesExamples"
                            role="button" aria-expanded="false">
                             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-card-text" viewBox="0 0 16 16">
                                     <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
                                     <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
                                 </svg>
@@ -430,6 +431,15 @@
                     </div>
                 </a>
             </div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <c:choose>
+                    <c:when test="${logingym != null or loginadmin != null}">
+                    <span class="badge badge-pill badge-lg ${logingym != null ? (logingym.status == '2' ? 'bg-gradient-success' : 'bg-gradient-info') : 'bg-gradient-primary'}">
+                            ${logingym != null ? (logingym.status == '2' ? '상태: 승인완료' : '상태: 승인 대기중') : '관리자'}
+                    </span>
+                    </c:when>
+                </c:choose>
+            </div>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     <%--                    <div class="input-group">--%>
@@ -450,15 +460,7 @@
                                 <a href="/admin/logoutimpl" class="nav-link text-body font-weight-bold px-0">
                                     <span class="d-sm-inline d-none">로그아웃</span>
                                 </a>
-                            </li>&nbsp;&nbsp;
-                            <li class="nav-item d-flex align-items-center">
-                                <a href="/" class="nav-link text-body font-weight-bold px-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
-                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5ZM9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8Zm1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Zm-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96c.026-.163.04-.33.04-.5ZM7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"/>
-                                </svg>
-                                <span class="d-sm-inline d-none">${logingym != null ? (logingym.status == '2' ? "승인완료" : "가입완료") : "관리자"}</span>
-                                </a>
-                            </li> &nbsp;&nbsp;
+                            </li>
                         </ul>
                     </c:when>
                     <c:otherwise>
