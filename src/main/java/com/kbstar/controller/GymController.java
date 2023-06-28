@@ -204,7 +204,7 @@ public class GymController {
         }
 
         model.addAttribute("rgym", gym);
-        return "redirect:/";
+        return "redirect:/gym/login";
     }
 
     @RequestMapping("/forgotPwd")

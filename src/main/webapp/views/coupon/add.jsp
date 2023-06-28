@@ -42,7 +42,7 @@
                         <div class="row mt-3">
                             <div class="col-6">
                                 <label>발매수</label>
-                                <input type="number" class="form-control form-control-lg" name="couponAmount"
+                                <input type="number" class="form-control form-control-lg" name="couponAmount" style="height: 40px;"
                                        id="couponAmount" placeholder="숫자로 입력">
                             </div>
                         </div>
