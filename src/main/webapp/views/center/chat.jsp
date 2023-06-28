@@ -30,8 +30,7 @@
 <%--                    <h5 class="mb-1">--%>
 <%--                        ${logingym.gymName}--%>
 <%--                    </h5>--%>
-<%--                    <h1 id="adm_id" style="display:none;">${logingym.gymNo}</h1>--%>
-<%--                    <input type="hidden" id="target" value="10">--%>
+
 <%--                </div>--%>
 <%--            </div>--%>
 <%--            &lt;%&ndash;    상단 불투명한 흰색 바 오른쪽 버튼 3개 &ndash;%&gt;--%>
@@ -105,6 +104,10 @@
 <%--    </div>--%>
     <%--    상단 불투명한 흰색 바 끝 --%>
 </div>
+
+<h1 id="adm_id" style="display:none;">${logingym.gymNo}</h1>
+<input type="hidden" id="target" value="10">
+
 <%--    하단 이용자 정보 + 채팅창  --%>
 <div class="container-fluid py-4">
     <div class="row">
@@ -201,7 +204,7 @@
         <%--    우측 채팅창 --%>
         <div class="col-8">
             <div class="card blur shadow-blur max-height-vh-70">
-                <div class="card-body overflow-auto overflow-x-hidden">
+                <div class="card-body overflow-auto overflow-x-hidden" style="display: flex; justify-content: flex-end;">
                     <div class="col-7">
                         <div class="row justify-content-start text-right mb-4">
 

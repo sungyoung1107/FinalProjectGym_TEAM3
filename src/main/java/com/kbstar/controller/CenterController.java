@@ -96,10 +96,15 @@ public class CenterController {
     @RequestMapping("/chat")
     public String chat(Model model, HttpSession session) throws Exception {
 
-        Gym gym = (Gym) session.getAttribute("logingym");
+        //Gym gym = (Gym) session.getAttribute("logingym");
+        Gym gym = (Gym) gymService.get(2);
         Cust cust = (Cust) custService.get("ttyg567@naver.com");
 
-        session.setAttribute("logingym", gym);
+        log.info("test");
+        log.info(String.valueOf(gym));
+
+        //session.setAttribute("logingym", gym);
+        model.addAttribute("logingym", gym);
         model.addAttribute("adminserver", adminserver);
         model.addAttribute("sendcust", cust);
         model.addAttribute("center", dir+"chat");
