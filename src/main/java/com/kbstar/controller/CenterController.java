@@ -104,6 +104,7 @@ public class CenterController {
         log.info(String.valueOf(gym));
 
         //session.setAttribute("logingym", gym);
+        model.addAttribute("page", "Chat service");
         model.addAttribute("logingym", gym);
         model.addAttribute("adminserver", adminserver);
         model.addAttribute("sendcust", cust);

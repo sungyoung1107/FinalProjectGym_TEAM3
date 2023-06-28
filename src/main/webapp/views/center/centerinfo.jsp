@@ -160,40 +160,40 @@
                     <ul class="list-group">
                         <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                             <div class="avatar me-3">
-                                <img src="/assets/img/team-4.jpg" alt="kal" class="border-radius-lg shadow">
+                                <img src="/assets/img/healssg723.jpg" alt="kal" class="border-radius-lg shadow">
                             </div>
                             <div class="d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">오지예</h6>
+                                <h6 class="mb-0 text-sm">지예</h6>
                                 <p class="mb-0 text-xs">문의드립니다.</p>
                             </div>
                             <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="/center/chat">Reply</a>
                         </li>
                         <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                             <div class="avatar me-3">
-                                <img src="/assets/img/kal-visuals-square.jpg" alt="kal" class="border-radius-lg shadow">
+                                <img src="/assets/img/trainer/trainer_iu.jpg" alt="kal" class="border-radius-lg shadow">
                             </div>
                             <div class="d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">이성영</h6>
+                                <h6 class="mb-0 text-sm">성영</h6>
                                 <p class="mb-0 text-xs">뭉치 강사님 멋쪄요!!</p>
                             </div>
                             <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="/center/chat">Reply</a>
                         </li>
                         <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                             <div class="avatar me-3">
-                                <img src="/assets/img/marie.jpg" alt="kal" class="border-radius-lg shadow">
+                                <img src="/assets/img/trainer/trainer_minyoung.jpg" alt="kal" class="border-radius-lg shadow">
                             </div>
                             <div class="d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">이진</h6>
+                                <h6 class="mb-0 text-sm">진</h6>
                                 <p class="mb-0 text-xs">메뉴에 국밥도 있나요?</p>
                             </div>
                             <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
                         </li>
                         <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                             <div class="avatar me-3">
-                                <img src="/assets/img/ivana-square.jpg" alt="kal" class="border-radius-lg shadow">
+                                <img src="/assets/img/trainer/trianer_wonyoung.jpeg" alt="kal" class="border-radius-lg shadow">
                             </div>
                             <div class="d-flex align-items-start flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">정인보</h6>
+                                <h6 class="mb-0 text-sm">인보</h6>
                                 <p class="mb-0 text-xs">이용권 양도 문의 드려용!</p>
                             </div>
                             <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>

@@ -323,6 +323,8 @@
     <%--var jsonArray = <%= new ObjectMapper().writeValueAsString(allArrList) %>;--%>
     <%--var allArrList = JSON.parse(jsonArray);--%>
 
+    function drawChart() {
+
     var ctx1 = document.getElementById("chart-line").getContext("2d");
     var ctx2 = document.getElementById("chart-doughnut").getContext("2d");
 
@@ -472,59 +474,74 @@
             },
         },
     });
+    }
+
+    drawChart(); // 초기 차트 그리기
+
+    setInterval(drawChart, 5000); // 5초마다 차트 다시 그리기
+
 </script>
 
 <script src="../../assets/js/plugins/countup.min.js"></script>
 
 <script>
-    if (document.getElementById('state1')) {
-        const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
-        if (!countUp.error) {
-            countUp.start();
-        } else {
-            console.error(countUp.error);
+
+    function startCountUp() {
+        if (document.getElementById('state1')) {
+            const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
+            if (!countUp.error) {
+                countUp.start();
+            } else {
+                console.error(countUp.error);
+            }
         }
-    }
-    if (document.getElementById('state2')) {
-        const countUp = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
-        if (!countUp.error) {
-            countUp.start();
-        } else {
-            console.error(countUp.error);
+        if (document.getElementById('state2')) {
+            const countUp = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
+            if (!countUp.error) {
+                countUp.start();
+            } else {
+                console.error(countUp.error);
+            }
         }
-    }
-    if (document.getElementById('state3')) {
-        const countUp = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
-        if (!countUp.error) {
-            countUp.start();
-        } else {
-            console.error(countUp.error);
+        if (document.getElementById('state3')) {
+            const countUp = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+            if (!countUp.error) {
+                countUp.start();
+            } else {
+                console.error(countUp.error);
+            }
         }
-    }
-    if (document.getElementById('state4')) {
-        const countUp = new CountUp('state4', document.getElementById("state4").getAttribute("countTo"));
-        if (!countUp.error) {
-            countUp.start();
-        } else {
-            console.error(countUp.error);
+        if (document.getElementById('state4')) {
+            const countUp = new CountUp('state4', document.getElementById("state4").getAttribute("countTo"));
+            if (!countUp.error) {
+                countUp.start();
+            } else {
+                console.error(countUp.error);
+            }
         }
-    }
-    if (document.getElementById('state5')) {
-        const countUp = new CountUp('state5', document.getElementById("state5").getAttribute("countTo"));
-        if (!countUp.error) {
-            countUp.start();
-        } else {
-            console.error(countUp.error);
+        if (document.getElementById('state5')) {
+            const countUp = new CountUp('state5', document.getElementById("state5").getAttribute("countTo"));
+            if (!countUp.error) {
+                countUp.start();
+            } else {
+                console.error(countUp.error);
+            }
         }
-    }
-    if (document.getElementById('state6')) {
-        const countUp = new CountUp('state6', document.getElementById("state6").getAttribute("countTo"));
-        if (!countUp.error) {
-            countUp.start();
-        } else {
-            console.error(countUp.error);
+        if (document.getElementById('state6')) {
+            const countUp = new CountUp('state6', document.getElementById("state6").getAttribute("countTo"));
+            if (!countUp.error) {
+                countUp.start();
+            } else {
+                console.error(countUp.error);
+            }
         }
+
     }
+
+    startCountUp(); // 처음에는 즉시 호출
+
+    setInterval(startCountUp, 5000); // 이후에는 5초마다 호출
+
 </script>
 
 <script>
