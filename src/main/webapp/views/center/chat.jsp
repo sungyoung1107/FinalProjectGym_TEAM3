@@ -2,15 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%--<style>--%>
-<%--    #to {--%>
-<%--        width: 400px;--%>
-<%--        height: 200px;--%>
-<%--        overflow: auto;--%>
-<%--        border: 2px solid green;--%>
-<%--    }--%>
-<%--</style>--%>
-
 
 <div class="container-fluid">
     <div class="page-header min-height-300 border-radius-xl mt-4"
@@ -205,7 +196,7 @@
         <div class="col-8">
             <div class="card blur shadow-blur max-height-vh-70">
                 <div class="card-body overflow-auto overflow-x-hidden" style="display: flex; justify-content: flex-end;">
-                    <div class="col-7">
+                    <div class="col-7" style="width: 100%">
                         <div class="row justify-content-start text-right mb-4">
 
                         </div>
@@ -317,7 +308,7 @@
                     //var cardtop = $('<div class="card-body overflow-auto overflow-x-hidden">').appendTo(col);
                     var chatBubble = $('<div class="row justify-content-start mb-4">').appendTo('.col-7');
                     var colAuto = $('<div class="col-auto">').appendTo(chatBubble);
-                    var card = $('<div class="card">').appendTo(colAuto);
+                    var card = $('<div class="card bg-gray-200">').appendTo(colAuto);
                     var cardBody = $('<div class="card-body py-2 px-3">').appendTo(card);
                     var mb1 = $('<p class="mb-1">').text(JSON.parse(msg.body).content1).appendTo(cardBody);
                     var timeContainer = $('<div class="d-flex align-items-center text-sm opacity-6">').appendTo(cardBody);
@@ -355,7 +346,7 @@
 
             var chatBubble = $('<div class="row justify-content-end  mb-4">').appendTo('.col-7');
             var colAuto = $('<div class="col-auto">').appendTo(chatBubble);
-            var card = $('<div class="card bg-gray-200">').appendTo(colAuto);
+            var card = $('<div class="card text-bg-primary mb-3">').appendTo(colAuto);
             var cardBody = $('<div class="card-body py-2 px-3">').appendTo(card);
             var mb1 = $('<p class="mb-1">').text(question).appendTo(cardBody);
             var timeContainer = $('<div class="d-flex align-items-center text-sm opacity-6">').appendTo(cardBody);
