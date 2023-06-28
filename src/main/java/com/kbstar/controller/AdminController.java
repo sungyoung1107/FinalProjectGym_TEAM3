@@ -46,17 +46,17 @@ public class AdminController {
                 session.setMaxInactiveInterval(100000);
                 session.setAttribute("loginadmin",admin);
                 model.addAttribute("radmin", admin);
-                if (redirectURL == null || redirectURL.equals("")) {
-                    return "redirect:/";
-                }else {
-                    return "redirect:"+redirectURL;
-                }
+//                if (redirectURL == null || redirectURL.equals("")) {
+//                    return "redirect:/";
+//                }else {
+//                    return "redirect:"+redirectURL;
+//                }
             }
         } catch (Exception e) {
             throw new Exception("시스템 장애. 잠시 후 다시 로그인 하세요");
         }
-        model.addAttribute("center",dir + nextPage);
-        return "index";
+        model.addAttribute("center",dir+"adminmain");
+        return "redirect:/admin/adminmain";
     }
 
 
@@ -66,6 +66,13 @@ public class AdminController {
             session.invalidate();
         }
         return "redirect:/";
+    }
+
+    @RequestMapping("/adminmain")
+    public String admin_main(Model model){
+        model.addAttribute("page", "Admin Main");
+        model.addAttribute("center", dir+"adminmain");
+        return "index";
     }
 
 }
