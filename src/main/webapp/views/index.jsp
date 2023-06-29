@@ -40,7 +40,7 @@
            aria-hidden="true" id="iconSidenav"></i>
         <a
            href="/">
-            <img src="/assets/img/centerlogo.png" style="margin-left: 30px; width: 180px;">
+            <img src="/assets/img/centerlogo.png" style="margin-left: 30px; margin-top: 15px; width: 180px;">
         </a>
         <!-- class="navbar-brand" -->
     </div>
