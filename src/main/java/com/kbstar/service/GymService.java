@@ -79,4 +79,9 @@ public class GymService implements KBService<Integer, Gym> {
     }
 
     public void approveGym(Gym gym) {mapper.approveGym(gym);}
+
+    // gymNo로 이메일 조회하기
+    public Gym getmyemailFromgymNo(Gym gym){
+        return mapper.getmyemailFromgymNo(gym);
+    }
 }
