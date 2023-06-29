@@ -159,11 +159,11 @@
                             <table class="table table-flush" id="datatable-search">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th>이메일</th>
-                                    <th>이름</th>
-                                    <th>휴대폰번호</th>
-                                    <th>운동완료여부</th>
-                                    <th>예약취소내역</th>
+                                    <th style="font-size: 15px; text-align: center">이메일</th>
+                                    <th style="font-size: 15px; text-align: center">이름</th>
+                                    <th style="font-size: 15px; text-align: center">휴대폰번호</th>
+                                    <th style="font-size: 15px; text-align: center">운동완료여부</th>
+                                    <th style="font-size: 15px; text-align: center">예약취소내역</th>
                                 </tr>
                                 </thead>
                                 <%--                                <tbody>--%>

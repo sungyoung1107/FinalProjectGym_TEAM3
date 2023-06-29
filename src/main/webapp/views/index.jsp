@@ -35,10 +35,11 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-2 cursor-pointer text-secondary opacity-7 position-absolute end-0 top-0 d-none d-xl-none"
            aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand"
+        <a
            href="/">
-            <img src="/assets/img/centerlogo.png" style="padding-left:35px; height:80px; width: 140px;">
+            <img src="/assets/img/centerlogo.png" style="margin-left: 30px; width: 180px;">
         </a>
+        <!-- class="navbar-brand" -->
     </div>
     <hr class="horizontal dark mt-0">
     <c:choose>
@@ -46,11 +47,9 @@
             <div class="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="/" class="nav-link active" aria-controls="ecommerceExamples" role="button"
-                           aria-expanded="false">
-                                <%--                <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link active"--%>
-                                <%--                   aria-controls="dashboardsExamples" role="button"--%>
-                                <%--                   aria-expanded="false">--%>
+                        <a data-bs-toggle="collapse" href="#pagesExamples_main" class="nav-link active"
+                           aria-controls="pagesExamples"
+                           role="button" aria-expanded="false">
                             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                                 <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -71,30 +70,26 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">센터 통계정보</span>
+                            <span class="nav-link-text ms-1" style="font-size: 17px;">오늘의 헬쓱</span>
                         </a>
-                            <%--                <div class="collapse" id="dashboardsExamples">--%>
-                            <%--                    <ul class="nav ms-4 ps-3">--%>
-                            <%--                        <li class="nav-item">--%>
-                            <%--                            <a class="nav-link" href="/">--%>
-                            <%--                                <span class="sidenav-mini-icon"> S </span>--%>
-                            <%--                                <span class="sidenav-normal"> 매출 </span>--%>
-                            <%--                            </a>--%>
-                            <%--                        </li>--%>
-                            <%--                        <li class="nav-item">--%>
-                            <%--                            <a class="nav-link " href="/">--%>
-                            <%--                                <span class="sidenav-mini-icon"> C </span>--%>
-                            <%--                                <span class="sidenav-normal"> 고객 </span>--%>
-                            <%--                            </a>--%>
-                            <%--                        </li>--%>
-                            <%--                        <li class="nav-item">--%>
-                            <%--                            <a class="nav-link " href="/">--%>
-                            <%--                                <span class="sidenav-mini-icon"> T </span>--%>
-                            <%--                                <span class="sidenav-normal"> 트레이너 </span>--%>
-                            <%--                            </a>--%>
-                            <%--                        </li>--%>
-                            <%--                    </ul>--%>
-                            <%--                </div>--%>
+                        <div class="collapse" id="pagesExamples_main">
+                            <ul class="nav ms-4 ps-3">
+                                <li class="nav-item">
+                                    <a class="nav-link " aria-expanded="false"
+                                       href="/">
+                                        <span class="sidenav-mini-icon"> C </span>
+                                        <span class="sidenav-normal" style="font-size: 17px;"> 센터 통계정보 <b class="caret"></b></span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " aria-expanded="false"
+                                       href="/center/smartcenter">
+                                        <span class="sidenav-mini-icon"> T </span>
+                                        <span class="sidenav-normal" style="font-size: 17px;"> 스마트 센터 <b class="caret"></b></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <hr class="horizontal dark"/>
@@ -124,7 +119,7 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">센터 소개</span>
+                            <span class="nav-link-text ms-1" style="font-size: 17px;">센터 소개</span>
                         </a>
                         <div class="collapse" id="pagesExamples">
                             <ul class="nav ms-4 ps-3">
@@ -132,14 +127,14 @@
                                     <a class="nav-link " aria-expanded="false"
                                        href="/center/centerinfo">
                                         <span class="sidenav-mini-icon"> C </span>
-                                        <span class="sidenav-normal"> 센터 <b class="caret"></b></span>
+                                        <span class="sidenav-normal" style="font-size: 17px;"> 센터 <b class="caret"></b></span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link " aria-expanded="false"
                                        href="/trainer/all">
                                         <span class="sidenav-mini-icon"> T </span>
-                                        <span class="sidenav-normal"> 트레이너 <b class="caret"></b></span>
+                                        <span class="sidenav-normal" style="font-size: 17px;"> 트레이너 <b class="caret"></b></span>
                                     </a>
                                 </li>
                             </ul>
@@ -171,7 +166,7 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">수업 캘린더</span>
+                            <span class="nav-link-text ms-1" style="font-size: 17px;"> 수업 캘린더</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -197,7 +192,7 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">이용권 리스트</span>
+                            <span class="nav-link-text ms-1" style="font-size: 17px;"> 이용권 리스트</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -228,7 +223,7 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">센터/트레이너</span>
+                            <span class="nav-link-text ms-1" style="font-size: 17px;"> 센터/트레이너</span>
                         </a>
                         <div class="collapse " id="basicExamples">
                             <ul class="nav ms-4 ps-3">
@@ -236,14 +231,14 @@
                                     <a class="nav-link " aria-expanded="false"
                                        href="/center/add">
                                         <span class="sidenav-mini-icon"> C </span>
-                                        <span class="sidenav-normal"> 센터 정보 <b class="caret"></b></span>
+                                        <span class="sidenav-normal" style="font-size: 17px;">  센터 정보 <b class="caret"></b></span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link " aria-expanded="false"
                                        href="/trainer/add">
                                         <span class="sidenav-mini-icon"> T </span>
-                                        <span class="sidenav-normal"> 트레이너 정보 <b class="caret"></b></span>
+                                        <span class="sidenav-normal" style="font-size: 17px;"> 트레이너 정보 <b class="caret"></b></span>
                                     </a>
                                 </li>
                             </ul>
@@ -275,7 +270,7 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">수업 클래스</span>
+                            <span class="nav-link-text ms-1" style="font-size: 17px;"> 수업 클래스</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -301,7 +296,7 @@
                                     </g>
                                 </svg>
                             </div>
-                            <span class="nav-link-text ms-1">이용권</span>
+                            <span class="nav-link-text ms-1" style="font-size: 17px;"> 이용권</span>
                         </a>
                     </li>
                 </ul>

@@ -9,9 +9,9 @@
             <div class="card">
                 <!-- Card header -->
                 <div class="card-header">
-                    <h5 class="mb-0">쿠폰 리스트</h5>
+                    <h5 class="mb-0">센터 리스트</h5>
                     <p class="text-sm mb-0">
-                        쿠폰 발행/발송 내역
+                        센터 승인 필요 내역
                     </p>
                 </div>
                 <div class="table-responsive">

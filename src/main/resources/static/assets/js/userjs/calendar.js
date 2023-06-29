@@ -156,7 +156,7 @@ function loadStudents(classNo) {
                 var row = $('<tr>');
 
                 // 이메일 열을 생성하고 데이터를 추가합니다.
-                var emailColumn = $('<td>');
+                var emailColumn = $('<td style="font-size: 15px; text-align: center">');
                 var emailDiv = $('<div>').addClass('d-flex align-items-center');
                 var emailCheckbox = $('<input>')
                     .addClass('form-check-input')
@@ -164,7 +164,7 @@ function loadStudents(classNo) {
                     .attr('id', 'customCk')
                     .attr('name', 'customCk');
                 var emailText = $('<p>')
-                    .addClass('text-xs font-weight-bold ms-2 mb-0')
+                    .addClass('font-weight-bold mb-0')
                     .attr('id', 'custEmail')
                     .attr('name', 'custEmail')
                     .text(student.custEmail);
@@ -173,7 +173,7 @@ function loadStudents(classNo) {
                 row.append(emailColumn);
 
                 // 이름 열을 생성하고 데이터를 추가합니다.
-                var nameColumn = $('<td>').addClass('text-xs font-weight-bold');
+                var nameColumn = $('<td style="font-size: 15px; text-align: center">').addClass('font-weight-bold');
                 var nameDiv = $('<div>').addClass('d-flex align-items-center');
                 var nameText = $('<span>')
                     .attr('id', 'custName')
@@ -184,7 +184,7 @@ function loadStudents(classNo) {
                 row.append(nameColumn);
 
                 // 휴대폰번호 열을 생성하고 데이터를 추가합니다.
-                var phoneColumn = $('<td>').addClass('text-xs font-weight-bold');
+                var phoneColumn = $('<td style="font-size: 15px; text-align: center">').addClass('font-weight-bold');
                 var phoneDiv = $('<div>').addClass('d-flex align-items-center');
                 var phoneText = $('<span>')
                     .attr('id', 'custPhone')
@@ -195,7 +195,7 @@ function loadStudents(classNo) {
                 row.append(phoneColumn);
 
                 // 운동완료여부 열을 생성하고 데이터를 추가합니다.
-                var statusColumn = $('<td>').addClass('text-xs font-weight-bold')
+                var statusColumn = $('<td style="font-size: 15px; text-align: center">').addClass('font-weight-bold')
                     .css('display', 'flex')
                     .css('justify-content', 'space-between')
                     .css('align-items', 'center');
@@ -231,11 +231,11 @@ function loadStudents(classNo) {
                 row.append(statusColumn);
 
                 // 예약취소내역 열을 생성하고 데이터를 추가합니다.
-                var cancelColumn = $('<td>').addClass('text-xs font-weight-bold');
+                var cancelColumn = $('<td style="font-size: 15px; text-align: center">').addClass('font-weight-bold');
                 var cancelDiv = $('<div>').css('display', 'flex')
                     .css('justify-content', 'space-between');
                 var cancelText = $('<span>')
-                    .addClass('my-2 text-xs')
+                    .addClass('my-2')
                     .attr('id', 'cancelCk')
                     .attr('name', 'cancelCk')
                     .css('margin-right', 'auto')

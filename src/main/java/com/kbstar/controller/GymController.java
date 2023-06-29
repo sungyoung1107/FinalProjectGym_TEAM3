@@ -247,6 +247,66 @@ public class GymController {
     public String approveimpl(Model model, Gym gym) throws Exception {
 
         gymService.approveGym(gym); // 업데이트
+        
+        Gym gym1 = gymService.getmyemailFromgymNo(gym); // 이메일 가져오기
+
+        // 메일 보내기 //
+        /* 뷰로 넘어온 데이터 확인 */
+        logger.info("이메일 데이터 전송 확인: " + gym1.getGymEmail());
+
+        /* 이메일 보내기 */
+        String setForm = username;
+        String toMail = gym1.getGymEmail(); // 수신 받을 이메일
+        String title = "헬쓱 센터 승인 완료되었습니다.";
+        String content = "<html>\n" +
+                "<head>\n" +
+                "    <style>\n" +
+                "        /* 스타일링을 위한 CSS 코드 */\n" +
+                "        body {\n" +
+                "            font-family: 'Malgun Gothic', 'Arial', sans-serif;\n" +
+                "            color: #333333;\n" +
+                "        }\n" +
+                "        .container {\n" +
+                "            max-width: 600px;\n" +
+                "            margin: 0 auto;\n" +
+                "            padding: 20px;\n" +
+                "            background-color: #ffffff;\n" +
+                "            border-radius: 5px;\n" +
+                "            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n" +
+                "        }\n" +
+                "        h1 {\n" +
+                "            color: #ffc107;\n" +
+                "            text-align: center;\n" +
+                "            margin-top: 0;\n" +
+                "        }\n" +
+                "        p {\n" +
+                "            line-height: 1.5;\n" +
+                "            color: #333333;\n" +
+                "        }\n" +
+                "    </style>\n" +
+                "</head>\n" +
+                "<body style=\"background-color: #f7f7f7;\">\n" +
+                "<div class=\"container\">\n" +
+                "    <h3>헬쓱 센터 승인 완료</h3>\n" +
+                "    <p style=\"color: #333333;\">안녕하세요, " + gym1.getGymName() + "님!</p>\n" +
+                "    <p style=\"color: #333333;\">헬쓱 센터의 승인이 완료되었습니다.</p>\n" +
+                "    <p style=\"color: #333333;\">많은 회원들과 함께 목표 매출을 달성하시길 기원합니다.</p>\n" +
+                "    <p style=\"color: #333333;\">감사합니다!</p>\n" +
+                "</div>\n" +
+                "</body>\n" +
+                "</html>";
+        try{
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+            helper.setFrom(setForm);
+            helper.setTo(toMail);
+            helper.setSubject(title);
+            helper.setText(content, true);
+            mailSender.send(message);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
 
         model.addAttribute("page", "Approve");
         model.addAttribute("center", dir+"approve");

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kbstar.mapper.GymMachineMapper">
+
+    <!-- 특정 센터 1개가 가지고 있는 기계들 중 운동부위별(1상체 2하체) 조회 -->
+    <select id="selectExerciseType" parameterType="MachineSearch" resultType="gymmachine">
+        SELECT * FROM gymmachine
+        WHERE
+        <if test="exerciseType != null and !exerciseType.equals('')">
+            exerciseType = #{exerciseType}
+        </if>
+    </select>
+    <!-- 특정 센터 1개가 가지고 있는 모든 기계들 조회 -->
+    <select id="selectGymMachine" parameterType="Integer" resultType="gymmachine">
+        SELECT * FROM gymmachine WHERE gymNo=#{gymNo}
+    </select>
+
+    <!-- 특정 기계정보 1건만 조회 : 정상 -->
+    <select id="select" parameterType="Integer" resultType="gymmachine">
+        SELECT * FROM gymmachine WHERE machineNo=#{machineNo}
+    </select>
+    <!-- 모든 기계 가져오기  정상 -->
+    <select id="selectall" resultType="gymmachine">
+        SELECT *
+        from gymmachine
+    </select>
+    <!-- insert : 서비스화면엔 없음 -->
+
+    <!-- 수정가능한 항목 2가지. : 사용수량, 기계상태  -->
+    <update id="update" parameterType="gymmachine">
+        UPDATE gymmachine SET usingQuantity=#{usingQuantity}
+                              , machineStatus=#{machineStatus}
+
+        WHERE machineNo=#{machineNo}
+    </update>
+    <!-- 기계 삭제 -->
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM gymmachine WHERE machineNo=#{machineNo}
+    </delete>
+</mapper>

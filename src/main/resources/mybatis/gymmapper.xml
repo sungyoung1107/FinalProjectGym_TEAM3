@@ -11,6 +11,10 @@
     <select id="getmyemail" parameterType="String" resultType="gym">
         SELECT * FROM gym WHERE gymEmail=#{gymEmail}
     </select>
+    <!-- gymNo로 이메일 조회 -->
+    <select id="getmyemailFromgymNo" parameterType="gym" resultType="gym">
+        SELECT * FROM gym WHERE gymNo=#{gymNo}
+    </select>
     <!-- 대표계정으로 모든 센터 추출 -->
     <select id="selectall" resultType="gym">
         SELECT * FROM gym WHERE gymMasterCk ='1'
