@@ -40,7 +40,7 @@
     <select id="selectSumYesterday" parameterType="Integer" resultType="Integer">
         SELECT SUM(purchaseprice) AS total
         FROM purchase
-        WHERE TO_CHAR(purchasedate, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 3, 'YYYY-MM-DD') AND gymNo = #{gymNo}
+        WHERE TO_CHAR(purchasedate, 'YYYY-MM-DD') = TO_CHAR(SYSDATE - 1, 'YYYY-MM-DD') AND gymNo = #{gymNo}
     </select>
 
     <!--    센터별 오늘 이용권 구매 금액 총합-->

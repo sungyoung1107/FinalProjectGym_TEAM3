@@ -565,7 +565,7 @@
 
     startCountUp(); // 처음에는 즉시 호출
 
-    setInterval(startCountUp, 5000); // 이후에는 5초마다 호출
+    setInterval(startCountUp, 10000); // 이후에는 5초마다 호출
 
 </script>
 
