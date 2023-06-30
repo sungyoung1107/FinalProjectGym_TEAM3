@@ -228,7 +228,7 @@ public class GymController {
 
         for(Gym gym : gym_list){
             log.info("gym.getGymNo()" + gym.getGymNo());
-            log.info("gym.getStatus()" + gym.getStatus());
+            log.info("gym.getCustStatus()" + gym.getStatus());
             
             if(gym.getStatus().trim().equals("1"))
                 gym.setStatus("가입완료");
@@ -257,20 +257,20 @@ public class GymController {
         /* 이메일 보내기 */
         String setForm = username;
         String toMail = gym1.getGymEmail(); // 수신 받을 이메일
-        String title = "헬쓱 센터 승인 완료되었습니다.";
+        String title = "헬쓱 센터 승인이 완료되었습니다.";
         String content = "<html>\n" +
                 "<head>\n" +
                 "    <style>\n" +
                 "        /* 스타일링을 위한 CSS 코드 */\n" +
                 "        body {\n" +
                 "            font-family: 'Malgun Gothic', 'Arial', sans-serif;\n" +
-                "            color: #333333;\n" +
+                "            color: white;\n" +
                 "        }\n" +
                 "        .container {\n" +
                 "            max-width: 600px;\n" +
                 "            margin: 0 auto;\n" +
                 "            padding: 20px;\n" +
-                "            background-color: #ffffff;\n" +
+                "            background-color: purple;\n" +
                 "            border-radius: 5px;\n" +
                 "            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n" +
                 "        }\n" +
@@ -281,17 +281,19 @@ public class GymController {
                 "        }\n" +
                 "        p {\n" +
                 "            line-height: 1.5;\n" +
-                "            color: #333333;\n" +
+                "            color: white;\n" +
                 "        }\n" +
                 "    </style>\n" +
                 "</head>\n" +
-                "<body style=\"background-color: #f7f7f7;\">\n" +
+                "<body style=\"background-color: purple;\">\n" +
                 "<div class=\"container\">\n" +
-                "    <h3>헬쓱 센터 승인 완료</h3>\n" +
-                "    <p style=\"color: #333333;\">안녕하세요, " + gym1.getGymName() + "님!</p>\n" +
-                "    <p style=\"color: #333333;\">헬쓱 센터의 승인이 완료되었습니다.</p>\n" +
-                "    <p style=\"color: #333333;\">많은 회원들과 함께 목표 매출을 달성하시길 기원합니다.</p>\n" +
-                "    <p style=\"color: #333333;\">감사합니다!</p>\n" +
+//                "    <h4>헬쓱 센터 승인 완료</h3><br>\n" +
+                "    <p style=\"color: black; font-size: 15px;\">안녕하세요, " + gym1.getGymName() + "님!</p>\n" +
+                "    <p style=\"color: black; font-size: 15px;\">헬쓱 센터의 승인이 완료되었습니다.</p>\n" +
+                "    <p style=\"color: black; font-size: 15px;\">많은 회원들과 함께 목표 매출을 달성하시길 기원합니다.</p>\n" +
+                "    <p style=\"color: black; font-size: 15px;\">감사합니다.</p>\n" +
+                "    <p style=\"color: black; font-size: 15px;\"> -헬쓱 관리자 드림- </p>\n" +
+//                "    <img src=\"/assets/img/centerlogo.png\" style=\"margin-left: 30px; margin-top: 15px; width: 180px;\">\n" +
                 "</div>\n" +
                 "</body>\n" +
                 "</html>";
