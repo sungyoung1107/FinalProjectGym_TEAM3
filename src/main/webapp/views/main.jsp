@@ -244,21 +244,6 @@
                                                     <td>
                                                         <div class="d-flex px-2 py-1">
                                                             <div>
-                                                                <i class="ni ni-user-run me-sm-1 moving-icon"></i>
-                                                            </div>&nbsp;&nbsp;
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0" style="font-size: 20px;"> 17:30 </h6>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="font-weight-bold" style="font-size: 18px;"> 12% </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex px-2 py-1">
-                                                            <div>
                                                                     <%--                                                                    <img src="../../assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-2" alt="logo_xd">--%>
                                                                 <i class="ni ni-user-run me-sm-1 moving-icon"></i>
                                                             </div>&nbsp;&nbsp;
@@ -299,6 +284,21 @@
                                                     </td>
                                                     <td class="align-middle text-center text-sm">
                                                         <span class="font-weight-bold" style="font-size: 18px;"> 15% </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex px-2 py-1">
+                                                            <div>
+                                                                <i class="ni ni-user-run me-sm-1 moving-icon"></i>
+                                                            </div>&nbsp;&nbsp;
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                                <h6 class="mb-0" style="font-size: 20px;"> 17:30 </h6>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span class="font-weight-bold" style="font-size: 18px;"> 12% </span>
                                                     </td>
                                                 </tr>
                                                 <tr>

@@ -281,13 +281,22 @@ $(document).on('click', '.completeButton', function() {
         },
         success: function(response) {
             if (response === "success") {
+                // toastr.options.positionClass = "toast-top-full-width";
+                // toastr.options.timeOut = 1000;
+                // toastr.success('운동 완료 업데이트 성공하였습니다', {timeOut: 1000});
                 alert('운동 완료 업데이트 성공');
                 window.location.href = '/class/all';
             } else {
+                // toastr.options.positionClass = "toast-top-full-width";
+                // toastr.options.timeOut = 1000;
+                // toastr.error('운동 완료 업데이트 실패하였습니다', {timeOut: 1000});
                 alert('운동 완료 업데이트 실패');
             }
         },
         error: function() {
+            // toastr.options.positionClass = "toast-top-full-width";
+            // toastr.options.timeOut = 1000;
+            // toastr.error('운동 완료 업데이트 실패하였습니다', {timeOut: 1000});
             alert('운동 완료 업데이트 실패');
         }
     });

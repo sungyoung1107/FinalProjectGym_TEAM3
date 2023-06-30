@@ -97,11 +97,11 @@ public class CenterController {
     public String chat(Model model, HttpSession session) throws Exception {
 
         //Gym gym = (Gym) session.getAttribute("logingym");
-        Gym gym = (Gym) gymService.get(2);
+        Gym gym = (Gym) gymService.get(28);
         Cust cust = (Cust) custService.get("ttyg567@naver.com");
 
-        log.info("test");
-        log.info(String.valueOf(gym));
+//        log.info("test");
+//        log.info(String.valueOf(gym));
 
         //session.setAttribute("logingym", gym);
         model.addAttribute("page", "Chat service");
