@@ -15,14 +15,14 @@
     <select id="getmyemailFromgymNo" parameterType="gym" resultType="gym">
         SELECT * FROM gym WHERE gymNo=#{gymNo}
     </select>
-    <!-- 대표계정으로 모든 센터 추출 -->
+    <!-- 대표계정으로 모든 센터 추출, 승인 필요만 추출 -->
     <select id="selectall" resultType="gym">
-        SELECT * FROM gym WHERE gymMasterCk ='1'
+        SELECT * FROM gym WHERE gymMasterCk ='1' and status = '1'
     </select>
     <!-- gymTitle, gymContents, approvedAdmID 추후 등록 -->
     <insert id="insert" parameterType="gym">
         INSERT INTO gym (gymNo, gymMasterCk, gymEmail, gymPwd, gymName, gymPhone, gymZipcode, gymAddress1, gymAddress2, gymAddress3,
-                         gymRegiimgname, gymReginumber, gymMarketing, Status, typeNo)
+                         gymRegiimgname, gymReginumber, gymMarketing, status, typeNo)
         VALUES (gym_seq.NEXTVAL, '1', #{gymEmail}, #{gymPwd}, #{gymName}, #{gymPhone},
         #{gymZipcode}, #{gymAddress1}, #{gymAddress2}, #{gymAddress3}, #{gymRegiimgname}, #{gymReginumber}, '0', '1', #{typeNo})
     </insert>
@@ -49,7 +49,7 @@
     <!-- 승인완료로 -->
     <update id="approveGym" parameterType="gym">
         UPDATE gym SET gymMarketing=#{gymMarketing},
-                       Status='2',
+                       status='2',
                        approvedAdmID='admin'
         WHERE gymNo=#{gymNo}
     </update>
