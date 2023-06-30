@@ -97,8 +97,8 @@ public class CenterController {
     public String chat(Model model, HttpSession session) throws Exception {
 
         //Gym gym = (Gym) session.getAttribute("logingym");
-        Gym gym = (Gym) gymService.get(28);
-        Cust cust = (Cust) custService.get("ttyg567@naver.com");
+        Gym gym = (Gym) gymService.get(29);
+        Cust cust = (Cust) custService.get("healssg@naver.com");
 
 //        log.info("test");
 //        log.info(String.valueOf(gym));

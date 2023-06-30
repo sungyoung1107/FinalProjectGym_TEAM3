@@ -23,7 +23,10 @@
                 <div class="card-body p-2">
                     <a href="javascript:;" class="d-block p-2 border-radius-lg bg-gradient-primary">
                         <div class="d-flex p-2">
-                            <img alt="Image" src="../../assets/img/${sendcust.custImgName}" class="avatar shadow">
+<%--                            <img alt="Image" src="../../assets/img/${sendcust.custImgName}" class="avatar shadow">--%>
+<%--                            --%>
+<%--                            <img alt="Image" src="../../assets/img/trainer/trainer_nara.jpg" class="avatar shadow">--%>
+
                             <div class="ms-3">
                                 <div class="justify-content-between align-items-center">
                                     <h6 class="text-white mb-0"> ${sendcust.custName}
